@@ -25,7 +25,7 @@
 
 ---
 
-# 🇬🇧 English Documentation
+# English Documentation
 
 ## Quick Start
 
@@ -211,7 +211,7 @@ In your `index.html`:
 ---
 ---
 
-# 🇪🇸 Documentación en Castellano
+# Documentación en Castellano
 
 ## Inicio Rápido
 
