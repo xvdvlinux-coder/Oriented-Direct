@@ -27,6 +27,21 @@
 
 # 🇬🇧 English Documentation
 
+## Quick Start
+
+```bash
+# Install globally via npm
+npm install -g @xvdxlinux/oriented-direct
+
+# Start local development server with live reload & network IP
+ospc dev
+
+# Or run instantly with npx (zero installation):
+npx @xvdxlinux/oriented-direct dev
+```
+
+---
+
 ## 1. Introduction & Highlights
 **Oriented-Direct** (`.osp`) is a modern programming language engineered to eliminate ambiguities, verbosity, and historical baggage from JavaScript and TypeScript.
 
@@ -197,6 +212,21 @@ In your `index.html`:
 ---
 
 # 🇪🇸 Documentación en Castellano
+
+## Inicio Rápido
+
+```bash
+# Instalar globalmente desde npm
+npm install -g @xvdxlinux/oriented-direct
+
+# Iniciar servidor de desarrollo con recarga en vivo e IP de red
+ospc dev
+
+# O ejecutar directamente con npx (sin instalar nada):
+npx @xvdxlinux/oriented-direct dev
+```
+
+---
 
 ## 1. Introducción y Novedades de la Versión 1.3.0
 **Oriented-Direct** (`.osp`) es un lenguaje de programación moderno diseñado para resolver las ambigüedades, la verbosidad y las inconsistencias históricas de JavaScript y TypeScript.
