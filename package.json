@@ -1,0 +1,32 @@
+{
+  "name": "oriented-direct",
+  "version": "1.3.0",
+  "description": "Oriented-Direct (.osp) - An unambiguous, ultra-direct programming language transpiling to JavaScript",
+  "type": "module",
+  "main": "src/index.js",
+  "bin": {
+    "ospc": "./bin/ospc.js",
+    "oriented-direct": "./bin/ospc.js"
+  },
+  "scripts": {
+    "test": "node test/compiler.test.js",
+    "start": "node bin/ospc.js dev"
+  },
+  "keywords": [
+    "oriented-direct",
+    "osp",
+    "transpiler",
+    "bundler",
+    "compiler",
+    "dev-server",
+    "javascript",
+    "clean-code",
+    "direct-dom",
+    "no-boilerplate"
+  ],
+  "author": "Oriented-Direct Team",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

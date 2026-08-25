@@ -1,0 +1,326 @@
+{
+  "Immutable Variable (val)": {
+    "prefix": "val",
+    "body": [
+      "val ${1:name} = ${2:value};"
+    ],
+    "description": "Declare an immutable constant binding (val)"
+  },
+  "Mutable Variable (mut)": {
+    "prefix": "mut",
+    "body": [
+      "mut ${1:name} = ${2:value};"
+    ],
+    "description": "Declare a mutable variable binding (mut)"
+  },
+  "Function (fn)": {
+    "prefix": "fn",
+    "body": [
+      "fn ${1:name}(${2:params}) {",
+      "\t$0",
+      "}"
+    ],
+    "description": "Declare a standard function"
+  },
+  "Async Function (async fn)": {
+    "prefix": "afn",
+    "body": [
+      "async fn ${1:name}(${2:params}) {",
+      "\t$0",
+      "}"
+    ],
+    "description": "Declare an asynchronous function"
+  },
+  "Arrow Function": {
+    "prefix": "arr",
+    "body": [
+      "(${1:params}) => ${2:expression}"
+    ],
+    "description": "Create an arrow function"
+  },
+  "Struct Definition": {
+    "prefix": "struct",
+    "body": [
+      "struct ${1:Name} { ${2:x, y} }"
+    ],
+    "description": "Declare a lightweight struct with auto-generated constructor"
+  },
+  "Class Definition": {
+    "prefix": "class",
+    "body": [
+      "class ${1:Name} {",
+      "\tconstructor(${2:params}) {",
+      "\t\t$0",
+      "\t}",
+      "}"
+    ],
+    "description": "Declare a class"
+  },
+  "Class with Extends": {
+    "prefix": "classext",
+    "body": [
+      "class ${1:Name} extends ${2:Base} {",
+      "\tconstructor(${3:params}) {",
+      "\t\tsuper(${4:params});",
+      "\t\t$0",
+      "\t}",
+      "}"
+    ],
+    "description": "Declare an extended subclass"
+  },
+  "If Statement": {
+    "prefix": "if",
+    "body": [
+      "if (${1:condition}) {",
+      "\t$0",
+      "}"
+    ],
+    "description": "If conditional statement"
+  },
+  "If Else Statement": {
+    "prefix": "ife",
+    "body": [
+      "if (${1:condition}) {",
+      "\t$2",
+      "} else {",
+      "\t$0",
+      "}"
+    ],
+    "description": "If-else conditional statement"
+  },
+  "Unless Statement": {
+    "prefix": "unless",
+    "body": [
+      "unless (${1:condition}) {",
+      "\t$0",
+      "}"
+    ],
+    "description": "Unless statement (runs if condition is false)"
+  },
+  "Match Statement": {
+    "prefix": "match",
+    "body": [
+      "match (${1:expression}) {",
+      "\tcase ${2:pattern} => ${3:action}",
+      "\tdefault => ${4:defaultAction}",
+      "}"
+    ],
+    "description": "Pattern matching / switch statement"
+  },
+  "For In Loop (Iterables/Arrays)": {
+    "prefix": "forin",
+    "body": [
+      "for (val ${1:item} in ${2:collection}) {",
+      "\t$0",
+      "}"
+    ],
+    "description": "For-in loop iterating over array elements"
+  },
+  "For Of Loop (Object keys)": {
+    "prefix": "forof",
+    "body": [
+      "for (val ${1:key} of ${2:object}) {",
+      "\t$0",
+      "}"
+    ],
+    "description": "For-of loop iterating over object keys"
+  },
+  "Infinite Loop": {
+    "prefix": "loop",
+    "body": [
+      "loop {",
+      "\t$0",
+      "}"
+    ],
+    "description": "Infinite loop block"
+  },
+  "While Loop": {
+    "prefix": "while",
+    "body": [
+      "while (${1:condition}) {",
+      "\t$0",
+      "}"
+    ],
+    "description": "Standard while loop"
+  },
+  "DOM Query Selector (@find)": {
+    "prefix": "@find",
+    "body": [
+      "@find(\"${1:selector}\"${2:, parent})"
+    ],
+    "description": "Query single DOM element directly (document.querySelector)"
+  },
+  "DOM Query All (@all)": {
+    "prefix": "@all",
+    "body": [
+      "@all(\"${1:selector}\"${2:, parent})"
+    ],
+    "description": "Query all matching DOM elements as Array (document.querySelectorAll)"
+  },
+  "DOM Get Element By ID (@id)": {
+    "prefix": "@id",
+    "body": [
+      "@id(\"${1:elementId}\")"
+    ],
+    "description": "Get element directly by ID (document.getElementById)"
+  },
+  "DOM Event Listener (@on)": {
+    "prefix": "@on",
+    "body": [
+      "@on(${1:target}, \"${2|click,input,change,submit,keydown,keyup,mouseenter,mouseleave,DOMContentLoaded|}\", (${3:e}) => {",
+      "\t$0",
+      "});"
+    ],
+    "description": "Attach event listener to DOM element (target.addEventListener)"
+  },
+  "DOM Remove Event Listener (@off)": {
+    "prefix": "@off",
+    "body": [
+      "@off(${1:target}, \"${2:event}\", ${3:handler});"
+    ],
+    "description": "Remove event listener from DOM element (target.removeEventListener)"
+  },
+  "DOM Emit Custom Event (@emit)": {
+    "prefix": "@emit",
+    "body": [
+      "@emit(${1:target}, \"${2:customEvent}\", ${3:data});"
+    ],
+    "description": "Dispatch custom event to DOM element (target.dispatchEvent)"
+  },
+  "DOM Create Element (@create)": {
+    "prefix": "@create",
+    "body": [
+      "@create(\"${1:div}\", { ${2:class: \"${3:my-class}\"} }, ${4:...children})"
+    ],
+    "description": "Declarative element creation with attributes and children"
+  },
+  "DOM Inner HTML (@html)": {
+    "prefix": "@html",
+    "body": [
+      "@html(${1:target}, \"${2:<div>${3:content}</div>}\")"
+    ],
+    "description": "Get or set innerHTML of DOM element"
+  },
+  "DOM Text Content (@text)": {
+    "prefix": "@text",
+    "body": [
+      "@text(${1:target}, \"${2:text content}\")"
+    ],
+    "description": "Get or set textContent of DOM element"
+  },
+  "DOM Style (@css)": {
+    "prefix": "@css",
+    "body": [
+      "@css(${1:target}, { ${2:color}: \"${3:red}\" });"
+    ],
+    "description": "Apply inline CSS styles directly to DOM element"
+  },
+  "DOM Attribute (@attr)": {
+    "prefix": "@attr",
+    "body": [
+      "@attr(${1:target}, \"${2:attribute}\"${3:, \"${4:value}\"})"
+    ],
+    "description": "Get or set attribute on DOM element"
+  },
+  "DOM Value (@val)": {
+    "prefix": "@val",
+    "body": [
+      "@val(${1:target}${2:, \"${3:newValue}\"})"
+    ],
+    "description": "Get or set input value on DOM form element"
+  },
+  "Console Log": {
+    "prefix": "log",
+    "body": [
+      "log(${1:message});"
+    ],
+    "description": "Direct console.log output"
+  },
+  "Console Print": {
+    "prefix": "print",
+    "body": [
+      "print(${1:message});"
+    ],
+    "description": "Direct console.log output shorthand"
+  },
+  "Console Warn": {
+    "prefix": "warn",
+    "body": [
+      "warn(${1:message});"
+    ],
+    "description": "Direct console.warn output"
+  },
+  "Console Error": {
+    "prefix": "error",
+    "body": [
+      "error(${1:message});"
+    ],
+    "description": "Direct console.error output"
+  },
+  "Console Info": {
+    "prefix": "info",
+    "body": [
+      "info(${1:message});"
+    ],
+    "description": "Direct console.info output"
+  },
+  "Pipeline Operator (|>)": {
+    "prefix": "pipe",
+    "body": [
+      "${1:data} |> ${2:fn1} |> ${3:fn2}"
+    ],
+    "description": "Pipeline data flow composition"
+  },
+  "Try Catch Block": {
+    "prefix": "try",
+    "body": [
+      "try {",
+      "\t$1",
+      "} catch (${2:err}) {",
+      "\t$0",
+      "}"
+    ],
+    "description": "Try-catch error handling block"
+  },
+  "Try Catch Finally Block": {
+    "prefix": "tryf",
+    "body": [
+      "try {",
+      "\t$1",
+      "} catch (${2:err}) {",
+      "\t$3",
+      "} finally {",
+      "\t$0",
+      "}"
+    ],
+    "description": "Try-catch-finally block"
+  },
+  "Import Statement": {
+    "prefix": "imp",
+    "body": [
+      "import { ${1:members} } from \"${2:./module.osp}\";"
+    ],
+    "description": "Import ES Module bindings from .osp file"
+  },
+  "Import Default": {
+    "prefix": "impd",
+    "body": [
+      "import ${1:name} from \"${2:./module.osp}\";"
+    ],
+    "description": "Import default export from .osp file"
+  },
+  "Export Statement": {
+    "prefix": "exp",
+    "body": [
+      "export ${1:val name = value};"
+    ],
+    "description": "Export declaration"
+  },
+  "Export Default": {
+    "prefix": "expd",
+    "body": [
+      "export default ${1:name};"
+    ],
+    "description": "Export default statement"
+  }
+}

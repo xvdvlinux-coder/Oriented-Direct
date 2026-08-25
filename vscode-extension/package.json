@@ -1,0 +1,55 @@
+{
+  "name": "oriented-direct",
+  "displayName": "Oriented-Direct Language Support",
+  "description": "Syntax highlighting, code suggestions (snippets), and rich IntelliSense for Oriented-Direct (.osp) programming language.",
+  "version": "1.0.0",
+  "publisher": "oriented-direct",
+  "engines": {
+    "vscode": "^1.75.0"
+  },
+  "categories": [
+    "Programming Languages",
+    "Snippets"
+  ],
+  "keywords": [
+    "oriented-direct",
+    "osp",
+    "odp",
+    "syntax-highlighting",
+    "transpiler"
+  ],
+  "activationEvents": [
+    "onLanguage:oriented-direct"
+  ],
+  "main": "./extension.js",
+  "contributes": {
+    "languages": [
+      {
+        "id": "oriented-direct",
+        "aliases": [
+          "Oriented-Direct",
+          "osp",
+          "orienteddirect"
+        ],
+        "extensions": [
+          ".osp",
+          ".odp"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "oriented-direct",
+        "scopeName": "source.osp",
+        "path": "./syntaxes/oriented-direct.tmLanguage.json"
+      }
+    ],
+    "snippets": [
+      {
+        "language": "oriented-direct",
+        "path": "./snippets/snippets.code-snippets"
+      }
+    ]
+  }
+}

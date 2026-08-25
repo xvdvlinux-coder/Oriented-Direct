@@ -1,0 +1,364 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "Oriented-Direct",
+  "scopeName": "source.osp",
+  "patterns": [
+    { "include": "#comments" },
+    { "include": "#strings" },
+    { "include": "#directives" },
+    { "include": "#builtins" },
+    { "include": "#keywords" },
+    { "include": "#operators" },
+    { "include": "#numbers" },
+    { "include": "#constants" },
+    { "include": "#function_declarations" },
+    { "include": "#struct_and_class" },
+    { "include": "#function_calls" },
+    { "include": "#variables_and_identifiers" },
+    { "include": "#punctuation" }
+  ],
+  "repository": {
+    "comments": {
+      "patterns": [
+        {
+          "name": "comment.line.double-slash.osp",
+          "match": "//.*$"
+        },
+        {
+          "name": "comment.block.documentation.osp",
+          "begin": "/\\*\\*",
+          "end": "\\*/",
+          "patterns": [
+            {
+              "name": "keyword.other.documentation.osp",
+              "match": "@(param|returns|return|type|desc|description|example|throws|author|version)\\b"
+            }
+          ]
+        },
+        {
+          "name": "comment.block.osp",
+          "begin": "/\\*",
+          "end": "\\*/"
+        }
+      ]
+    },
+    "strings": {
+      "patterns": [
+        {
+          "name": "string.quoted.template.osp",
+          "begin": "`",
+          "end": "`",
+          "patterns": [
+            {
+              "name": "constant.character.escape.osp",
+              "match": "\\\\([`\\\\/bfnrtv]|u[0-9a-fA-F]{4}|x[0-9a-fA-F]{2})"
+            },
+            {
+              "name": "meta.template.expression.osp",
+              "begin": "\\$\\{",
+              "end": "\\}",
+              "beginCaptures": {
+                "0": { "name": "punctuation.definition.template-expression.begin.osp" }
+              },
+              "endCaptures": {
+                "0": { "name": "punctuation.definition.template-expression.end.osp" }
+              },
+              "patterns": [
+                { "include": "$self" }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "string.quoted.double.osp",
+          "begin": "\"",
+          "end": "\"",
+          "patterns": [
+            {
+              "name": "constant.character.escape.osp",
+              "match": "\\\\([\"\\\\/bfnrtv]|u[0-9a-fA-F]{4}|x[0-9a-fA-F]{2})"
+            }
+          ]
+        },
+        {
+          "name": "string.quoted.single.osp",
+          "begin": "'",
+          "end": "'",
+          "patterns": [
+            {
+              "name": "constant.character.escape.osp",
+              "match": "\\\\(['\\\\/bfnrtv]|u[0-9a-fA-F]{4}|x[0-9a-fA-F]{2})"
+            }
+          ]
+        }
+      ]
+    },
+    "directives": {
+      "patterns": [
+        {
+          "name": "support.function.directive.dom.osp",
+          "match": "(@find|@all|@id|@on|@off|@emit|@create|@html|@text|@css|@attr|@val)\\b"
+        },
+        {
+          "name": "support.variable.directive.dom.osp",
+          "match": "(@doc|@win)\\b"
+        },
+        {
+          "name": "keyword.other.directive.osp",
+          "match": "@[a-zA-Z_]\\w*"
+        }
+      ]
+    },
+    "builtins": {
+      "patterns": [
+        {
+          "name": "support.function.console.osp",
+          "match": "\\b(log|print|warn|error|info)\\b(?=\\s*\\()"
+        },
+        {
+          "name": "support.class.builtin.osp",
+          "match": "\\b(Math|JSON|Promise|Array|Object|String|Number|Boolean|Date|RegExp|Map|Set|fetch|document|window|console)\\b"
+        }
+      ]
+    },
+    "keywords": {
+      "patterns": [
+        {
+          "name": "storage.type.osp",
+          "match": "\\b(val|mut|fn|struct|class)\\b"
+        },
+        {
+          "name": "storage.modifier.osp",
+          "match": "\\b(async|static|extends)\\b"
+        },
+        {
+          "name": "keyword.control.flow.osp",
+          "match": "\\b(if|else|unless|while|loop|for|in|of|break|continue|return|match|case|default|try|catch|finally|throw|await)\\b"
+        },
+        {
+          "name": "keyword.control.module.osp",
+          "match": "\\b(import|export|from|as)\\b"
+        },
+        {
+          "name": "keyword.operator.logical.word.osp",
+          "match": "\\b(is\\s+not|is|and|or|not)\\b"
+        },
+        {
+          "name": "keyword.operator.expression.osp",
+          "match": "\\b(typeof|instanceof|new)\\b"
+        },
+        {
+          "name": "variable.language.this.osp",
+          "match": "\\b(this|super)\\b"
+        }
+      ]
+    },
+    "operators": {
+      "patterns": [
+        {
+          "name": "keyword.operator.pipeline.osp",
+          "match": "\\|>"
+        },
+        {
+          "name": "keyword.operator.arrow.osp",
+          "match": "(=>|->)"
+        },
+        {
+          "name": "keyword.operator.comparison.strict.osp",
+          "match": "(===|!==)"
+        },
+        {
+          "name": "keyword.operator.comparison.osp",
+          "match": "(==|!=|<=|>=|<|>)"
+        },
+        {
+          "name": "keyword.operator.assignment.compound.osp",
+          "match": "(\\+=|-=|\\*=|/=|%=)"
+        },
+        {
+          "name": "keyword.operator.assignment.osp",
+          "match": "=(?!=)"
+        },
+        {
+          "name": "keyword.operator.increment-decrement.osp",
+          "match": "(\\+\\+|--)"
+        },
+        {
+          "name": "keyword.operator.arithmetic.osp",
+          "match": "(\\*{1,2}|\\+|-|/|%)"
+        },
+        {
+          "name": "keyword.operator.logical.osp",
+          "match": "(&&|\\|\\||!)"
+        },
+        {
+          "name": "keyword.operator.nullish.osp",
+          "match": "(\\?\\?|\\?\\.)"
+        },
+        {
+          "name": "keyword.operator.spread.osp",
+          "match": "\\.\\.\\."
+        }
+      ]
+    },
+    "numbers": {
+      "patterns": [
+        {
+          "name": "constant.numeric.hex.osp",
+          "match": "\\b0[xX][0-9a-fA-F]+\\b"
+        },
+        {
+          "name": "constant.numeric.binary.osp",
+          "match": "\\b0[bB][01]+\\b"
+        },
+        {
+          "name": "constant.numeric.octal.osp",
+          "match": "\\b0[oO][0-7]+\\b"
+        },
+        {
+          "name": "constant.numeric.float.osp",
+          "match": "\\b[0-9]+\\.[0-9]+([eE][+-]?[0-9]+)?\\b"
+        },
+        {
+          "name": "constant.numeric.decimal.osp",
+          "match": "\\b[0-9]+([eE][+-]?[0-9]+)?\\b"
+        }
+      ]
+    },
+    "constants": {
+      "patterns": [
+        {
+          "name": "constant.language.boolean.true.osp",
+          "match": "\\btrue\\b"
+        },
+        {
+          "name": "constant.language.boolean.false.osp",
+          "match": "\\bfalse\\b"
+        },
+        {
+          "name": "constant.language.null.osp",
+          "match": "\\bnull\\b"
+        },
+        {
+          "name": "constant.language.undefined.osp",
+          "match": "\\bundefined\\b"
+        },
+        {
+          "name": "constant.language.nan.osp",
+          "match": "\\bNaN\\b"
+        },
+        {
+          "name": "constant.language.infinity.osp",
+          "match": "\\bInfinity\\b"
+        }
+      ]
+    },
+    "function_declarations": {
+      "patterns": [
+        {
+          "match": "\\b(fn)\\s+([a-zA-Z_$][\\w$]*)",
+          "captures": {
+            "1": { "name": "storage.type.osp" },
+            "2": { "name": "entity.name.function.osp" }
+          }
+        },
+        {
+          "match": "\\b(async\\s+fn)\\s+([a-zA-Z_$][\\w$]*)",
+          "captures": {
+            "1": { "name": "storage.type.osp" },
+            "2": { "name": "entity.name.function.osp" }
+          }
+        },
+        {
+          "match": "\\b(constructor)\\s*(?=\\()",
+          "captures": {
+            "1": { "name": "entity.name.function.constructor.osp" }
+          }
+        }
+      ]
+    },
+    "struct_and_class": {
+      "patterns": [
+        {
+          "match": "\\b(struct)\\s+([A-Z][\\w$]*)",
+          "captures": {
+            "1": { "name": "storage.type.osp" },
+            "2": { "name": "entity.name.type.struct.osp" }
+          }
+        },
+        {
+          "match": "\\b(class)\\s+([A-Z][\\w$]*)",
+          "captures": {
+            "1": { "name": "storage.type.osp" },
+            "2": { "name": "entity.name.type.class.osp" }
+          }
+        }
+      ]
+    },
+    "function_calls": {
+      "patterns": [
+        {
+          "match": "\\b([a-zA-Z_$][\\w$]*)\\s*(?=\\()",
+          "captures": {
+            "1": { "name": "entity.name.function.call.osp" }
+          }
+        }
+      ]
+    },
+    "variables_and_identifiers": {
+      "patterns": [
+        {
+          "match": "\\b(val|mut)\\s+([a-zA-Z_$][\\w$]*)",
+          "captures": {
+            "1": { "name": "storage.type.osp" },
+            "2": { "name": "variable.other.declaration.osp" }
+          }
+        },
+        {
+          "match": "\\b[A-Z][A-Z0-9_]+\\b",
+          "name": "constant.other.caps.osp"
+        },
+        {
+          "match": "\\b[A-Z][a-zA-Z0-9_$]*\\b",
+          "name": "entity.name.type.osp"
+        },
+        {
+          "match": "\\b[a-z_$][a-zA-Z0-9_$]*\\b",
+          "name": "variable.other.osp"
+        }
+      ]
+    },
+    "punctuation": {
+      "patterns": [
+        {
+          "name": "punctuation.terminator.statement.osp",
+          "match": ";"
+        },
+        {
+          "name": "punctuation.separator.comma.osp",
+          "match": ","
+        },
+        {
+          "name": "punctuation.accessor.dot.osp",
+          "match": "\\."
+        },
+        {
+          "name": "punctuation.separator.colon.osp",
+          "match": ":"
+        },
+        {
+          "name": "punctuation.section.brackets.osp",
+          "match": "[\\[\\]]"
+        },
+        {
+          "name": "punctuation.section.parens.osp",
+          "match": "[\\(\\)]"
+        },
+        {
+          "name": "punctuation.section.braces.osp",
+          "match": "[\\{\\}]"
+        }
+      ]
+    }
+  }
+}
