@@ -1,12 +1,12 @@
 {
-  "name": "oriented-direct",
+  "name": "@xvdxlinux/oriented-direct",
   "version": "1.3.0",
   "description": "Oriented-Direct (.osp) - An unambiguous, ultra-direct programming language transpiling to JavaScript",
   "type": "module",
   "main": "src/index.js",
   "bin": {
-    "ospc": "./bin/ospc.js",
-    "oriented-direct": "./bin/ospc.js"
+    "ospc": "bin/ospc.js",
+    "oriented-direct": "bin/ospc.js"
   },
   "files": [
     "bin",

@@ -9,9 +9,9 @@
 </p>
 
 <p align="center">
+  <a href="https://www.npmjs.com/package/@xvdxlinux/oriented-direct"><img src="https://img.shields.io/npm/v/@xvdxlinux/oriented-direct?style=flat-square&color=00f5ff" alt="npm version" /></a>
   <a href="https://github.com/xvdvlinux-coder/Oriented-Direct/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square" alt="License: MIT" /></a>
   <a href="https://nodejs.org"><img src="https://img.shields.io/badge/node-%3E%3D18.0.0-brightgreen.svg?style=flat-square" alt="Node.js: >=18" /></a>
-  <img src="https://img.shields.io/badge/version-1.3.0-cyan.svg?style=flat-square" alt="Version 1.3.0" />
   <img src="https://img.shields.io/badge/token_reduction-~33%25-success.svg?style=flat-square" alt="Token Reduction ~33%" />
   <img src="https://img.shields.io/badge/tests-16%20passing-success.svg?style=flat-square" alt="Tests: 16 Passing" />
 </p>
@@ -120,10 +120,19 @@ Define build & server settings inside your `package.json` under `"osp"`:
 ## 4. CLI Compiler, Bundler & Dev Server (`ospc`)
 
 ### Installation / Setup:
+
 ```bash
-npm link
+# 1. Global installation via npm (recommended):
+npm install -g @xvdxlinux/oriented-direct
+
+# 2. Or run instantly with npx (zero installation):
+npx @xvdxlinux/oriented-direct dev
+
+# 3. Add as a dev dependency to an existing project:
+npm install -D @xvdxlinux/oriented-direct
 ```
-*(Or invoke directly using `node bin/ospc.js`)*
+
+*(Alternatively, if working from source, run `npm link` inside the cloned directory).*
 
 ### CLI Commands & Workflows:
 ```bash
@@ -280,10 +289,19 @@ In your `index.html`:
 ## 4. Compilador, Empaquetador y Servidor de Desarrollo (`ospc`)
 
 ### Instalación y Configuración:
+
 ```bash
-npm link
+# 1. Instalación global desde npm (recomendado):
+npm install -g @xvdxlinux/oriented-direct
+
+# 2. O ejecutar instantáneamente con npx (sin instalar nada):
+npx @xvdxlinux/oriented-direct dev
+
+# 3. Agregar como dependencia de desarrollo a un proyecto:
+npm install -D @xvdxlinux/oriented-direct
 ```
-*(O invocar directamente con `node bin/ospc.js`)*
+
+*(Alternativamente, si trabajas desde el código fuente clonado, ejecuta `npm link`).*
 
 ### Comandos del CLI:
 ```bash
