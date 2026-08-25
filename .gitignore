@@ -1,0 +1,15 @@
+# Dependencies
+node_modules/
+
+# Cache and temporary build folders
+.osp_cache/
+public/
+dist/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Environment and OS files
+.DS_Store
+Thumbs.db

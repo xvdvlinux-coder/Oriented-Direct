@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <!-- Flat 2026 Minimalist Aesthetic: Sharp, Bold, Pure Geometry, Zero Clutter -->
+  
+  <!-- Obsidian Squircle Base -->
+  <rect width="512" height="512" rx="128" fill="#09090b"/>
+  <rect width="510" height="510" x="1" y="1" rx="127" fill="none" stroke="#27272a" stroke-width="2"/>
+
+  <!-- Geometric 'O' Segment (Oriented) -->
+  <path d="M 256 120 A 136 136 0 1 0 380 312" 
+        fill="none" 
+        stroke="#ffffff" 
+        stroke-width="36" 
+        stroke-linecap="round"/>
+
+  <!-- Direct Vector Chevron & Beam (Direct) -->
+  <path d="M 160 256 L 332 256" 
+        fill="none" 
+        stroke="#00f5ff" 
+        stroke-width="36" 
+        stroke-linecap="round"/>
+
+  <!-- Flat Sharp Arrow Head -->
+  <path d="M 276 196 L 356 256 L 276 316" 
+        fill="none" 
+        stroke="#00f5ff" 
+        stroke-width="36" 
+        stroke-linecap="round" 
+        stroke-linejoin="round"/>
+</svg>

@@ -1,13 +1,27 @@
-# Oriented-Direct (`.osp`) v1.3.0
+<p align="center">
+  <img src="assets/logo.svg" width="130" height="130" alt="Oriented-Direct Logo" />
+</p>
 
-> **An unambiguous, ultra-direct programming language that transpiles, bundles, and serves modern JavaScript applications.**  
-> Built natively on **Node.js** with zero external dependencies.
+<h1 align="center">Oriented-Direct (<code>.osp</code>)</h1>
+
+<p align="center">
+  <strong>An unambiguous, ultra-direct programming language that transpiles, bundles, and serves modern JavaScript applications.</strong>
+</p>
+
+<p align="center">
+  <a href="https://github.com/xvdvlinux-coder/Oriented-Direct/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square" alt="License: MIT" /></a>
+  <a href="https://nodejs.org"><img src="https://img.shields.io/badge/node-%3E%3D18.0.0-brightgreen.svg?style=flat-square" alt="Node.js: >=18" /></a>
+  <img src="https://img.shields.io/badge/version-1.3.0-cyan.svg?style=flat-square" alt="Version 1.3.0" />
+  <img src="https://img.shields.io/badge/token_reduction-~33%25-success.svg?style=flat-square" alt="Token Reduction ~33%" />
+  <img src="https://img.shields.io/badge/tests-16%20passing-success.svg?style=flat-square" alt="Tests: 16 Passing" />
+</p>
 
 ---
 
 ## Language Selection / Selección de Idioma
 - [English Documentation](#-english-documentation)
 - [Documentación en Castellano](#-documentación-en-castellano)
+- [Official GitHub Wiki](https://github.com/xvdvlinux-coder/Oriented-Direct/wiki)
 
 ---
 

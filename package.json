@@ -8,6 +8,13 @@
     "ospc": "./bin/ospc.js",
     "oriented-direct": "./bin/ospc.js"
   },
+  "files": [
+    "bin",
+    "src",
+    "assets",
+    "README.md",
+    "LICENSE"
+  ],
   "scripts": {
     "test": "node test/compiler.test.js",
     "start": "node bin/ospc.js dev"
