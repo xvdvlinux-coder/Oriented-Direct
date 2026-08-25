@@ -170,10 +170,6 @@ In your `index.html`:
 </html>
 ```
 
-> [!IMPORTANT]
-> **Manual Execution & Verification Notice**:
-> As AI language models cannot directly launch, render, or interact with a local web browser interface, **you (the user) must run `ospc dev` and open `http://localhost:3000` (or open `public/index.html`) in your web browser to test and interact with your application**.
-
 ---
 ---
 
@@ -333,7 +329,3 @@ En tu `index.html`:
 </body>
 </html>
 ```
-
-> [!IMPORTANT]
-> **Aviso de Ejecución y Pruebas Manuales por parte del Usuario**:
-> Debido a que los modelos de lenguaje de inteligencia artificial no tienen la capacidad de abrir ni ejecutar interfaces interactivas en un navegador web local, **usted (el usuario) debe ejecutar `ospc dev` y abrir `http://localhost:3000` (o abrir `public/index.html`) en su navegador web para probar y experimentar con su aplicación**.
