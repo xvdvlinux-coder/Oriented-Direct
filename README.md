@@ -217,6 +217,14 @@ In your `index.html`:
 ```
 
 ---
+
+## 6. Real-World Projects & Showcase
+
+Explore live open-source applications built 100% in Oriented-Direct:
+
+- **[TTF Font Live Previewer](https://github.com/xvdvlinux-coder/font-preview-app)**: A clean, modular web application for testing and previewing TrueType fonts (`.ttf`) in real-time with zero dependencies, typography controls, and client-side `FontFace` rendering.
+
+---
 ---
 
 # Documentación en Castellano
@@ -407,3 +415,12 @@ En tu `index.html`:
 </body>
 </html>
 ```
+
+---
+
+## 6. Proyectos Reales y Ecosistema (Showcase)
+
+Explora aplicaciones reales de código abierto desarrolladas 100% en Oriented-Direct:
+
+- **[TTF Font Live Previewer](https://github.com/xvdvlinux-coder/font-preview-app)**: Aplicación web modular y minimalista para cargar y previsualizar tipografías TrueType (`.ttf`) en tiempo real, con controles tipográficos interactivos y renderizado en cliente con la API nativa `FontFace`.
+
