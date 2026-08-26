@@ -1,5 +1,5 @@
 /**
- * Oriented-Direct Compiler, Bundler & DevServer Unit Tests
+ * Oriented-Direct Compiler, Bundler, SourceMap & DevServer Unit Tests
  */
 
 import assert from 'node:assert';
@@ -8,7 +8,9 @@ import path from 'node:path';
 import http from 'node:http';
 import {
   transpile,
+  transpileWithMap,
   bundle,
+  bundleWithMap,
   parse,
   tokenize,
   DiagnosticReporter,
@@ -17,7 +19,11 @@ import {
   AssetPipeline,
   loadProjectConfig,
   DevServer,
-  getLocalNetworkIp
+  getLocalNetworkIp,
+  SourceMapGenerator,
+  encodeVlq,
+  decodeVlq,
+  decodeMappings
 } from '../src/index.js';
 
 console.log('--- Running Oriented-Direct (.osp) Tests ---\n');
@@ -321,6 +327,97 @@ await test('Discovers local network IPv4 address or handles offline mode', () =>
   } else {
     assert.strictEqual(ip, null);
   }
+});
+
+// 17. Base64-VLQ Codec Mathematical Precision
+await test('Encodes and decodes Base64-VLQ with 100% roundtrip accuracy', () => {
+  const testNumbers = [0, 1, -1, 2, -2, 15, -15, 16, -16, 31, -31, 32, -32, 100, -100, 256, -256, 1024, -1024, 65536, -65536];
+  for (const n of testNumbers) {
+    const enc = encodeVlq(n);
+    assert.ok(typeof enc === 'string' && enc.length > 0);
+    const state = { pos: 0 };
+    const dec = decodeVlq(enc, state);
+    assert.strictEqual(dec, n, `Failed roundtrip for ${n}`);
+    assert.strictEqual(state.pos, enc.length);
+  }
+});
+
+// 18. SourceMapGenerator v3 Compliance
+await test('Generates standard Source Map v3 JSON structure', () => {
+  const sm = new SourceMapGenerator({ file: 'app.js' });
+  sm.setSourceContent('src/app.osp', 'val a = 1;');
+  sm.addMapping({
+    generated: { line: 1, column: 0 },
+    original: { line: 1, column: 0 },
+    source: 'src/app.osp'
+  });
+
+  const json = sm.toJSON();
+  assert.strictEqual(json.version, 3);
+  assert.strictEqual(json.file, 'app.js');
+  assert.deepStrictEqual(json.sources, ['src/app.osp']);
+  assert.deepStrictEqual(json.sourcesContent, ['val a = 1;']);
+  assert.ok(typeof json.mappings === 'string' && json.mappings.length > 0);
+});
+
+// 19. Transpiler Source Map with Exact AST Coordinates
+await test('Transpiles single file with Source Map and accurate AST line coordinates', () => {
+  const source = `val title = "Oriented-Direct";\nmut counter = 0;\n@log(title, counter);`;
+  const result = transpileWithMap(source, {
+    filename: 'src/main.osp',
+    outFile: 'public/app.js'
+  });
+
+  assert.ok(typeof result.code === 'string');
+  assert.ok(result.map !== null);
+
+  const mapJson = result.map.toJSON();
+  const decoded = decodeMappings(mapJson.mappings, mapJson.sources, mapJson.names);
+
+  assert.ok(decoded.length >= 3, 'Must contain statement mappings');
+  assert.strictEqual(decoded[0].source, 'src/main.osp');
+  assert.strictEqual(decoded[0].original.line, 1);
+  assert.strictEqual(decoded[1].original.line, 2);
+  assert.strictEqual(decoded[2].original.line, 3);
+});
+
+// 20. Multi-Module Bundler Source Map Composition
+await test('Bundler composites Source Maps across multi-module dependencies', () => {
+  const testDir = path.join(process.cwd(), 'test', '.tmp_sourcemap_test');
+  if (!fs.existsSync(testDir)) fs.mkdirSync(testDir, { recursive: true });
+
+  const helperOsp = path.join(testDir, 'helper.osp');
+  const mainOsp = path.join(testDir, 'main.osp');
+
+  fs.writeFileSync(helperOsp, `export fn double(n) {\n  return n * 2;\n}`, 'utf-8');
+  fs.writeFileSync(mainOsp, `import { double } from "./helper.osp";\nval x = double(10);\n@log(x);`, 'utf-8');
+
+  try {
+    const result = bundleWithMap(mainOsp, { cwd: testDir, outFile: 'app.js' });
+    assert.ok(result.code.includes('function double(n)'));
+    assert.ok(result.map !== null);
+
+    const mapJson = result.map.toJSON();
+    assert.ok(mapJson.sources.some(s => s.endsWith('helper.osp')));
+    assert.ok(mapJson.sources.some(s => s.endsWith('main.osp')));
+
+    const decoded = decodeMappings(mapJson.mappings, mapJson.sources, mapJson.names);
+    assert.ok(decoded.some(d => d.source.endsWith('helper.osp')));
+    assert.ok(decoded.some(d => d.source.endsWith('main.osp')));
+  } finally {
+    fs.rmSync(testDir, { recursive: true, force: true });
+  }
+});
+
+// 21. Inline Source Map Data URI Generation
+await test('Generates inline Source Map data URI comment when requested', () => {
+  const source = `val x = 10;`;
+  const code = transpile(source, {
+    filename: 'test.osp',
+    sourceMap: 'inline'
+  });
+
+  assert.ok(code.includes('//# sourceMappingURL=data:application/json;charset=utf-8;base64,'));
 });
 
 console.log(`\nTests finished: ${passed} passed, ${failed} failed.`);

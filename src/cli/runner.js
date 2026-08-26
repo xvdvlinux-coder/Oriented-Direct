@@ -1,5 +1,5 @@
 /**
- * Oriented-Direct (.osp) CLI Runner v1.3.0
+ * Oriented-Direct (.osp) CLI Runner v1.4.0-nightly
  */
 
 import fs from 'node:fs';
@@ -7,7 +7,9 @@ import path from 'node:path';
 import { pathToFileURL } from 'node:url';
 import {
   transpile,
+  transpileWithMap,
   bundle,
+  bundleWithMap,
   VERSION,
   DiagnosticReporter,
   loadProjectConfig,
@@ -38,6 +40,8 @@ COMMANDS:
 OPTIONS:
   --dev, --serve          Run the local development HTTP server after building
   -p, --port <number>     Port number for development server (default: 3000)
+  --host [ip]             Host address to bind dev server (default: 0.0.0.0)
+  -s, --sourcemap [mode]  Generate Source Map v3 (default: external; modes: inline | external)
   -o, --output <path>     Specify output JavaScript file path
   --public [dir]          Target public/dist folder, bundle code and copy HTML/CSS/assets
   --bundle, -b            Bundle entry file and all imported .osp modules into a single .js
@@ -55,15 +59,15 @@ PROJECT CONFIGURATION (package.json):
       "outDir": "public",
       "outFile": "app.js",
       "bundle": true,
+      "sourcemap": true,
       "port": 3000
     }
   }
 
 EXAMPLES:
-  ospc dev                           # Builds and starts dev server on http://localhost:3000
-  ospc dev 8080                      # Starts dev server on port 8080
-  ospc build --public                # Builds to public/ with HTML & CSS copied
-  ospc build --bundle -o public/app.js
+  ospc dev                           # Builds with sourcemaps & starts dev server
+  ospc build --public --sourcemap    # Builds to public/ with Source Maps
+  ospc build --bundle -s inline -o public/app.js
   ospc watch --public
 `);
 }
@@ -85,7 +89,6 @@ export async function runCli(argv) {
     return;
   }
 
-  // Check for dev server flags: ospc dev, ospc serve, ospc --dev, ospc --run --dev
   if (
     args[0] === 'dev' ||
     args[0] === 'serve' ||
@@ -143,6 +146,7 @@ function parseCliOptions(args, cwd = process.cwd()) {
     target: projectConfig.target || 'browser',
     port: projectConfig.port || 3000,
     host: projectConfig.host || '0.0.0.0',
+    sourcemap: projectConfig.sourcemap ?? false,
     includeRuntime: projectConfig.includeRuntime ?? true,
     assets: projectConfig.assets,
     stdout: false
@@ -160,6 +164,12 @@ function parseCliOptions(args, cwd = process.cwd()) {
         options.host = args[++i];
       } else {
         options.host = '0.0.0.0';
+      }
+    } else if (arg === '-s' || arg === '--sourcemap') {
+      if (args[i + 1] && (args[i + 1] === 'inline' || args[i + 1] === 'external')) {
+        options.sourcemap = args[++i];
+      } else {
+        options.sourcemap = true;
       }
     } else if (arg === '--public') {
       options.publicMode = true;
@@ -198,6 +208,9 @@ function parseCliOptions(args, cwd = process.cwd()) {
 
 export async function handleDev(args) {
   const options = parseCliOptions(args);
+  if (options.sourcemap === false) {
+    options.sourcemap = 'inline';
+  }
   await startDevServer(options);
 }
 
@@ -217,20 +230,60 @@ export async function handleBuild(args, passedOptions = null) {
 
   try {
     let jsCode;
+    let sourceMap = null;
+
+    const bundleName = options.outputFile ? path.basename(options.outputFile) : options.outFile;
+
     if (options.bundle) {
-      jsCode = bundle(inputPath, {
-        format: options.format,
-        minify: options.minify,
-        includeRuntime: options.includeRuntime,
-        cwd: process.cwd()
-      });
+      if (options.sourcemap) {
+        const result = bundleWithMap(inputPath, {
+          format: options.format,
+          minify: options.minify,
+          includeRuntime: options.includeRuntime,
+          cwd: process.cwd(),
+          sourceMap: options.sourcemap,
+          outFile: bundleName
+        });
+        jsCode = result.code;
+        sourceMap = result.map;
+        if (options.sourcemap === 'inline' && sourceMap) {
+          jsCode += `\n\n${sourceMap.toDataUrl()}`;
+        } else if ((options.sourcemap === 'external' || options.sourcemap === true) && sourceMap) {
+          jsCode += `\n\n//# sourceMappingURL=${bundleName}.map`;
+        }
+      } else {
+        jsCode = bundle(inputPath, {
+          format: options.format,
+          minify: options.minify,
+          includeRuntime: options.includeRuntime,
+          cwd: process.cwd()
+        });
+      }
     } else {
       const source = fs.readFileSync(inputPath, 'utf-8');
-      jsCode = transpile(source, {
-        filename: path.basename(inputPath),
-        target: options.target,
-        includeRuntime: options.includeRuntime
-      });
+      if (options.sourcemap) {
+        const result = transpileWithMap(source, {
+          filename: path.basename(inputPath),
+          target: options.target,
+          includeRuntime: options.includeRuntime,
+          sourceMap: options.sourcemap,
+          outFile: options.outputFile ? path.basename(options.outputFile) : path.basename(inputPath).replace(/\.osp$/, '.js')
+        });
+        jsCode = result.code;
+        sourceMap = result.map;
+        const outFileName = options.outputFile ? path.basename(options.outputFile) : path.basename(inputPath).replace(/\.osp$/, '.js');
+        if (options.sourcemap === 'inline' && sourceMap) {
+          jsCode += `\n\n${sourceMap.toDataUrl()}`;
+        } else if ((options.sourcemap === 'external' || options.sourcemap === true) && sourceMap) {
+          jsCode += `\n\n//# sourceMappingURL=${outFileName}.map`;
+        }
+      } else {
+        jsCode = transpile(source, {
+          filename: path.basename(inputPath),
+          target: options.target,
+          includeRuntime: options.includeRuntime
+        });
+      }
     }
 
     if (options.stdout) {
@@ -245,16 +298,22 @@ export async function handleBuild(args, passedOptions = null) {
         fs.mkdirSync(targetDir, { recursive: true });
       }
 
-      const bundleName = options.outputFile ? path.basename(options.outputFile) : options.outFile;
       outputPath = path.join(targetDir, bundleName);
       fs.writeFileSync(outputPath, jsCode, 'utf-8');
 
-      // Run asset pipeline
+      if (sourceMap && options.sourcemap !== 'inline') {
+        const mapPath = `${outputPath}.map`;
+        fs.writeFileSync(mapPath, sourceMap.toString(), 'utf-8');
+      }
+
       const pipeline = new AssetPipeline({ cwd: process.cwd(), outDir: targetDir, assets: options.assets });
       const copied = pipeline.copyAssets(bundleName);
 
       console.log(`\x1b[1;32m[Oriented-Direct Build]\x1b[0m Successfully built to '\x1b[1m${options.outDir}/\x1b[0m':`);
       console.log(`  ✓ Bundle: ${path.relative(process.cwd(), outputPath)} (${(Buffer.byteLength(jsCode, 'utf8') / 1024).toFixed(2)} KB)`);
+      if (sourceMap && options.sourcemap !== 'inline') {
+        console.log(`  ✓ Source Map: ${path.relative(process.cwd(), outputPath + '.map')}`);
+      }
       if (copied.length > 0) {
         console.log(`  ✓ Assets copied: ${copied.join(', ')}`);
       }
@@ -271,6 +330,10 @@ export async function handleBuild(args, passedOptions = null) {
       }
 
       fs.writeFileSync(outputPath, jsCode, 'utf-8');
+      if (sourceMap && options.sourcemap !== 'inline') {
+        const mapPath = `${outputPath}.map`;
+        fs.writeFileSync(mapPath, sourceMap.toString(), 'utf-8');
+      }
       console.log(`\x1b[1;32m[Oriented-Direct Build]\x1b[0m '${options.inputFile}' -> '${path.relative(process.cwd(), outputPath)}'`);
     }
   } catch (err) {

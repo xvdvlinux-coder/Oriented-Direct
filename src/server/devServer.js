@@ -16,6 +16,7 @@ const MIME_TYPES = {
   '.mjs': 'application/javascript; charset=utf-8',
   '.css': 'text/css; charset=utf-8',
   '.json': 'application/json; charset=utf-8',
+  '.map': 'application/json; charset=utf-8',
   '.png': 'image/png',
   '.jpg': 'image/jpeg',
   '.jpeg': 'image/jpeg',
@@ -163,6 +164,9 @@ export async function startDevServer(options = {}) {
   const cwd = options.cwd || process.cwd();
   options.publicMode = true;
   options.bundle = true;
+  if (!options.sourcemap) {
+    options.sourcemap = 'inline';
+  }
 
   console.log('\x1b[1;36m[Oriented-Direct Dev]\x1b[0m Initializing development environment...');
 
