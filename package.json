@@ -1,19 +1,28 @@
 {
   "name": "@xvdxlinux/oriented-direct",
   "version": "1.4.0",
-  "description": "Oriented-Direct (.osp) - An unambiguous, ultra-direct programming language transpiling to JavaScript",
+  "description": "Oriented-Direct (.osp) - An unambiguous, ultra-direct programming language that transpiles to JavaScript with built-in bundler, dev server, and source maps",
   "type": "module",
   "main": "src/index.js",
   "bin": {
     "ospc": "bin/ospc.js",
     "oriented-direct": "bin/ospc.js"
   },
+  "homepage": "https://github.com/xvdvlinux-coder/Oriented-Direct",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xvdvlinux-coder/Oriented-Direct.git"
+  },
+  "bugs": {
+    "url": "https://github.com/xvdvlinux-coder/Oriented-Direct/issues"
+  },
   "files": [
     "bin",
     "src",
     "assets",
     "README.md",
-    "LICENSE"
+    "LICENSE",
+    "CHANGELOG.md"
   ],
   "scripts": {
     "test": "node test/compiler.test.js",
@@ -29,7 +38,17 @@
     "javascript",
     "clean-code",
     "direct-dom",
-    "no-boilerplate"
+    "no-boilerplate",
+    "programming-language",
+    "source-maps",
+    "hot-reload",
+    "zero-dependency",
+    "build-tool",
+    "web-development",
+    "frontend",
+    "nodejs",
+    "developer-tools",
+    "vscode-extension"
   ],
   "author": "Oriented-Direct Team",
   "license": "MIT",

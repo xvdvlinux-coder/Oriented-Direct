@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Oriented-Direct Documentation & Wiki
+    url: https://github.com/xvdvlinux-coder/Oriented-Direct/wiki
+    about: Please check the Wiki and official documentation before opening an issue.
+  - name: GitHub Discussions
+    url: https://github.com/xvdvlinux-coder/Oriented-Direct/discussions
+    about: Ask questions, share ideas, and connect with the community.

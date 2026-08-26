@@ -1,0 +1,41 @@
+name: Feature Request
+description: Suggest an idea or feature for Oriented-Direct
+title: "[Feature]: "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for suggesting a new feature or enhancement for Oriented-Direct.
+  - type: textarea
+    id: feature-description
+    attributes:
+      label: Feature Description
+      description: A clear and concise description of what feature or enhancement you are proposing.
+      placeholder: Describe the feature you would like to see...
+    validations:
+      required: true
+  - type: textarea
+    id: motivation
+    attributes:
+      label: Use Case / Motivation
+      description: Why is this feature needed? What problem does it solve?
+      placeholder: Explain the use case and why this is valuable to developers...
+    validations:
+      required: true
+  - type: textarea
+    id: proposed-solution
+    attributes:
+      label: Proposed Solution
+      description: A clear and concise description of how you envision this being implemented or functioning in .osp / ospc.
+      placeholder: Describe your proposed solution or syntax design...
+    validations:
+      required: false
+  - type: textarea
+    id: alternatives-considered
+    attributes:
+      label: Alternatives Considered
+      description: Any alternative solutions or workarounds you have considered.
+      placeholder: Describe any alternative approaches or existing workarounds...
+    validations:
+      required: false
