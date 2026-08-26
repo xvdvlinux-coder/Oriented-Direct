@@ -1,9 +1,12 @@
 /**
  * Oriented-Direct (.osp) Code Generator / JavaScript Transpiler
+ * With High-Precision Source Map v3 Coordinate Tracking
  */
 
+import path from 'node:path';
 import { ASTNodeType } from '../parser/ast.js';
 import { RUNTIME_HELPERS_CODE } from './runtime.js';
+import { SourceMapGenerator } from '../sourcemap/sourceMapGenerator.js';
 
 export class CodeGenerator {
   constructor(ast, options = {}) {
@@ -13,24 +16,116 @@ export class CodeGenerator {
       target: options.target || 'browser', // 'browser' | 'node'
       moduleType: options.moduleType || 'esm', // 'esm' | 'cjs'
       indentSize: options.indentSize || 2,
+      sourceMap: options.sourceMap ?? false, // false | true | 'inline' | 'external'
+      filename: options.filename || 'input.osp',
+      sourceContent: options.sourceContent || options.source || null,
+      outFile: options.outFile || 'output.js',
+      lineOffset: options.lineOffset || 0, // for bundler module shifting
       ...options
     };
     this.indentation = 0;
     this.usedDirectives = new Set();
+    this.map = null;
+    this.currentGenLine = 1;
+    this.currentGenCol = 0;
+
+    if (this.options.sourceMap) {
+      this.map = new SourceMapGenerator({
+        file: this.options.outFile ? path.basename(this.options.outFile) : path.basename(this.options.filename).replace(/\.osp$/, '.js')
+      });
+      if (this.options.sourceContent) {
+        this.map.setSourceContent(this.options.filename, this.options.sourceContent);
+      }
+    }
   }
 
   indent() {
     return ' '.repeat(this.indentation * this.options.indentSize);
   }
 
-  generate() {
-    const codeBody = this.generateNode(this.ast);
+  markMapping(node, colOffset = 0) {
+    if (this.map && node && node.line) {
+      this.map.addMapping({
+        generated: {
+          line: this.currentGenLine,
+          column: this.currentGenCol + colOffset
+        },
+        original: {
+          line: node.line,
+          column: Math.max(0, (node.column || 1) - 1)
+        },
+        source: this.options.filename
+      });
+    }
+  }
 
-    if (this.options.includeRuntime && this.usedDirectives.size > 0) {
-      return `${RUNTIME_HELPERS_CODE}\n\n${codeBody}`;
+  generate() {
+    const result = this.generateWithMap();
+    let code = result.code;
+
+    if (this.options.sourceMap === 'inline' && result.map) {
+      code += `\n\n${result.map.toDataUrl()}`;
+    } else if ((this.options.sourceMap === 'external' || this.options.sourceMap === true) && result.map) {
+      const mapName = path.basename(this.options.outFile ? `${this.options.outFile}.map` : `${this.options.filename.replace(/\.osp$/, '.js')}.map`);
+      code += `\n\n//# sourceMappingURL=${mapName}`;
     }
 
-    return codeBody;
+    return code;
+  }
+
+  generateWithMap() {
+    this.scanDirectives(this.ast);
+
+    let runtimePrefix = '';
+    this.currentGenLine = 1 + (this.options.lineOffset || 0);
+    this.currentGenCol = 0;
+
+    if (this.options.includeRuntime && this.usedDirectives.size > 0) {
+      runtimePrefix = `${RUNTIME_HELPERS_CODE}\n\n`;
+      const runtimeLines = RUNTIME_HELPERS_CODE.split('\n').length + 2;
+      this.currentGenLine += runtimeLines;
+    }
+
+    const codeBody = this.generateProgram(this.ast);
+    const finalCode = runtimePrefix ? `${runtimePrefix}${codeBody}` : codeBody;
+
+    return {
+      code: finalCode,
+      map: this.map
+    };
+  }
+
+  scanDirectives(node) {
+    if (!node) return;
+    if (node.type === ASTNodeType.DIRECTIVE_CALL) {
+      this.usedDirectives.add(node.directive);
+    }
+    for (const key of Object.keys(node)) {
+      const val = node[key];
+      if (Array.isArray(val)) {
+        for (const item of val) {
+          if (item && typeof item === 'object' && item.type) {
+            this.scanDirectives(item);
+          }
+        }
+      } else if (val && typeof val === 'object' && val.type) {
+        this.scanDirectives(val);
+      }
+    }
+  }
+
+  generateProgram(node) {
+    const lines = [];
+    for (let i = 0; i < node.body.length; i++) {
+      const stmt = node.body[i];
+      this.currentGenCol = this.indentation * this.options.indentSize;
+      this.markMapping(stmt);
+      const stmtCode = this.generateNode(stmt);
+      lines.push(stmtCode);
+      const stmtLineCount = stmtCode.split('\n').length;
+      this.currentGenLine += stmtLineCount;
+    }
+    return lines.join('\n');
   }
 
   generateNode(node) {
@@ -169,10 +264,6 @@ export class CodeGenerator {
       default:
         throw new Error(`[Oriented-Direct Codegen] Unknown AST node type: ${node.type}`);
     }
-  }
-
-  generateProgram(node) {
-    return node.body.map(stmt => this.generateNode(stmt)).join('\n');
   }
 
   generateVariableDeclaration(node) {

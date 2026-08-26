@@ -4,8 +4,15 @@
 
 import fs from 'node:fs';
 import path from 'node:path';
-import { parse } from '../index.js';
+import { Lexer } from '../lexer/lexer.js';
+import { Parser } from '../parser/parser.js';
 import { ASTNodeType } from '../parser/ast.js';
+
+function parse(source, filename = '<anonymous>') {
+  const lexer = new Lexer(source, filename);
+  const parser = new Parser(lexer.tokenize(), filename);
+  return parser.parse();
+}
 
 export class ModuleNode {
   constructor(filePath, source, ast) {

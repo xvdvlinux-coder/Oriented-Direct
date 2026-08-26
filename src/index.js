@@ -1,5 +1,5 @@
 /**
- * Oriented-Direct (.osp) Compiler, Bundler & Dev Server API
+ * Oriented-Direct (.osp) Compiler, Bundler, SourceMap & Dev Server API
  */
 
 import { Lexer } from './lexer/lexer.js';
@@ -11,8 +11,10 @@ import { DependencyResolver } from './bundler/resolver.js';
 import { AssetPipeline } from './bundler/assetPipeline.js';
 import { loadProjectConfig, detectDefaultEntry } from './config/configReader.js';
 import { DevServer, startDevServer, getLocalNetworkIp } from './server/devServer.js';
+import { SourceMapGenerator, decodeMappings } from './sourcemap/sourceMapGenerator.js';
+import { encodeVlq, decodeVlq } from './sourcemap/vlq.js';
 
-export const VERSION = '1.3.0';
+export const VERSION = '1.4.0-nightly';
 
 /**
  * Tokenize Oriented-Direct source code
@@ -61,7 +63,7 @@ export function transpile(source, options = {}) {
   const filename = options.filename || '<anonymous>';
   try {
     const ast = parse(source, filename);
-    const codegen = new CodeGenerator(ast, options);
+    const codegen = new CodeGenerator(ast, { ...options, sourceContent: source });
     return codegen.generate();
   } catch (err) {
     if (!err.formattedMessage && (err.rawMessage || err.line)) {
@@ -71,7 +73,28 @@ export function transpile(source, options = {}) {
   }
 }
 
+/**
+ * Transpile Oriented-Direct source and return both code and SourceMapGenerator
+ * @param {string} source - .osp source code
+ * @param {object} options - Transpilation options
+ * @returns {{ code: string, map: SourceMapGenerator|null }}
+ */
+export function transpileWithMap(source, options = {}) {
+  const filename = options.filename || '<anonymous>';
+  try {
+    const ast = parse(source, filename);
+    const codegen = new CodeGenerator(ast, { ...options, sourceMap: true, sourceContent: source });
+    return codegen.generateWithMap();
+  } catch (err) {
+    if (!err.formattedMessage && (err.rawMessage || err.line)) {
+      err.formattedMessage = DiagnosticReporter.formatError(err, source, filename);
+    }
+    throw err;
+  }
+}
+
 export const compile = transpile;
+export const compileWithMap = transpileWithMap;
 
 /**
  * Bundle a multi-module .osp project starting from the entry file
@@ -84,6 +107,17 @@ export function bundle(entryPath, options = {}) {
   return bundler.bundle(entryPath);
 }
 
+/**
+ * Bundle a multi-module project and return both code and SourceMapGenerator
+ * @param {string} entryPath - Path to entry .osp file
+ * @param {object} options - Bundling options
+ * @returns {{ code: string, map: SourceMapGenerator|null }}
+ */
+export function bundleWithMap(entryPath, options = {}) {
+  const bundler = new Bundler({ ...options, sourceMap: true });
+  return bundler.bundleWithMap(entryPath);
+}
+
 export {
   DiagnosticReporter,
   Bundler,
@@ -93,7 +127,11 @@ export {
   detectDefaultEntry,
   DevServer,
   startDevServer,
-  getLocalNetworkIp
+  getLocalNetworkIp,
+  SourceMapGenerator,
+  decodeMappings,
+  encodeVlq,
+  decodeVlq
 };
 
 export default {
@@ -101,8 +139,11 @@ export default {
   tokenize,
   parse,
   transpile,
+  transpileWithMap,
   compile,
+  compileWithMap,
   bundle,
+  bundleWithMap,
   DiagnosticReporter,
   Bundler,
   DependencyResolver,
@@ -111,5 +152,9 @@ export default {
   detectDefaultEntry,
   DevServer,
   startDevServer,
-  getLocalNetworkIp
+  getLocalNetworkIp,
+  SourceMapGenerator,
+  decodeMappings,
+  encodeVlq,
+  decodeVlq
 };

@@ -51,5 +51,7 @@ export class Node {
   constructor(type, loc = {}) {
     this.type = type;
     this.loc = loc;
+    this.line = loc.line;
+    this.column = loc.column ?? loc.col;
   }
 }
