@@ -1,6 +1,6 @@
 {
   "name": "@xvdxlinux/oriented-direct",
-  "version": "1.4.0-nightly",
+  "version": "1.4.0",
   "description": "Oriented-Direct (.osp) - An unambiguous, ultra-direct programming language transpiling to JavaScript",
   "type": "module",
   "main": "src/index.js",

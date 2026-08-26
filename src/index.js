@@ -14,7 +14,7 @@ import { DevServer, startDevServer, getLocalNetworkIp } from './server/devServer
 import { SourceMapGenerator, decodeMappings } from './sourcemap/sourceMapGenerator.js';
 import { encodeVlq, decodeVlq } from './sourcemap/vlq.js';
 
-export const VERSION = '1.4.0-nightly';
+export const VERSION = '1.4.0';
 
 /**
  * Tokenize Oriented-Direct source code

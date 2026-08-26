@@ -1,5 +1,5 @@
 /**
- * Oriented-Direct (.osp) CLI Runner v1.4.0-nightly
+ * Oriented-Direct (.osp) CLI Runner v1.4.0
  */
 
 import fs from 'node:fs';
