@@ -305,7 +305,7 @@ await test('DevServer starts, serves static index.html and stops', async () => {
 
   try {
     const resText = await new Promise((resolve, reject) => {
-      http.get(`http://localhost:${port}/`, (res) => {
+      http.get(`http://127.0.0.1:${port}/`, (res) => {
         let data = '';
         res.on('data', chunk => data += chunk);
         res.on('end', () => resolve(data));
