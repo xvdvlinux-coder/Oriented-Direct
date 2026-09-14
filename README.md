@@ -13,7 +13,7 @@
   <a href="https://github.com/xvdvlinux-coder/Oriented-Direct/actions/workflows/ci.yml"><img src="https://github.com/xvdvlinux-coder/Oriented-Direct/actions/workflows/ci.yml/badge.svg" alt="CI" /></a>
   <a href="https://github.com/xvdvlinux-coder/Oriented-Direct/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square" alt="License: MIT" /></a>
   <a href="https://nodejs.org"><img src="https://img.shields.io/badge/node-%3E%3D18.0.0-brightgreen.svg?style=flat-square" alt="Node.js: >=18" /></a>
-  <img src="https://img.shields.io/badge/tests-21%20passing-success.svg?style=flat-square" alt="Tests: 21 Passing" />
+  <img src="https://img.shields.io/badge/tests-passing-success.svg?style=flat-square" alt="Tests: Passing" />
 </p>
 
 ---
@@ -42,29 +42,34 @@ npx @xvdxlinux/oriented-direct dev
 
 ---
 
-## 1. Introduction & Highlights
+## 1. Introduction & Highlights (v2.0.0 - ClandleLoop)
 **Oriented-Direct** (`.osp`) is a modern programming language engineered to eliminate ambiguities, verbosity, and historical baggage from JavaScript and TypeScript.
 
 ### Key Highlights:
-1. **Built-in Local Development Server (`ospc dev`)**:
+1. **Compile-Time Gated Safety (ClandleLoop)**:
+   - Zero-runtime-cost static safety verification engine based on abstract interpretation and lattice theory.
+   - Formally enforces 30 mathematical safety invariants (null-dereference protection, struct seal protection, prototype pollution defense, function arity validation, and loop fixpoint verification).
+   - Rust/Clang-style terminal diagnostics with source-code spans (`^^^^`), line/column gutters, notes, and hints.
+   - Gated safety is enabled by default and configurable via `--no-safety` and `--strict-nulls`.
+2. **Built-in Local Development Server (`ospc dev`)**:
    - Run `ospc dev` (or `ospc --dev` / `ospc serve`) to build, bundle, copy static assets, and start a zero-dependency local HTTP server at `http://localhost:3000` with automatic re-compilation on file changes.
-2. **Multi-Module Development & Built-in Bundler**:
+3. **Multi-Module Development & Built-in Bundler**:
    - Write modular code across multiple `.osp` files (`import { Button } from "./components/Button.osp"`).
    - Bundle an entire multi-file project into a single, monolithic `.js` file with zero external bundlers required.
-3. **Project Configuration via `package.json` / `osp.json`**:
+4. **Project Configuration via `package.json` / `osp.json`**:
    - Configure entry points, output directories, bundling modes, dev server port, and assets directly in your `package.json`. Run `ospc build` or `ospc dev` without memorizing parameters.
-4. **Clean Separation of Concerns (`--public`)**:
+5. **Clean Separation of Concerns (`--public`)**:
    - Automatically compile/bundle source code from `src/` to a dedicated distribution folder (`public/`), copying `index.html`, `.css` stylesheets, and static assets into place.
-5. **Direct Browser & DOM Directives**:
+6. **Direct Browser & DOM Directives**:
    - Direct DOM keywords: `@find`, `@all`, `@id`, `@on`, `@off`, `@emit`, `@create`, `@html`, `@text`, `@css`, `@attr`, `@val`, `@log`, `@info`, `@warn`, `@error`.
-6. **Elimination of Ambiguity & Free Identifiers**:
+7. **Elimination of Ambiguity & Free Identifiers**:
    - Variables are strictly **`val`** (immutable) or **`mut`** (mutable).
    - Common words like `info`, `log`, `warn`, `error`, `data` are free to use as variables (`val info = @attr(...)`).
    - Universal strict equality: `==` and `!=` transpile to `===` and `!==`.
-7. **Flexible Loops & Sealed Structs**:
+8. **Flexible Loops & Sealed Structs**:
    - 3-part C-style loops (`for (mut x = 0; x < width; x += 40)`), numeric ranges (`for (val i in 0..100 step 10)`), iterables (`for (val item in list)`).
    - `struct` generates constructors and runtime property protection via `Object.seal`.
-8. **High-Precision Source Maps (`.map`)**:
+9. **High-Precision Source Maps (`.map`)**:
    - Native Base64-VLQ coordinate tracking with running differential deltas and `sourcesContent` embedding.
    - Maps DevTools breakpoints, stack traces, and console messages directly to `.osp` source lines in real-time.
    - Enabled by default in `ospc dev` mode and configurable via `-s, --sourcemap [inline|external]`.
@@ -175,6 +180,12 @@ ospc build src/main.osp --bundle -s inline -o public/app.bundle.js
 
 # 7. Execute directly in Node.js
 ospc run src/server.osp
+
+# 8. Compile with strict null checking
+ospc build --strict-nulls
+
+# 9. Disable compile-time gated safety
+ospc build --no-safety
 ```
 
 ---
@@ -244,29 +255,34 @@ npx @xvdxlinux/oriented-direct dev
 
 ---
 
-## 1. Introducción y Novedades de la Versión 1.4.0
+## 1. Introducción y Novedades de la Versión 2.0.0 (ClandleLoop)
 **Oriented-Direct** (`.osp`) es un lenguaje de programación moderno diseñado para resolver las ambigüedades, la verbosidad y las inconsistencias históricas de JavaScript y TypeScript.
 
 ### Características Principales:
-1. **Servidor de Desarrollo Local Integrado (`ospc dev`)**:
+1. **Seguridad Cerrada en Tiempo de Compilación (ClandleLoop)**:
+   - Motor de análisis estático con coste cero en tiempo de ejecución basado en interpretación abstracta y teoría de retículos.
+   - Garantiza 30 invariantes formales de seguridad matemática (protección contra desreferenciación nula, protección de structs sellados, defensa contra contaminación de prototipos, validación de aridad de funciones y verificación de puntos fijos en bucles).
+   - Diagnósticos de terminal estilo Rust/Clang con marcadores exactos de código fuente (`^^^^`), número de línea/columna, notas y sugerencias.
+   - Seguridad estática activa por defecto y configurable mediante `--no-safety` y `--strict-nulls`.
+2. **Servidor de Desarrollo Local Integrado (`ospc dev`)**:
    - Ejecuta `ospc dev` (o `ospc serve` / `ospc --dev`) para compilar, empaquetar, copiar assets y levantar un servidor HTTP local en `http://localhost:3000` con recompilación en tiempo real sin dependencias externas ni necesidad de herramientas adicionales.
-2. **Desarrollo Modular y Empaquetador Integrado**:
+3. **Desarrollo Modular y Empaquetador Integrado**:
    - Organiza tu código en múltiples módulos `.osp` (`import { Componente } from "./components/Componente.osp"`).
    - Genera un bundle `.js` monolítico, autocontenido y optimizado con `ospc build --bundle`.
-3. **Configuración de Proyecto en `package.json` / `osp.json`**:
+4. **Configuración de Proyecto en `package.json` / `osp.json`**:
    - Declara el archivo de entrada, carpeta de salida, puerto del dev server y assets en `package.json`.
-4. **Separación de Responsabilidades (`--public`)**:
+5. **Separación de Responsabilidades (`--public`)**:
    - Mantén el código fuente en `src/` y genera la carpeta de distribución (`public/`) con `index.html`, hojas `.css` y el bundle `.js`.
-5. **Directivas Directas de DOM y Navegador**:
+6. **Directivas Directas de DOM y Navegador**:
    - Directivas ultra concisas: `@find`, `@all`, `@id`, `@on`, `@off`, `@emit`, `@create`, `@html`, `@text`, `@css`, `@attr`, `@val`, `@log`, `@info`, `@warn`, `@error`.
-6. **Identificadores Libres y Sin Ambigüedades**:
+7. **Identificadores Libres y Sin Ambigüedades**:
    - Variables estrictamente inmutables con **`val`** o mutables con **`mut`**.
    - Palabras como `info`, `log`, `warn`, `error` o `data` quedan disponibles para nombrar variables (`val info = @attr(...)`).
    - Comparación estricta universal: `==` y `!=` transpilan a `===` y `!==`.
-7. **Bucles Flexibles y Estructuras Selladas**:
+8. **Bucles Flexibles y Estructuras Selladas**:
    - Bucles C-Style (`for (mut x = 0; x < width; x += 40)`), rangos numéricos (`for (val i in 0..100 step 10)`) e iterables.
    - `struct` con constructor automático y protección contra propiedades no definidas (`Object.seal`).
-8. **Source Maps de Alta Precisión (`.map`)**:
+9. **Source Maps de Alta Precisión (`.map`)**:
    - Motor nativo Base64-VLQ con deltas diferenciales y embebido de `sourcesContent`.
    - Mapea las trazas de error, puntos de interrupción y mensajes de consola en DevTools directamente a las líneas de los archivos fuente `.osp`.
    - Activo automáticamente en modo `ospc dev` y configurable mediante `-s, --sourcemap [inline|external]`.
@@ -375,6 +391,12 @@ ospc build src/principal.osp --bundle -s inline -o public/app.bundle.js
 
 # 7. Ejecutar directamente con Node.js
 ospc run src/servidor.osp
+
+# 8. Compilar con comprobación estricta de nulos
+ospc build --strict-nulls
+
+# 9. Desactivar comprobaciones de seguridad estática
+ospc build --no-safety
 ```
 
 ---
