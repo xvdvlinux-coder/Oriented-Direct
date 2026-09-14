@@ -366,7 +366,7 @@ export class Lexer {
       }
     }
 
-    if (name in KEYWORDS) {
+    if (Object.hasOwn(KEYWORDS, name)) {
       const type = KEYWORDS[name];
       this.tokens.push(new Token(type, name, startLine, startCol));
     } else {
@@ -383,7 +383,7 @@ export class Lexer {
       directive += this.advance();
     }
 
-    if (directive in DIRECTIVES) {
+    if (Object.hasOwn(DIRECTIVES, directive)) {
       const type = DIRECTIVES[directive];
       this.tokens.push(new Token(type, directive, startLine, startCol));
     } else {

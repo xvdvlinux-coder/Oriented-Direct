@@ -1,0 +1,2515 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "source": "v8/src/common/message-template.h",
+  "totalTemplates": 498,
+  "categories": {
+    "Error": [
+      {
+        "id": "None",
+        "category": "Error",
+        "format": ""
+      },
+      {
+        "id": "ConflictingPrivateName",
+        "category": "Error",
+        "format": "Operation is ambiguous because there are more than one private name '%' on the object"
+      },
+      {
+        "id": "CyclicProto",
+        "category": "Error",
+        "format": "Cyclic __proto__ value"
+      },
+      {
+        "id": "Debugger",
+        "category": "Error",
+        "format": "Debugger: %"
+      },
+      {
+        "id": "DebuggerLoading",
+        "category": "Error",
+        "format": "Error loading debugger"
+      },
+      {
+        "id": "DefaultOptionsMissing",
+        "category": "Error",
+        "format": "Internal % error. Default options are missing."
+      },
+      {
+        "id": "DeletePrivateField",
+        "category": "Error",
+        "format": "Private fields can not be deleted"
+      },
+      {
+        "id": "PlaceholderOnly",
+        "category": "Error",
+        "format": "%"
+      },
+      {
+        "id": "UncaughtException",
+        "category": "Error",
+        "format": "Uncaught %"
+      },
+      {
+        "id": "Unsupported",
+        "category": "Error",
+        "format": "Not supported"
+      },
+      {
+        "id": "WrongServiceType",
+        "category": "Error",
+        "format": "Internal error, wrong service type: %"
+      },
+      {
+        "id": "WrongValueType",
+        "category": "Error",
+        "format": "Internal error. Wrong value type."
+      },
+      {
+        "id": "IcuError",
+        "category": "Error",
+        "format": "Internal error. Icu error."
+      }
+    ],
+    "TypeError": [
+      {
+        "id": "TargetNonFunction",
+        "category": "TypeError",
+        "format": "% was called on %, which is % and not a function"
+      },
+      {
+        "id": "ArgumentsDisallowedInInitializerAndStaticBlock",
+        "category": "TypeError",
+        "format": "'arguments' is not allowed in class field initializer or static initialization block"
+      },
+      {
+        "id": "ArgumentIsNonObject",
+        "category": "TypeError",
+        "format": "% argument must be an object"
+      },
+      {
+        "id": "ArgumentIsNonString",
+        "category": "TypeError",
+        "format": "% argument must be a string"
+      },
+      {
+        "id": "ArrayBufferDetachKeyDoesntMatch",
+        "category": "TypeError",
+        "format": "Provided key doesn't match [[ArrayBufferDetachKey]]"
+      },
+      {
+        "id": "ArrayBufferTooShort",
+        "category": "TypeError",
+        "format": "Derived ArrayBuffer constructor created a buffer which was too small"
+      },
+      {
+        "id": "ArrayBufferSpeciesThis",
+        "category": "TypeError",
+        "format": "ArrayBuffer subclass returned this from species constructor"
+      },
+      {
+        "id": "AwaitNotInAsyncContext",
+        "category": "TypeError",
+        "format": "await is only valid in async functions and the top level bodies of modules"
+      },
+      {
+        "id": "AwaitNotInDebugEvaluate",
+        "category": "TypeError",
+        "format": "await can not be used when evaluating code while paused in the debugger"
+      },
+      {
+        "id": "AtomicsMutexNotOwnedByCurrentThread",
+        "category": "TypeError",
+        "format": "Atomics.Mutex is not owned by the current agent"
+      },
+      {
+        "id": "AtomicsOperationNotAllowed",
+        "category": "TypeError",
+        "format": "% cannot be called in this context"
+      },
+      {
+        "id": "BadRoundingType",
+        "category": "TypeError",
+        "format": "RoundingType is not fractionDigits"
+      },
+      {
+        "id": "BadSortComparisonFunction",
+        "category": "TypeError",
+        "format": "The comparison function must be either a function or undefined: %"
+      },
+      {
+        "id": "BigIntFromNumber",
+        "category": "TypeError",
+        "format": "The number % cannot be converted to a BigInt because it is not an integer"
+      },
+      {
+        "id": "BigIntFromObject",
+        "category": "TypeError",
+        "format": "Cannot convert % to a BigInt"
+      },
+      {
+        "id": "BigIntMixedTypes",
+        "category": "TypeError",
+        "format": "Cannot mix BigInt and other types, use explicit conversions"
+      },
+      {
+        "id": "BigIntSerializeJSON",
+        "category": "TypeError",
+        "format": "Do not know how to serialize a BigInt"
+      },
+      {
+        "id": "BigIntShr",
+        "category": "TypeError",
+        "format": "BigInts have no unsigned right shift, use >> instead"
+      },
+      {
+        "id": "BigIntToNumber",
+        "category": "TypeError",
+        "format": "Cannot convert a BigInt value to a number"
+      },
+      {
+        "id": "CalledNonCallable",
+        "category": "TypeError",
+        "format": "% is not a function"
+      },
+      {
+        "id": "CalledOnNonObject",
+        "category": "TypeError",
+        "format": "% called on non-object"
+      },
+      {
+        "id": "CalledOnNullOrUndefined",
+        "category": "TypeError",
+        "format": "% called on null or undefined"
+      },
+      {
+        "id": "CallShadowRealmEvaluateThrew",
+        "category": "TypeError",
+        "format": "ShadowRealm evaluate threw (%)"
+      },
+      {
+        "id": "CallSiteExpectsFunction",
+        "category": "TypeError",
+        "format": "CallSite expects wasm object as first or function as second argument, got <%, %>"
+      },
+      {
+        "id": "CallSiteMethod",
+        "category": "TypeError",
+        "format": "CallSite method % expects CallSite as receiver"
+      },
+      {
+        "id": "CallSiteMethodCrossedShadowRealmBoundary",
+        "category": "TypeError",
+        "format": "CallSite method % cannot access objects across ShadowRealm boundary"
+      },
+      {
+        "id": "CallWrappedFunctionThrew",
+        "category": "TypeError",
+        "format": "WrappedFunction threw (%)"
+      },
+      {
+        "id": "CannotBeShared",
+        "category": "TypeError",
+        "format": "% cannot be shared"
+      },
+      {
+        "id": "CannotConvertToPrimitive",
+        "category": "TypeError",
+        "format": "Cannot convert object to primitive value"
+      },
+      {
+        "id": "CannotPreventExt",
+        "category": "TypeError",
+        "format": "Cannot prevent extensions"
+      },
+      {
+        "id": "CannotFreeze",
+        "category": "TypeError",
+        "format": "Cannot freeze"
+      },
+      {
+        "id": "CannotFreezeArrayBufferView",
+        "category": "TypeError",
+        "format": "Cannot freeze array buffer views with elements"
+      },
+      {
+        "id": "CannotSeal",
+        "category": "TypeError",
+        "format": "Cannot seal"
+      },
+      {
+        "id": "CannotSealArrayBufferView",
+        "category": "TypeError",
+        "format": "Cannot seal array buffer views with elements"
+      },
+      {
+        "id": "CannotWrap",
+        "category": "TypeError",
+        "format": "Cannot wrap target callable (%)"
+      },
+      {
+        "id": "CircularStructure",
+        "category": "TypeError",
+        "format": "Converting circular structure to JSON%"
+      },
+      {
+        "id": "ConstructAbstractClass",
+        "category": "TypeError",
+        "format": "Abstract class % not directly constructable"
+      },
+      {
+        "id": "ConstAssign",
+        "category": "TypeError",
+        "format": "Assignment to constant variable."
+      },
+      {
+        "id": "ConstructorClassField",
+        "category": "TypeError",
+        "format": "Classes may not have a field named 'constructor'"
+      },
+      {
+        "id": "ConstructorNonCallable",
+        "category": "TypeError",
+        "format": "Class constructor % cannot be invoked without 'new'"
+      },
+      {
+        "id": "AnonymousConstructorNonCallable",
+        "category": "TypeError",
+        "format": "Class constructors cannot be invoked without 'new'"
+      },
+      {
+        "id": "ConstructorNotFunction",
+        "category": "TypeError",
+        "format": "Constructor % requires 'new'"
+      },
+      {
+        "id": "ConstructorNotReceiver",
+        "category": "TypeError",
+        "format": "The .constructor property is not an object"
+      },
+      {
+        "id": "CurrencyCode",
+        "category": "TypeError",
+        "format": "Currency code is required with currency style."
+      },
+      {
+        "id": "CyclicModuleDependency",
+        "category": "TypeError",
+        "format": "Detected cycle while resolving name '%' in '%'"
+      },
+      {
+        "id": "DataViewNotArrayBuffer",
+        "category": "TypeError",
+        "format": "First argument to DataView constructor must be an ArrayBuffer"
+      },
+      {
+        "id": "DateType",
+        "category": "TypeError",
+        "format": "this is not a Date object."
+      },
+      {
+        "id": "DebuggerFrame",
+        "category": "TypeError",
+        "format": "Debugger: Invalid frame index."
+      },
+      {
+        "id": "DebuggerType",
+        "category": "TypeError",
+        "format": "Debugger: Parameters have wrong types."
+      },
+      {
+        "id": "DeclarationMissingInitializer",
+        "category": "TypeError",
+        "format": "Missing initializer in % declaration"
+      },
+      {
+        "id": "DefineDisallowed",
+        "category": "TypeError",
+        "format": "Cannot define property %, object is not extensible"
+      },
+      {
+        "id": "DefineDisallowedFixedLayout",
+        "category": "TypeError",
+        "format": "Cannot define property %, object has fixed layout"
+      },
+      {
+        "id": "TypedArrayDetachedErrorOperation",
+        "category": "TypeError",
+        "format": "Cannot perform % on a detached ArrayBuffer"
+      },
+      {
+        "id": "TypedArrayOOBErrorOperation",
+        "category": "TypeError",
+        "format": "Cannot perform % out-of-bounds of the ArrayBuffer"
+      },
+      {
+        "id": "TypedArrayValidateErrorOperation",
+        "category": "TypeError",
+        "format": "Cannot perform % on a detached or out-of-bounds ArrayBuffer"
+      },
+      {
+        "id": "TypedArrayValidateWriteErrorOperation",
+        "category": "TypeError",
+        "format": "(v8_flags.js_immutable_arraybuffer ? \"Cannot perform % on a detached or out-of-bounds or immutable ArrayBuffer : \"Cannot perform % on a detached or out-of-bounds ArrayBuffer\")"
+      },
+      {
+        "id": "TypedArrayImmutableBufferErrorOperation",
+        "category": "TypeError",
+        "format": "Cannot perform % on an immutable ArrayBuffer"
+      },
+      {
+        "id": "DoNotUse",
+        "category": "TypeError",
+        "format": "Do not use %; %"
+      },
+      {
+        "id": "DuplicateTemplateProperty",
+        "category": "TypeError",
+        "format": "Object template has duplicate property '%'"
+      },
+      {
+        "id": "ExtendsValueNotConstructor",
+        "category": "TypeError",
+        "format": "Class extends value % is not a constructor or null"
+      },
+      {
+        "id": "FirstArgumentNotRegExp",
+        "category": "TypeError",
+        "format": "First argument to % must not be a regular expression"
+      },
+      {
+        "id": "FunctionBind",
+        "category": "TypeError",
+        "format": "Bind must be called on a function"
+      },
+      {
+        "id": "GeneratorRunning",
+        "category": "TypeError",
+        "format": "Generator is already running"
+      },
+      {
+        "id": "IllegalInvocation",
+        "category": "TypeError",
+        "format": "Illegal invocation"
+      },
+      {
+        "id": "ImmutablePrototypeSet",
+        "category": "TypeError",
+        "format": "Immutable prototype object '%' cannot have their prototype set"
+      },
+      {
+        "id": "ImportAttributesDuplicateKey",
+        "category": "TypeError",
+        "format": "Import attribute has duplicate key '%'"
+      },
+      {
+        "id": "ImportCallNotNewExpression",
+        "category": "TypeError",
+        "format": "Cannot use new with import"
+      },
+      {
+        "id": "ImportOutsideModule",
+        "category": "TypeError",
+        "format": "Cannot use import statement outside a module"
+      },
+      {
+        "id": "ImportMetaOutsideModule",
+        "category": "TypeError",
+        "format": "Cannot use 'import.meta' outside a module"
+      },
+      {
+        "id": "ImportMissingSpecifier",
+        "category": "TypeError",
+        "format": "import() requires a specifier"
+      },
+      {
+        "id": "ImportShadowRealmRejected",
+        "category": "TypeError",
+        "format": "Cannot import in ShadowRealm (%)"
+      },
+      {
+        "id": "IncompatibleMethodReceiver",
+        "category": "TypeError",
+        "format": "Method % called on incompatible receiver %"
+      },
+      {
+        "id": "InstanceofNonobjectProto",
+        "category": "TypeError",
+        "format": "Function has non-object prototype '%' in instanceof check"
+      },
+      {
+        "id": "InvalidArgument",
+        "category": "TypeError",
+        "format": "invalid_argument"
+      },
+      {
+        "id": "InvalidArgumentForTemporal",
+        "category": "TypeError",
+        "format": "Invalid argument for Temporal %"
+      },
+      {
+        "id": "InvalidOption",
+        "category": "TypeError",
+        "format": "invalid option %"
+      },
+      {
+        "id": "InvalidInOperatorUse",
+        "category": "TypeError",
+        "format": "Cannot use 'in' operator to search for '%' in %"
+      },
+      {
+        "id": "InvalidRawJsonValue",
+        "category": "TypeError",
+        "format": "Invalid value for JSON.rawJSON"
+      },
+      {
+        "id": "InvalidRegExpExecResult",
+        "category": "TypeError",
+        "format": "RegExp exec method returned something other than an Object or null"
+      },
+      {
+        "id": "InvalidUnit",
+        "category": "TypeError",
+        "format": "Invalid unit argument for %() '%'"
+      },
+      {
+        "id": "IsNotNumber",
+        "category": "TypeError",
+        "format": "Type of '%' must be 'number', found '%'"
+      },
+      {
+        "id": "IterableYieldedNonString",
+        "category": "TypeError",
+        "format": "Iterable yielded % which is not a string"
+      },
+      {
+        "id": "IteratorReduceNoInitial",
+        "category": "TypeError",
+        "format": "Reduce of a done iterator with no initial value"
+      },
+      {
+        "id": "IteratorResultNotAnObject",
+        "category": "TypeError",
+        "format": "Iterator result % is not an object"
+      },
+      {
+        "id": "InvalidIteratorZipMode",
+        "category": "TypeError",
+        "format": "% mode must be 'shortest', 'longest', or 'strict'"
+      },
+      {
+        "id": "IteratorZipStrictMismatch",
+        "category": "TypeError",
+        "format": "Iterators passed to % in 'strict' mode must have the same length"
+      },
+      {
+        "id": "SpreadIteratorSymbolNonCallable",
+        "category": "TypeError",
+        "format": "Spread syntax requires ...iterable[Symbol.iterator] to be a function"
+      },
+      {
+        "id": "FirstArgumentIteratorSymbolNonCallable",
+        "category": "TypeError",
+        "format": "% requires that the property of the first argument, items[Symbol.iterator], when exists, be a function"
+      },
+      {
+        "id": "FirstArgumentAsyncIteratorSymbolNonCallable",
+        "category": "TypeError",
+        "format": "% requires that the property of the first argument, items[Symbol.asyncIterator], when exists, be a function"
+      },
+      {
+        "id": "IteratorValueNotAnObject",
+        "category": "TypeError",
+        "format": "Iterator value % is not an entry object"
+      },
+      {
+        "id": "KeysMethodInvalid",
+        "category": "TypeError",
+        "format": "Result of the keys method is not an object"
+      },
+      {
+        "id": "LanguageID",
+        "category": "TypeError",
+        "format": "Language ID should be string or object."
+      },
+      {
+        "id": "LocaleNotEmpty",
+        "category": "TypeError",
+        "format": "First argument to Intl.Locale constructor can't be empty or missing"
+      },
+      {
+        "id": "LocaleBadParameters",
+        "category": "TypeError",
+        "format": "Incorrect locale information provided"
+      },
+      {
+        "id": "ListFormatBadParameters",
+        "category": "TypeError",
+        "format": "Incorrect ListFormat information provided"
+      },
+      {
+        "id": "MapperFunctionNonCallable",
+        "category": "TypeError",
+        "format": "flatMap mapper function is not callable"
+      },
+      {
+        "id": "MethodInvokedOnWrongType",
+        "category": "TypeError",
+        "format": "Method invoked on an object that is not %."
+      },
+      {
+        "id": "NoAccess",
+        "category": "TypeError",
+        "format": "no access"
+      },
+      {
+        "id": "NonCallableInInstanceOfCheck",
+        "category": "TypeError",
+        "format": "Right-hand side of 'instanceof' is not callable"
+      },
+      {
+        "id": "NonCoercible",
+        "category": "TypeError",
+        "format": "Cannot destructure '%' as it is %."
+      },
+      {
+        "id": "NonCoercibleWithProperty",
+        "category": "TypeError",
+        "format": "Cannot destructure property '%' of '%' as it is %."
+      },
+      {
+        "id": "NonExtensibleProto",
+        "category": "TypeError",
+        "format": "% is not extensible"
+      },
+      {
+        "id": "NonObjectAttributesOption",
+        "category": "TypeError",
+        "format": "The 'with' option must be an object"
+      },
+      {
+        "id": "NonObjectInInstanceOfCheck",
+        "category": "TypeError",
+        "format": "Right-hand side of 'instanceof' is not an object"
+      },
+      {
+        "id": "NonObjectPrivateNameAccess",
+        "category": "TypeError",
+        "format": "Cannot access private name % from %"
+      },
+      {
+        "id": "NonObjectPropertyLoad",
+        "category": "TypeError",
+        "format": "Cannot read properties of %"
+      },
+      {
+        "id": "NonObjectPropertyLoadWithProperty",
+        "category": "TypeError",
+        "format": "Cannot read properties of % (reading '%')"
+      },
+      {
+        "id": "NonObjectPropertyStore",
+        "category": "TypeError",
+        "format": "Cannot set properties of %"
+      },
+      {
+        "id": "NonObjectPropertyStoreWithProperty",
+        "category": "TypeError",
+        "format": "Cannot set properties of % (setting '%')"
+      },
+      {
+        "id": "NonObjectImportArgument",
+        "category": "TypeError",
+        "format": "The second argument to import() must be an object"
+      },
+      {
+        "id": "NonStringImportAttributeValue",
+        "category": "TypeError",
+        "format": "Import attribute value must be a string"
+      },
+      {
+        "id": "NoSetterInCallback",
+        "category": "TypeError",
+        "format": "Cannot set property % of % which has only a getter"
+      },
+      {
+        "id": "NotAnIterator",
+        "category": "TypeError",
+        "format": "% is not an iterator"
+      },
+      {
+        "id": "NotReadyForSyncExec",
+        "category": "TypeError",
+        "format": "Deferred module is not ready for sync execution"
+      },
+      {
+        "id": "PromiseNewTargetUndefined",
+        "category": "TypeError",
+        "format": "Promise constructor cannot be invoked without 'new'"
+      },
+      {
+        "id": "NotConstructor",
+        "category": "TypeError",
+        "format": "% is not a constructor"
+      },
+      {
+        "id": "NotDateObject",
+        "category": "TypeError",
+        "format": "this is not a Date object."
+      },
+      {
+        "id": "NotGeneric",
+        "category": "TypeError",
+        "format": "% requires that 'this' be a %"
+      },
+      {
+        "id": "NotCallable",
+        "category": "TypeError",
+        "format": "% is not a function"
+      },
+      {
+        "id": "NotCallableOrIterable",
+        "category": "TypeError",
+        "format": "% is not a function or its return value is not iterable"
+      },
+      {
+        "id": "NotCallableOrAsyncIterable",
+        "category": "TypeError",
+        "format": "% is not a function or its return value is not async iterable"
+      },
+      {
+        "id": "NotFiniteNumber",
+        "category": "TypeError",
+        "format": "Value need to be finite number for %()"
+      },
+      {
+        "id": "NotIterable",
+        "category": "TypeError",
+        "format": "% is not iterable"
+      },
+      {
+        "id": "NotIterableNoSymbolLoad",
+        "category": "TypeError",
+        "format": "% is not iterable (cannot read property %)"
+      },
+      {
+        "id": "NotAsyncIterable",
+        "category": "TypeError",
+        "format": "% is not async iterable"
+      },
+      {
+        "id": "NotPropertyName",
+        "category": "TypeError",
+        "format": "% is not a valid property name"
+      },
+      {
+        "id": "NotTypedArray",
+        "category": "TypeError",
+        "format": "this is not a typed array."
+      },
+      {
+        "id": "NotSuperConstructor",
+        "category": "TypeError",
+        "format": "Super constructor % of % is not a constructor"
+      },
+      {
+        "id": "NotSuperConstructorAnonymousClass",
+        "category": "TypeError",
+        "format": "Super constructor % of anonymous class is not a constructor"
+      },
+      {
+        "id": "NotIntegerTypedArray",
+        "category": "TypeError",
+        "format": "% is not an integer typed array."
+      },
+      {
+        "id": "NotInt32OrBigInt64TypedArray",
+        "category": "TypeError",
+        "format": "% is not an int32 or BigInt64 typed array."
+      },
+      {
+        "id": "NotSharedTypedArray",
+        "category": "TypeError",
+        "format": "% is not a shared typed array."
+      },
+      {
+        "id": "ObjectFixedLayout",
+        "category": "TypeError",
+        "format": "Cannot add property %, object has fixed layout"
+      },
+      {
+        "id": "ObjectGetterExpectingFunction",
+        "category": "TypeError",
+        "format": "Object.prototype.__defineGetter__: Expecting function"
+      },
+      {
+        "id": "ObjectGetterCallable",
+        "category": "TypeError",
+        "format": "Getter must be a function: %"
+      },
+      {
+        "id": "ObjectNotExtensible",
+        "category": "TypeError",
+        "format": "Cannot add property %, object is not extensible"
+      },
+      {
+        "id": "ObjectSetterExpectingFunction",
+        "category": "TypeError",
+        "format": "Object.prototype.__defineSetter__: Expecting function"
+      },
+      {
+        "id": "ObjectSetterCallable",
+        "category": "TypeError",
+        "format": "Setter must be a function: %"
+      },
+      {
+        "id": "OrdinaryFunctionCalledAsConstructor",
+        "category": "TypeError",
+        "format": "Function object that's not a constructor was created with new"
+      },
+      {
+        "id": "PromiseCyclic",
+        "category": "TypeError",
+        "format": "Chaining cycle detected for promise %"
+      },
+      {
+        "id": "PromiseExecutorAlreadyInvoked",
+        "category": "TypeError",
+        "format": "Promise executor has already been invoked with non-undefined arguments"
+      },
+      {
+        "id": "PromiseNonCallable",
+        "category": "TypeError",
+        "format": "Promise resolve or reject function is not callable"
+      },
+      {
+        "id": "PropertyDescObject",
+        "category": "TypeError",
+        "format": "Property description must be an object: %"
+      },
+      {
+        "id": "PropertyNotFunction",
+        "category": "TypeError",
+        "format": "'%' returned for property '%' of object '%' is not a function"
+      },
+      {
+        "id": "ProtoObjectOrNull",
+        "category": "TypeError",
+        "format": "Object prototype may only be an Object or null: %"
+      },
+      {
+        "id": "PrototypeParentNotAnObject",
+        "category": "TypeError",
+        "format": "Class extends value does not have valid prototype property %"
+      },
+      {
+        "id": "ProxyConstructNonObject",
+        "category": "TypeError",
+        "format": "'construct' on proxy: trap returned non-object ('%')"
+      },
+      {
+        "id": "ProxyDefinePropertyNonConfigurable",
+        "category": "TypeError",
+        "format": "'defineProperty' on proxy: trap returned truish for defining non-configurable property '%' which is either non-existent or configurable in the proxy target"
+      },
+      {
+        "id": "ProxyDefinePropertyNonConfigurableWritable",
+        "category": "TypeError",
+        "format": "'defineProperty' on proxy: trap returned truish for defining non-configurable property '%' which cannot be non-writable, unless there exists a corresponding non-configurable, non-writable own property of the target object."
+      },
+      {
+        "id": "ProxyDefinePropertyNonExtensible",
+        "category": "TypeError",
+        "format": "'defineProperty' on proxy: trap returned truish for adding property '%' to the non-extensible proxy target"
+      },
+      {
+        "id": "ProxyDefinePropertyIncompatible",
+        "category": "TypeError",
+        "format": "'defineProperty' on proxy: trap returned truish for adding property '%' that is incompatible with the existing property in the proxy target"
+      },
+      {
+        "id": "ProxyDeletePropertyNonConfigurable",
+        "category": "TypeError",
+        "format": "'deleteProperty' on proxy: trap returned truish for property '%' which is non-configurable in the proxy target"
+      },
+      {
+        "id": "ProxyDeletePropertyNonExtensible",
+        "category": "TypeError",
+        "format": "'deleteProperty' on proxy: trap returned truish for property '%' but the proxy target is non-extensible"
+      },
+      {
+        "id": "ProxyGetNonConfigurableData",
+        "category": "TypeError",
+        "format": "'get' on proxy: property '%' is a read-only and non-configurable data property on the proxy target but the proxy did not return its actual value (expected '%' but got '%')"
+      },
+      {
+        "id": "ProxyGetNonConfigurableAccessor",
+        "category": "TypeError",
+        "format": "'get' on proxy: property '%' is a non-configurable accessor property on the proxy target and does not have a getter function, but the trap did not return 'undefined' (got '%')"
+      },
+      {
+        "id": "ProxyGetOwnPropertyDescriptorIncompatible",
+        "category": "TypeError",
+        "format": "'getOwnPropertyDescriptor' on proxy: trap returned descriptor for property '%' that is incompatible with the existing property in the proxy target"
+      },
+      {
+        "id": "ProxyGetOwnPropertyDescriptorInvalid",
+        "category": "TypeError",
+        "format": "'getOwnPropertyDescriptor' on proxy: trap returned neither object nor undefined for property '%'"
+      },
+      {
+        "id": "ProxyGetOwnPropertyDescriptorNonConfigurable",
+        "category": "TypeError",
+        "format": "'getOwnPropertyDescriptor' on proxy: trap reported non-configurability for property '%' which is either non-existent or configurable in the proxy target"
+      },
+      {
+        "id": "ProxyGetOwnPropertyDescriptorNonConfigurableWritable",
+        "category": "TypeError",
+        "format": "'getOwnPropertyDescriptor' on proxy: trap reported non-configurable and non-writable for property '%' which is non-configurable, writable in the proxy target"
+      },
+      {
+        "id": "ProxyGetOwnPropertyDescriptorNonExtensible",
+        "category": "TypeError",
+        "format": "'getOwnPropertyDescriptor' on proxy: trap returned undefined for property '%' which exists in the non-extensible proxy target"
+      },
+      {
+        "id": "ProxyGetOwnPropertyDescriptorUndefined",
+        "category": "TypeError",
+        "format": "'getOwnPropertyDescriptor' on proxy: trap returned undefined for property '%' which is non-configurable in the proxy target"
+      },
+      {
+        "id": "ProxyGetPrototypeOfInvalid",
+        "category": "TypeError",
+        "format": "'getPrototypeOf' on proxy: trap returned neither object nor null"
+      },
+      {
+        "id": "ProxyGetPrototypeOfNonExtensible",
+        "category": "TypeError",
+        "format": "'getPrototypeOf' on proxy: proxy target is non-extensible but the trap did not return its actual prototype"
+      },
+      {
+        "id": "ProxyHasNonConfigurable",
+        "category": "TypeError",
+        "format": "'has' on proxy: trap returned falsish for property '%' which exists in the proxy target as non-configurable"
+      },
+      {
+        "id": "ProxyHasNonExtensible",
+        "category": "TypeError",
+        "format": "'has' on proxy: trap returned falsish for property '%' but the proxy target is not extensible"
+      },
+      {
+        "id": "ProxyIsExtensibleInconsistent",
+        "category": "TypeError",
+        "format": "'isExtensible' on proxy: trap result does not reflect extensibility of proxy target (which is '%')"
+      },
+      {
+        "id": "ProxyNonObject",
+        "category": "TypeError",
+        "format": "Cannot create proxy with a non-object as target or handler"
+      },
+      {
+        "id": "ProxyOwnKeysMissing",
+        "category": "TypeError",
+        "format": "'ownKeys' on proxy: trap result did not include '%'"
+      },
+      {
+        "id": "ProxyOwnKeysNonExtensible",
+        "category": "TypeError",
+        "format": "'ownKeys' on proxy: trap returned extra keys but proxy target is non-extensible"
+      },
+      {
+        "id": "ProxyOwnKeysDuplicateEntries",
+        "category": "TypeError",
+        "format": "'ownKeys' on proxy: trap returned duplicate entries"
+      },
+      {
+        "id": "ProxyPreventExtensionsExtensible",
+        "category": "TypeError",
+        "format": "'preventExtensions' on proxy: trap returned truish but the proxy target is extensible"
+      },
+      {
+        "id": "ProxyPrivate",
+        "category": "TypeError",
+        "format": "Cannot pass private property name to proxy trap"
+      },
+      {
+        "id": "ProxyRevoked",
+        "category": "TypeError",
+        "format": "Cannot perform '%' on a proxy that has been revoked"
+      },
+      {
+        "id": "ProxySetFrozenData",
+        "category": "TypeError",
+        "format": "'set' on proxy: trap returned truish for property '%' which exists in the proxy target as a non-configurable and non-writable data property with a different value"
+      },
+      {
+        "id": "ProxySetFrozenAccessor",
+        "category": "TypeError",
+        "format": "'set' on proxy: trap returned truish for property '%' which exists in the proxy target as a non-configurable and non-writable accessor property without a setter"
+      },
+      {
+        "id": "ProxySetPrototypeOfNonExtensible",
+        "category": "TypeError",
+        "format": "'setPrototypeOf' on proxy: trap returned truish for setting a new prototype on the non-extensible proxy target"
+      },
+      {
+        "id": "ProxyTrapReturnedFalsish",
+        "category": "TypeError",
+        "format": "'%' on proxy: trap returned falsish"
+      },
+      {
+        "id": "ProxyTrapReturnedFalsishFor",
+        "category": "TypeError",
+        "format": "'%' on proxy: trap returned falsish for property '%'"
+      },
+      {
+        "id": "RedefineDisallowed",
+        "category": "TypeError",
+        "format": "Cannot redefine property: %"
+      },
+      {
+        "id": "RedefineExternalArray",
+        "category": "TypeError",
+        "format": "Cannot redefine a property of an object with external array elements"
+      },
+      {
+        "id": "ReduceNoInitial",
+        "category": "TypeError",
+        "format": "Reduce of empty array with no initial value"
+      },
+      {
+        "id": "RegExpFlags",
+        "category": "TypeError",
+        "format": "Cannot supply flags when constructing one RegExp from another"
+      },
+      {
+        "id": "RegExpNonObject",
+        "category": "TypeError",
+        "format": "% getter called on non-object %"
+      },
+      {
+        "id": "RegExpNonRegExp",
+        "category": "TypeError",
+        "format": "% getter called on non-RegExp object"
+      },
+      {
+        "id": "RegExpGlobalInvokedOnNonGlobal",
+        "category": "TypeError",
+        "format": "% called with a non-global RegExp argument"
+      },
+      {
+        "id": "RelativeDateTimeFormatterBadParameters",
+        "category": "TypeError",
+        "format": "Incorrect RelativeDateTimeFormatter provided"
+      },
+      {
+        "id": "ResolverNotAFunction",
+        "category": "TypeError",
+        "format": "Promise resolver % is not a function"
+      },
+      {
+        "id": "ReturnMethodNotCallable",
+        "category": "TypeError",
+        "format": "The iterator's 'return' method is not callable"
+      },
+      {
+        "id": "SizeIsNaN",
+        "category": "TypeError",
+        "format": "The .size property is NaN"
+      },
+      {
+        "id": "ShadowRealmErrorStackNonString",
+        "category": "TypeError",
+        "format": "Error stack is not a string in ShadowRealm (%)"
+      },
+      {
+        "id": "ShadowRealmErrorStackThrows",
+        "category": "TypeError",
+        "format": "Error stack getter threw in ShadowRealm (%)"
+      },
+      {
+        "id": "SharedArrayBufferTooShort",
+        "category": "TypeError",
+        "format": "Derived SharedArrayBuffer constructor created a buffer which was too small"
+      },
+      {
+        "id": "SharedArrayBufferSpeciesThis",
+        "category": "TypeError",
+        "format": "SharedArrayBuffer subclass returned this from species constructor"
+      },
+      {
+        "id": "SharedStructTypeRegistryMismatch",
+        "category": "TypeError",
+        "format": "SharedStructType registered as '%' does not match"
+      },
+      {
+        "id": "StaticPrototype",
+        "category": "TypeError",
+        "format": "Classes may not have a static property named 'prototype'"
+      },
+      {
+        "id": "StrictCannotCreateProperty",
+        "category": "TypeError",
+        "format": "Cannot create property '%' on % '%'"
+      },
+      {
+        "id": "StrictCannotDeleteProperty",
+        "category": "TypeError",
+        "format": "Cannot delete property '%' of %"
+      },
+      {
+        "id": "StrictCannotSetProperty",
+        "category": "TypeError",
+        "format": "Cannot assign to property '%' of %"
+      },
+      {
+        "id": "StrictPoisonPill",
+        "category": "TypeError",
+        "format": "'caller', 'callee', and 'arguments' properties may not be accessed on strict mode functions or the arguments objects for calls to them"
+      },
+      {
+        "id": "StrictReadOnlyProperty",
+        "category": "TypeError",
+        "format": "Cannot assign to read only property '%' of % '%'"
+      },
+      {
+        "id": "StringMatchAllNullOrUndefinedFlags",
+        "category": "TypeError",
+        "format": "The .flags property of the argument to String.prototype.matchAll cannot be null or undefined"
+      },
+      {
+        "id": "SymbolIteratorInvalid",
+        "category": "TypeError",
+        "format": "Result of the Symbol.iterator method is not an object"
+      },
+      {
+        "id": "SymbolAsyncIteratorInvalid",
+        "category": "TypeError",
+        "format": "Result of the Symbol.asyncIterator method is not an object"
+      },
+      {
+        "id": "SymbolKeyFor",
+        "category": "TypeError",
+        "format": "% is not a symbol"
+      },
+      {
+        "id": "SymbolToNumber",
+        "category": "TypeError",
+        "format": "Cannot convert a Symbol value to a number"
+      },
+      {
+        "id": "SymbolToString",
+        "category": "TypeError",
+        "format": "Cannot convert a Symbol value to a string"
+      },
+      {
+        "id": "Temporal",
+        "category": "TypeError",
+        "format": "Temporal error: %"
+      },
+      {
+        "id": "TemporalWithArg",
+        "category": "TypeError",
+        "format": "Temporal error: % %."
+      },
+      {
+        "id": "ThrowMethodMissing",
+        "category": "TypeError",
+        "format": "The iterator does not provide a 'throw' method."
+      },
+      {
+        "id": "TopLevelAwaitStalled",
+        "category": "TypeError",
+        "format": "Top-level await promise never resolved"
+      },
+      {
+        "id": "UndefinedOrNullToObject",
+        "category": "TypeError",
+        "format": "Cannot convert undefined or null to object"
+      },
+      {
+        "id": "AwaitUsingAssign",
+        "category": "TypeError",
+        "format": "Assignment to await using variable."
+      },
+      {
+        "id": "UsingAssign",
+        "category": "TypeError",
+        "format": "Assignment to using variable."
+      },
+      {
+        "id": "ValueAndAccessor",
+        "category": "TypeError",
+        "format": "Invalid property descriptor. Cannot both specify accessors and a value or writable attribute, %"
+      },
+      {
+        "id": "VarRedeclaration",
+        "category": "TypeError",
+        "format": "Identifier '%' has already been declared"
+      },
+      {
+        "id": "VarNotAllowedInEvalScope",
+        "category": "TypeError",
+        "format": "Identifier '%' cannot be declared with 'var' in current evaluation scope, consider trying 'let' instead"
+      },
+      {
+        "id": "WrongArgs",
+        "category": "TypeError",
+        "format": "%: Arguments list has wrong type"
+      }
+    ],
+    "ReferenceError": [
+      {
+        "id": "NotDefined",
+        "category": "ReferenceError",
+        "format": "% is not defined"
+      },
+      {
+        "id": "SuperAlreadyCalled",
+        "category": "ReferenceError",
+        "format": "Super constructor may only be called once"
+      },
+      {
+        "id": "AccessedUninitializedVariable",
+        "category": "ReferenceError",
+        "format": "Cannot access '%' before initialization"
+      },
+      {
+        "id": "UnsupportedSuper",
+        "category": "ReferenceError",
+        "format": "Unsupported reference to 'super'"
+      },
+      {
+        "id": "AccessedUnavailableVariable",
+        "category": "ReferenceError",
+        "format": "Cannot access '%' from debugger"
+      },
+      {
+        "id": "DisposableStackIsDisposed",
+        "category": "ReferenceError",
+        "format": "Cannot call % on an already-disposed DisposableStack"
+      },
+      {
+        "id": "NotAnAsyncDisposableStack",
+        "category": "ReferenceError",
+        "format": "Receiver is not an AsyncDisposableStack"
+      }
+    ],
+    "RangeError": [
+      {
+        "id": "BigIntDivZero",
+        "category": "RangeError",
+        "format": "Division by zero"
+      },
+      {
+        "id": "BigIntTooBig",
+        "category": "RangeError",
+        "format": "Maximum BigInt size exceeded"
+      },
+      {
+        "id": "CantSetOptionXWhenYIsUsed",
+        "category": "RangeError",
+        "format": "Can't set option % when % is used"
+      },
+      {
+        "id": "DateRange",
+        "category": "RangeError",
+        "format": "Provided date is not in valid range."
+      },
+      {
+        "id": "ExpectedLocation",
+        "category": "RangeError",
+        "format": "Expected letters optionally connected with underscores or hyphens for a location, got %"
+      },
+      {
+        "id": "InvalidArrayBufferLength",
+        "category": "RangeError",
+        "format": "Invalid array buffer length"
+      },
+      {
+        "id": "InvalidArrayBufferMaxLength",
+        "category": "RangeError",
+        "format": "Invalid array buffer max length"
+      },
+      {
+        "id": "InvalidArrayBufferResizeLength",
+        "category": "RangeError",
+        "format": "%: Invalid length parameter"
+      },
+      {
+        "id": "ArrayBufferAllocationFailed",
+        "category": "RangeError",
+        "format": "Array buffer allocation failed"
+      },
+      {
+        "id": "Invalid",
+        "category": "RangeError",
+        "format": "Invalid % : %"
+      },
+      {
+        "id": "InvalidArrayLength",
+        "category": "RangeError",
+        "format": "Invalid array length"
+      },
+      {
+        "id": "InvalidAtomicAccessIndex",
+        "category": "RangeError",
+        "format": "Invalid atomic access index"
+      },
+      {
+        "id": "InvalidCalendar",
+        "category": "RangeError",
+        "format": "Invalid calendar specified: %"
+      },
+      {
+        "id": "InvalidCodePoint",
+        "category": "RangeError",
+        "format": "Invalid code point %"
+      },
+      {
+        "id": "InvalidCountValue",
+        "category": "RangeError",
+        "format": "Invalid count value: %"
+      },
+      {
+        "id": "InvalidDataViewAccessorOffset",
+        "category": "RangeError",
+        "format": "Offset is outside the bounds of the DataView"
+      },
+      {
+        "id": "InvalidDataViewLength",
+        "category": "RangeError",
+        "format": "Invalid DataView length %"
+      },
+      {
+        "id": "InvalidOffset",
+        "category": "RangeError",
+        "format": "Start offset % is outside the bounds of the buffer"
+      },
+      {
+        "id": "InvalidHint",
+        "category": "RangeError",
+        "format": "Invalid hint: %"
+      },
+      {
+        "id": "InvalidIndex",
+        "category": "RangeError",
+        "format": "Invalid value: not (convertible to) a safe integer"
+      },
+      {
+        "id": "InvalidLanguageTag",
+        "category": "RangeError",
+        "format": "Invalid language tag: %"
+      },
+      {
+        "id": "InvalidWeakMapKey",
+        "category": "RangeError",
+        "format": "Invalid value used as weak map key"
+      },
+      {
+        "id": "InvalidWeakSetValue",
+        "category": "RangeError",
+        "format": "Invalid value used in weak set"
+      },
+      {
+        "id": "InvalidShadowRealmEvaluateSourceText",
+        "category": "RangeError",
+        "format": "Invalid value used as source text"
+      },
+      {
+        "id": "InvalidStringLength",
+        "category": "RangeError",
+        "format": "Invalid string length"
+      },
+      {
+        "id": "InvalidTimeValue",
+        "category": "RangeError",
+        "format": "Invalid time value"
+      },
+      {
+        "id": "InvalidTimeZone",
+        "category": "RangeError",
+        "format": "Invalid time zone specified: %"
+      },
+      {
+        "id": "InvalidTypedArrayAlignment",
+        "category": "RangeError",
+        "format": "% of % should be a multiple of %"
+      },
+      {
+        "id": "InvalidTypedArrayIndex",
+        "category": "RangeError",
+        "format": "Invalid typed array index"
+      },
+      {
+        "id": "InvalidTypedArrayLength",
+        "category": "RangeError",
+        "format": "Invalid typed array length: %"
+      },
+      {
+        "id": "LetInLexicalBinding",
+        "category": "RangeError",
+        "format": "let is disallowed as a lexically bound name"
+      },
+      {
+        "id": "LocaleMatcher",
+        "category": "RangeError",
+        "format": "Illegal value for localeMatcher:%"
+      },
+      {
+        "id": "MaximumFractionDigitsNotEqualMinimumFractionDigits",
+        "category": "RangeError",
+        "format": "maximumFractionDigits not equal to minimumFractionDigits"
+      },
+      {
+        "id": "NormalizationForm",
+        "category": "RangeError",
+        "format": "The normalization form should be one of %."
+      },
+      {
+        "id": "OutOfMemory",
+        "category": "RangeError",
+        "format": "%: Out of memory"
+      },
+      {
+        "id": "ZeroDigitNumericSeparator",
+        "category": "RangeError",
+        "format": "Numeric separator can not be used after leading 0."
+      },
+      {
+        "id": "NumberFormatRange",
+        "category": "RangeError",
+        "format": "% argument must be between 0 and 100"
+      },
+      {
+        "id": "TrailingNumericSeparator",
+        "category": "RangeError",
+        "format": "Numeric separators are not allowed at the end of numeric literals"
+      },
+      {
+        "id": "ContinuousNumericSeparator",
+        "category": "RangeError",
+        "format": "Only one underscore is allowed as numeric separator"
+      },
+      {
+        "id": "PropertyValueOutOfRange",
+        "category": "RangeError",
+        "format": "% value is out of range."
+      },
+      {
+        "id": "StackOverflow",
+        "category": "RangeError",
+        "format": "Maximum call stack size exceeded"
+      },
+      {
+        "id": "ToPrecisionFormatRange",
+        "category": "RangeError",
+        "format": "toPrecision() argument must be between 1 and 100"
+      },
+      {
+        "id": "ToRadixFormatRange",
+        "category": "RangeError",
+        "format": "toString() radix argument must be between 2 and 36"
+      },
+      {
+        "id": "SharedArraySizeOutOfRange",
+        "category": "RangeError",
+        "format": "SharedArray length out of range"
+      },
+      {
+        "id": "StructFieldCountOutOfRange",
+        "category": "RangeError",
+        "format": "Struct field count out of range (maximum of 999 allowed)"
+      },
+      {
+        "id": "TypedArraySetOffsetOutOfBounds",
+        "category": "RangeError",
+        "format": "offset is out of bounds"
+      },
+      {
+        "id": "TypedArraySetSourceTooLarge",
+        "category": "RangeError",
+        "format": "Source is too large"
+      },
+      {
+        "id": "TypedArrayTooLargeToSort",
+        "category": "RangeError",
+        "format": "Custom comparefn not supported for huge TypedArrays"
+      },
+      {
+        "id": "IterableTooLargeToSum",
+        "category": "RangeError",
+        "format": "Math.sumPrecise not supported for huge iterables"
+      },
+      {
+        "id": "ValueOutOfRange",
+        "category": "RangeError",
+        "format": "Value % out of range for % options property %"
+      },
+      {
+        "id": "CollectionGrowFailed",
+        "category": "RangeError",
+        "format": "% maximum size exceeded"
+      },
+      {
+        "id": "MustBePositive",
+        "category": "RangeError",
+        "format": "% must be positive"
+      },
+      {
+        "id": "ArgumentIsNotUndefinedOrInteger",
+        "category": "RangeError",
+        "format": "% argument must be undefined or an integer"
+      }
+    ],
+    "SyntaxError": [
+      {
+        "id": "AmbiguousExport",
+        "category": "SyntaxError",
+        "format": "The requested module '%' contains conflicting star exports for name '%'"
+      },
+      {
+        "id": "BadGetterArity",
+        "category": "SyntaxError",
+        "format": "Getter must not have any formal parameters."
+      },
+      {
+        "id": "BadSetterArity",
+        "category": "SyntaxError",
+        "format": "Setter must have exactly one formal parameter."
+      },
+      {
+        "id": "Base64ExtraBits",
+        "category": "SyntaxError",
+        "format": "The base64 input terminates with non-zero padding bits."
+      },
+      {
+        "id": "Base64InputRemainder",
+        "category": "SyntaxError",
+        "format": "The base64 input terminates with a single character, excluding padding (=)."
+      },
+      {
+        "id": "BigIntInvalidString",
+        "category": "SyntaxError",
+        "format": "Invalid BigInt string"
+      },
+      {
+        "id": "ConstructorIsAccessor",
+        "category": "SyntaxError",
+        "format": "Class constructor may not be an accessor"
+      },
+      {
+        "id": "ConstructorIsGenerator",
+        "category": "SyntaxError",
+        "format": "Class constructor may not be a generator"
+      },
+      {
+        "id": "ConstructorIsAsync",
+        "category": "SyntaxError",
+        "format": "Class constructor may not be an async method"
+      },
+      {
+        "id": "ConstructorIsPrivate",
+        "category": "SyntaxError",
+        "format": "Class constructor may not be a private method"
+      },
+      {
+        "id": "DerivedConstructorReturnedNonObject",
+        "category": "SyntaxError",
+        "format": "Derived constructors may only return object or undefined"
+      },
+      {
+        "id": "DuplicateConstructor",
+        "category": "SyntaxError",
+        "format": "A class may only have one constructor"
+      },
+      {
+        "id": "DuplicateExport",
+        "category": "SyntaxError",
+        "format": "Duplicate export of '%'"
+      },
+      {
+        "id": "DuplicateProto",
+        "category": "SyntaxError",
+        "format": "Duplicate __proto__ fields are not allowed in object literals"
+      },
+      {
+        "id": "ForInOfLoopInitializer",
+        "category": "SyntaxError",
+        "format": "% loop variable declaration may not have an initializer."
+      },
+      {
+        "id": "ForOfLet",
+        "category": "SyntaxError",
+        "format": "The left-hand side of a for-of loop may not start with 'let'."
+      },
+      {
+        "id": "ForOfAsync",
+        "category": "SyntaxError",
+        "format": "The left-hand side of a for-of loop may not be 'async'."
+      },
+      {
+        "id": "ForInOfLoopMultiBindings",
+        "category": "SyntaxError",
+        "format": "Invalid left-hand side in % loop: Must have a single binding."
+      },
+      {
+        "id": "GeneratorInSingleStatementContext",
+        "category": "SyntaxError",
+        "format": "Generators can only be declared at the top level or inside a block."
+      },
+      {
+        "id": "AsyncFunctionInSingleStatementContext",
+        "category": "SyntaxError",
+        "format": "Async functions can only be declared at the top level or inside a block."
+      },
+      {
+        "id": "IllegalBreak",
+        "category": "SyntaxError",
+        "format": "Illegal break statement"
+      },
+      {
+        "id": "ModuleExportNameWithoutFromClause",
+        "category": "SyntaxError",
+        "format": "String literal module export names must be followed by a 'from' clause"
+      },
+      {
+        "id": "NoIterationStatement",
+        "category": "SyntaxError",
+        "format": "Illegal continue statement: no surrounding iteration statement"
+      },
+      {
+        "id": "IllegalContinue",
+        "category": "SyntaxError",
+        "format": "Illegal continue statement: '%' does not denote an iteration statement"
+      },
+      {
+        "id": "IllegalLanguageModeDirective",
+        "category": "SyntaxError",
+        "format": "Illegal '%' directive in function with non-simple parameter list"
+      },
+      {
+        "id": "IllegalReturn",
+        "category": "SyntaxError",
+        "format": "Illegal return statement"
+      },
+      {
+        "id": "IntrinsicWithSpread",
+        "category": "SyntaxError",
+        "format": "Intrinsic calls do not support spread arguments"
+      },
+      {
+        "id": "InvalidBase64Character",
+        "category": "SyntaxError",
+        "format": "Found a character that cannot be part of a valid base64 string."
+      },
+      {
+        "id": "InvalidRestBindingPattern",
+        "category": "SyntaxError",
+        "format": "`...` must be followed by an identifier in declaration contexts"
+      },
+      {
+        "id": "InvalidPropertyBindingPattern",
+        "category": "SyntaxError",
+        "format": "Illegal property in declaration context"
+      },
+      {
+        "id": "InvalidRestAssignmentPattern",
+        "category": "SyntaxError",
+        "format": "`...` must be followed by an assignable reference in assignment contexts"
+      },
+      {
+        "id": "InvalidEscapedReservedWord",
+        "category": "SyntaxError",
+        "format": "Keyword must not contain escaped characters"
+      },
+      {
+        "id": "InvalidEscapedMetaProperty",
+        "category": "SyntaxError",
+        "format": "'%' must not contain escaped characters"
+      },
+      {
+        "id": "InvalidLhsInAssignment",
+        "category": "SyntaxError",
+        "format": "Invalid left-hand side in assignment"
+      },
+      {
+        "id": "InvalidCoverInitializedName",
+        "category": "SyntaxError",
+        "format": "Invalid shorthand property initializer"
+      },
+      {
+        "id": "InvalidDestructuringTarget",
+        "category": "SyntaxError",
+        "format": "Invalid destructuring assignment target"
+      },
+      {
+        "id": "InvalidLhsInFor",
+        "category": "SyntaxError",
+        "format": "Invalid left-hand side in for-loop"
+      },
+      {
+        "id": "InvalidLhsInPostfixOp",
+        "category": "SyntaxError",
+        "format": "Invalid left-hand side expression in postfix operation"
+      },
+      {
+        "id": "InvalidLhsInPrefixOp",
+        "category": "SyntaxError",
+        "format": "Invalid left-hand side expression in prefix operation"
+      },
+      {
+        "id": "InvalidHexString",
+        "category": "SyntaxError",
+        "format": "Input string must contain hex characters in even length"
+      },
+      {
+        "id": "InvalidModuleExportName",
+        "category": "SyntaxError",
+        "format": "Invalid module export name: contains unpaired surrogate"
+      },
+      {
+        "id": "InvalidRegExpFlags",
+        "category": "SyntaxError",
+        "format": "Invalid flags supplied to RegExp constructor '%'"
+      },
+      {
+        "id": "InvalidOrUnexpectedToken",
+        "category": "SyntaxError",
+        "format": "Invalid or unexpected token"
+      },
+      {
+        "id": "InvalidPrivateBrandInstance",
+        "category": "SyntaxError",
+        "format": "Receiver must be an instance of class %"
+      },
+      {
+        "id": "InvalidPrivateBrandStatic",
+        "category": "SyntaxError",
+        "format": "Receiver must be class %"
+      },
+      {
+        "id": "InvalidPrivateBrandReinitialization",
+        "category": "SyntaxError",
+        "format": "Cannot initialize private methods of class % twice on the same object"
+      },
+      {
+        "id": "InvalidPrivateFieldReinitialization",
+        "category": "SyntaxError",
+        "format": "Cannot initialize % twice on the same object"
+      },
+      {
+        "id": "InvalidPrivateFieldResolution",
+        "category": "SyntaxError",
+        "format": "Private field '%' must be declared in an enclosing class"
+      },
+      {
+        "id": "InvalidPrivateMemberRead",
+        "category": "SyntaxError",
+        "format": "Cannot read private member % from an object whose class did not declare it"
+      },
+      {
+        "id": "InvalidPrivateMemberWrite",
+        "category": "SyntaxError",
+        "format": "Cannot write private member % to an object whose class did not declare it"
+      },
+      {
+        "id": "InvalidPrivateMethodWrite",
+        "category": "SyntaxError",
+        "format": "Private method '%' is not writable"
+      },
+      {
+        "id": "InvalidPrivateGetterAccess",
+        "category": "SyntaxError",
+        "format": "'%' was defined without a getter"
+      },
+      {
+        "id": "InvalidPrivateSetterAccess",
+        "category": "SyntaxError",
+        "format": "'%' was defined without a setter"
+      },
+      {
+        "id": "InvalidSizeValue",
+        "category": "SyntaxError",
+        "format": "'%' is an invalid size"
+      },
+      {
+        "id": "InvalidUnusedPrivateStaticMethodAccessedByDebugger",
+        "category": "SyntaxError",
+        "format": "Unused static private method '%' cannot be accessed at debug time"
+      },
+      {
+        "id": "InvalidUsingInForInLoop",
+        "category": "SyntaxError",
+        "format": "Invalid 'using' in for-in loop"
+      },
+      {
+        "id": "JsonParseUnexpectedEOS",
+        "category": "SyntaxError",
+        "format": "Unexpected end of JSON input"
+      },
+      {
+        "id": "JsonParseUnexpectedTokenNumber",
+        "category": "SyntaxError",
+        "format": "Unexpected number in JSON at position % (line % column %)"
+      },
+      {
+        "id": "JsonParseUnexpectedTokenString",
+        "category": "SyntaxError",
+        "format": "Unexpected string in JSON at position % (line % column %)"
+      },
+      {
+        "id": "JsonParseUnterminatedString",
+        "category": "SyntaxError",
+        "format": "Unterminated string in JSON at position % (line % column %)"
+      },
+      {
+        "id": "JsonParseExpectedPropNameOrRBrace",
+        "category": "SyntaxError",
+        "format": "Expected property name or '}' in JSON at position % (line % column %)"
+      },
+      {
+        "id": "JsonParseExpectedCommaOrRBrack",
+        "category": "SyntaxError",
+        "format": "Expected ',' or ']' after array element in JSON at position % (line % column %)"
+      },
+      {
+        "id": "JsonParseExpectedCommaOrRBrace",
+        "category": "SyntaxError",
+        "format": "Expected ',' or '}' after property value in JSON at position % (line % column %)"
+      },
+      {
+        "id": "JsonParseExpectedDoubleQuotedPropertyName",
+        "category": "SyntaxError",
+        "format": "Expected double-quoted property name in JSON at position % (line % column %)"
+      },
+      {
+        "id": "JsonParseExponentPartMissingNumber",
+        "category": "SyntaxError",
+        "format": "Exponent part is missing a number in JSON at position % (line % column %)"
+      },
+      {
+        "id": "JsonParseExpectedColonAfterPropertyName",
+        "category": "SyntaxError",
+        "format": "Expected ':' after property name in JSON at position % (line % column %)"
+      },
+      {
+        "id": "JsonParseUnterminatedFractionalNumber",
+        "category": "SyntaxError",
+        "format": "Unterminated fractional number in JSON at position % (line % column %)"
+      },
+      {
+        "id": "JsonParseUnexpectedNonWhiteSpaceCharacter",
+        "category": "SyntaxError",
+        "format": "Unexpected non-whitespace character after JSON at position % (line % column %)"
+      },
+      {
+        "id": "JsonParseBadEscapedCharacter",
+        "category": "SyntaxError",
+        "format": "Bad escaped character in JSON at position % (line % column %)"
+      },
+      {
+        "id": "JsonParseBadControlCharacter",
+        "category": "SyntaxError",
+        "format": "Bad control character in string literal in JSON at position % (line % column %)"
+      },
+      {
+        "id": "JsonParseBadUnicodeEscape",
+        "category": "SyntaxError",
+        "format": "Bad Unicode escape in JSON at position % (line % column %)"
+      },
+      {
+        "id": "JsonParseNoNumberAfterMinusSign",
+        "category": "SyntaxError",
+        "format": "No number after minus sign in JSON at position % (line % column %)"
+      },
+      {
+        "id": "JsonParseShortString",
+        "category": "SyntaxError",
+        "format": "\\\"%\\\" is not valid JSON"
+      },
+      {
+        "id": "JsonParseUnexpectedTokenShortString",
+        "category": "SyntaxError",
+        "format": "Unexpected token '%', \\\"%\\\" is not valid JSON"
+      },
+      {
+        "id": "JsonParseUnexpectedTokenSurroundStringWithContext",
+        "category": "SyntaxError",
+        "format": "Unexpected token '%', ...\\\"%\\\"... is not valid JSON"
+      },
+      {
+        "id": "JsonParseUnexpectedTokenEndStringWithContext",
+        "category": "SyntaxError",
+        "format": "Unexpected token '%', ...\\\"%\\\" is not valid JSON"
+      },
+      {
+        "id": "JsonParseUnexpectedTokenStartStringWithContext",
+        "category": "SyntaxError",
+        "format": "Unexpected token '%', \\\"%\\\"... is not valid JSON"
+      },
+      {
+        "id": "LabelRedeclaration",
+        "category": "SyntaxError",
+        "format": "Label '%' has already been declared"
+      },
+      {
+        "id": "LabelledFunctionDeclaration",
+        "category": "SyntaxError",
+        "format": "Labelled function declaration not allowed as the body of a control flow structure"
+      },
+      {
+        "id": "MalformedArrowFunParamList",
+        "category": "SyntaxError",
+        "format": "Malformed arrow function parameter list"
+      },
+      {
+        "id": "MalformedRegExp",
+        "category": "SyntaxError",
+        "format": "Invalid regular expression: /%/%: %"
+      },
+      {
+        "id": "MalformedRegExpFlags",
+        "category": "SyntaxError",
+        "format": "Invalid regular expression flags"
+      },
+      {
+        "id": "ModuleExportUndefined",
+        "category": "SyntaxError",
+        "format": "Export '%' is not defined in module"
+      },
+      {
+        "id": "MissingFunctionName",
+        "category": "SyntaxError",
+        "format": "Function statements require a function name"
+      },
+      {
+        "id": "MismatchedCalendars",
+        "category": "SyntaxError",
+        "format": "Mismatched calendars."
+      },
+      {
+        "id": "HtmlCommentInModule",
+        "category": "SyntaxError",
+        "format": "HTML comments are not allowed in modules"
+      },
+      {
+        "id": "MultipleDefaultsInSwitch",
+        "category": "SyntaxError",
+        "format": "More than one default clause in switch statement"
+      },
+      {
+        "id": "NewlineAfterThrow",
+        "category": "SyntaxError",
+        "format": "Illegal newline after throw"
+      },
+      {
+        "id": "NoCatchOrFinally",
+        "category": "SyntaxError",
+        "format": "Missing catch or finally after try"
+      },
+      {
+        "id": "ParamAfterRest",
+        "category": "SyntaxError",
+        "format": "Rest parameter must be last formal parameter"
+      },
+      {
+        "id": "FlattenPastSafeLength",
+        "category": "SyntaxError",
+        "format": "Flattening % elements on an array-like of length % is disallowed, as the total surpasses 2**53-1"
+      },
+      {
+        "id": "PushPastSafeLength",
+        "category": "SyntaxError",
+        "format": "Pushing % elements on an array-like of length % is disallowed, as the total surpasses 2**53-1"
+      },
+      {
+        "id": "ElementAfterRest",
+        "category": "SyntaxError",
+        "format": "Rest element must be last element"
+      },
+      {
+        "id": "BadSetterRestParameter",
+        "category": "SyntaxError",
+        "format": "Setter function argument must not be a rest parameter"
+      },
+      {
+        "id": "ParamDupe",
+        "category": "SyntaxError",
+        "format": "Duplicate parameter name not allowed in this context"
+      },
+      {
+        "id": "ArgStringTerminatesParametersEarly",
+        "category": "SyntaxError",
+        "format": "Arg string terminates parameters early"
+      },
+      {
+        "id": "UnexpectedEndOfArgString",
+        "category": "SyntaxError",
+        "format": "Unexpected end of arg string"
+      },
+      {
+        "id": "RestDefaultInitializer",
+        "category": "SyntaxError",
+        "format": "Rest parameter may not have a default initializer"
+      },
+      {
+        "id": "RuntimeWrongNumArgs",
+        "category": "SyntaxError",
+        "format": "Runtime function given wrong number of arguments"
+      },
+      {
+        "id": "SuperNotCalled",
+        "category": "SyntaxError",
+        "format": "Must call super constructor in derived class before accessing 'this' or returning from derived constructor"
+      },
+      {
+        "id": "SingleFunctionLiteral",
+        "category": "SyntaxError",
+        "format": "Single function literal required"
+      },
+      {
+        "id": "SloppyFunction",
+        "category": "SyntaxError",
+        "format": "In non-strict mode code, functions can only be declared at top level, inside a block, or as the body of an if statement."
+      },
+      {
+        "id": "SpeciesNotConstructor",
+        "category": "SyntaxError",
+        "format": "object.constructor[Symbol.species] is not a constructor"
+      },
+      {
+        "id": "StrictDelete",
+        "category": "SyntaxError",
+        "format": "Delete of an unqualified identifier in strict mode."
+      },
+      {
+        "id": "StrictEvalArguments",
+        "category": "SyntaxError",
+        "format": "Unexpected eval or arguments in strict mode"
+      },
+      {
+        "id": "StrictFunction",
+        "category": "SyntaxError",
+        "format": "In strict mode code, functions can only be declared at top level or inside a block."
+      },
+      {
+        "id": "StrictOctalLiteral",
+        "category": "SyntaxError",
+        "format": "Octal literals are not allowed in strict mode."
+      },
+      {
+        "id": "StrictDecimalWithLeadingZero",
+        "category": "SyntaxError",
+        "format": "Decimals with leading zeros are not allowed in strict mode."
+      },
+      {
+        "id": "StrictOctalEscape",
+        "category": "SyntaxError",
+        "format": "Octal escape sequences are not allowed in strict mode."
+      },
+      {
+        "id": "Strict8Or9Escape",
+        "category": "SyntaxError",
+        "format": "\\\\8 and \\\\9 are not allowed in strict mode."
+      },
+      {
+        "id": "StrictWith",
+        "category": "SyntaxError",
+        "format": "Strict mode code may not include a with statement"
+      },
+      {
+        "id": "TemplateOctalLiteral",
+        "category": "SyntaxError",
+        "format": "Octal escape sequences are not allowed in template strings."
+      },
+      {
+        "id": "Template8Or9Escape",
+        "category": "SyntaxError",
+        "format": "\\\\8 and \\\\9 are not allowed in template strings."
+      },
+      {
+        "id": "ThisFormalParameter",
+        "category": "SyntaxError",
+        "format": "'this' is not a valid formal parameter name"
+      },
+      {
+        "id": "AwaitBindingIdentifier",
+        "category": "SyntaxError",
+        "format": "'await' is not a valid identifier name in an async function"
+      },
+      {
+        "id": "AwaitExpressionFormalParameter",
+        "category": "SyntaxError",
+        "format": "Illegal await-expression in formal parameters of async function"
+      },
+      {
+        "id": "TooManyArguments",
+        "category": "SyntaxError",
+        "format": "Too many arguments in function call (only 65525 allowed)"
+      },
+      {
+        "id": "TooManyParameters",
+        "category": "SyntaxError",
+        "format": "Too many parameters in function definition (only 65534 allowed)"
+      },
+      {
+        "id": "TooManyProperties",
+        "category": "SyntaxError",
+        "format": "Too many properties to enumerate"
+      },
+      {
+        "id": "TooManySpreads",
+        "category": "SyntaxError",
+        "format": "Literal containing too many nested spreads (up to 65534 allowed)"
+      },
+      {
+        "id": "TooManyVariables",
+        "category": "SyntaxError",
+        "format": "Too many variables declared (only 4194303 allowed)"
+      },
+      {
+        "id": "TooManyEvals",
+        "category": "SyntaxError",
+        "format": "Too many eval calls in script"
+      },
+      {
+        "id": "TooManyElementsInPromiseCombinator",
+        "category": "SyntaxError",
+        "format": "Too many elements passed to Promise.%"
+      },
+      {
+        "id": "TypedArrayTooShort",
+        "category": "SyntaxError",
+        "format": "Derived TypedArray constructor created an array which was too small"
+      },
+      {
+        "id": "UnexpectedEOS",
+        "category": "SyntaxError",
+        "format": "Unexpected end of input"
+      },
+      {
+        "id": "UnexpectedPrivateField",
+        "category": "SyntaxError",
+        "format": "Unexpected private field"
+      },
+      {
+        "id": "UnexpectedReserved",
+        "category": "SyntaxError",
+        "format": "Unexpected reserved word"
+      },
+      {
+        "id": "UnexpectedStrictReserved",
+        "category": "SyntaxError",
+        "format": "Unexpected strict mode reserved word"
+      },
+      {
+        "id": "UnexpectedSuper",
+        "category": "SyntaxError",
+        "format": "'super' keyword unexpected here"
+      },
+      {
+        "id": "UnexpectedNewTarget",
+        "category": "SyntaxError",
+        "format": "new.target expression is not allowed here"
+      },
+      {
+        "id": "UnexpectedTemplateString",
+        "category": "SyntaxError",
+        "format": "Unexpected template string"
+      },
+      {
+        "id": "UnexpectedToken",
+        "category": "SyntaxError",
+        "format": "Unexpected token '%'"
+      },
+      {
+        "id": "UnexpectedTokenUnaryExponentiation",
+        "category": "SyntaxError",
+        "format": "Unary operator used immediately before exponentiation expression. Parenthesis must be used to disambiguate operator precedence"
+      },
+      {
+        "id": "UnexpectedTokenIdentifier",
+        "category": "SyntaxError",
+        "format": "Unexpected identifier '%'"
+      },
+      {
+        "id": "UnexpectedTokenNumber",
+        "category": "SyntaxError",
+        "format": "Unexpected number"
+      },
+      {
+        "id": "UnexpectedTokenString",
+        "category": "SyntaxError",
+        "format": "Unexpected string"
+      },
+      {
+        "id": "UnexpectedTokenRegExp",
+        "category": "SyntaxError",
+        "format": "Unexpected regular expression"
+      },
+      {
+        "id": "UnexpectedLexicalDeclaration",
+        "category": "SyntaxError",
+        "format": "Lexical declaration cannot appear in a single-statement context"
+      },
+      {
+        "id": "UnknownLabel",
+        "category": "SyntaxError",
+        "format": "Undefined label '%'"
+      },
+      {
+        "id": "UnresolvableExport",
+        "category": "SyntaxError",
+        "format": "The requested module '%' does not provide an export named '%'"
+      },
+      {
+        "id": "UnterminatedArgList",
+        "category": "SyntaxError",
+        "format": "missing ) after argument list"
+      },
+      {
+        "id": "UnterminatedRegExp",
+        "category": "SyntaxError",
+        "format": "Invalid regular expression: missing /"
+      },
+      {
+        "id": "UnterminatedTemplate",
+        "category": "SyntaxError",
+        "format": "Unterminated template literal"
+      },
+      {
+        "id": "UnterminatedTemplateExpr",
+        "category": "SyntaxError",
+        "format": "Missing } in template expression"
+      },
+      {
+        "id": "FoundNonCallableHasInstance",
+        "category": "SyntaxError",
+        "format": "Found non-callable @@hasInstance"
+      },
+      {
+        "id": "InvalidHexEscapeSequence",
+        "category": "SyntaxError",
+        "format": "Invalid hexadecimal escape sequence"
+      },
+      {
+        "id": "InvalidUnicodeEscapeSequence",
+        "category": "SyntaxError",
+        "format": "Invalid Unicode escape sequence"
+      },
+      {
+        "id": "UndefinedUnicodeCodePoint",
+        "category": "SyntaxError",
+        "format": "Undefined Unicode code-point"
+      },
+      {
+        "id": "YieldInParameter",
+        "category": "SyntaxError",
+        "format": "Yield expression not allowed in formal parameter"
+      }
+    ],
+    "EvalError": [
+      {
+        "id": "CodeGenFromStrings",
+        "category": "EvalError",
+        "format": "%"
+      },
+      {
+        "id": "NoSideEffectDebugEvaluate",
+        "category": "EvalError",
+        "format": "Possible side-effect in debug-evaluate"
+      }
+    ],
+    "URIError": [
+      {
+        "id": "URIMalformed",
+        "category": "URIError",
+        "format": "URI malformed"
+      },
+      {
+        "id": "WasmTrapUnreachable",
+        "category": "URIError",
+        "format": "unreachable"
+      },
+      {
+        "id": "WasmTrapMemOutOfBounds",
+        "category": "URIError",
+        "format": "memory access out of bounds"
+      },
+      {
+        "id": "WasmTrapUnalignedAccess",
+        "category": "URIError",
+        "format": "operation does not support unaligned accesses"
+      },
+      {
+        "id": "WasmTrapDivByZero",
+        "category": "URIError",
+        "format": "divide by zero"
+      },
+      {
+        "id": "WasmTrapDivUnrepresentable",
+        "category": "URIError",
+        "format": "divide result unrepresentable"
+      },
+      {
+        "id": "WasmTrapRemByZero",
+        "category": "URIError",
+        "format": "remainder by zero"
+      },
+      {
+        "id": "WasmTrapFloatUnrepresentable",
+        "category": "URIError",
+        "format": "float unrepresentable in integer range"
+      },
+      {
+        "id": "WasmTrapTableOutOfBounds",
+        "category": "URIError",
+        "format": "table index is out of bounds"
+      },
+      {
+        "id": "WasmTrapNullFunc",
+        "category": "URIError",
+        "format": "null function"
+      },
+      {
+        "id": "WasmTrapFuncSigMismatch",
+        "category": "URIError",
+        "format": "function signature mismatch"
+      },
+      {
+        "id": "WasmTrapMultiReturnLengthMismatch",
+        "category": "URIError",
+        "format": "multi-return length mismatch"
+      },
+      {
+        "id": "WasmTrapJSTypeError",
+        "category": "URIError",
+        "format": "type incompatibility when transforming from/to JS"
+      },
+      {
+        "id": "WasmTrapDataSegmentOutOfBounds",
+        "category": "URIError",
+        "format": "data segment out of bounds"
+      },
+      {
+        "id": "WasmTrapElementSegmentOutOfBounds",
+        "category": "URIError",
+        "format": "element segment out of bounds"
+      },
+      {
+        "id": "WasmTrapRethrowNull",
+        "category": "URIError",
+        "format": "rethrowing null value"
+      },
+      {
+        "id": "WasmTrapNullDereference",
+        "category": "URIError",
+        "format": "dereferencing a null pointer"
+      },
+      {
+        "id": "WasmTrapIllegalCast",
+        "category": "URIError",
+        "format": "illegal cast"
+      },
+      {
+        "id": "WasmTrapArrayOutOfBounds",
+        "category": "URIError",
+        "format": "array element access out of bounds"
+      },
+      {
+        "id": "WasmTrapArrayTooLarge",
+        "category": "URIError",
+        "format": "requested new array is too large"
+      },
+      {
+        "id": "WasmTrapStringInvalidUtf8",
+        "category": "URIError",
+        "format": "invalid UTF-8 string"
+      },
+      {
+        "id": "WasmTrapStringInvalidWtf8",
+        "category": "URIError",
+        "format": "invalid WTF-8 string"
+      },
+      {
+        "id": "WasmTrapStringOffsetOutOfBounds",
+        "category": "URIError",
+        "format": "string offset out of bounds"
+      },
+      {
+        "id": "WasmTrapResume",
+        "category": "URIError",
+        "format": "WasmFX: resuming an invalid continuation"
+      },
+      {
+        "id": "WasmTrapSuspend",
+        "category": "URIError",
+        "format": "WasmFX: unhandled suspend"
+      },
+      {
+        "id": "WasmTrapSwitch",
+        "category": "URIError",
+        "format": "WasmFX: switching from central stack"
+      },
+      {
+        "id": "WasmSuspendError",
+        "category": "URIError",
+        "format": "trying to suspend without WebAssembly.promising"
+      },
+      {
+        "id": "WasmFXSuspendError",
+        "category": "URIError",
+        "format": "WasmFX: unhandled suspend"
+      },
+      {
+        "id": "WasmTrapStringIsolatedSurrogate",
+        "category": "URIError",
+        "format": "Failed to encode string as UTF-8: contains unpaired surrogate"
+      },
+      {
+        "id": "WasmSuspendJSFrames",
+        "category": "URIError",
+        "format": "trying to suspend JS frames"
+      },
+      {
+        "id": "WasmExceptionError",
+        "category": "URIError",
+        "format": "wasm exception"
+      },
+      {
+        "id": "WasmObjectsAreOpaque",
+        "category": "URIError",
+        "format": "WebAssembly objects are opaque"
+      },
+      {
+        "id": "DataCloneError",
+        "category": "URIError",
+        "format": "% could not be cloned."
+      },
+      {
+        "id": "DataCloneErrorOutOfMemory",
+        "category": "URIError",
+        "format": "Data cannot be cloned, out of memory."
+      },
+      {
+        "id": "DataCloneErrorDetachedArrayBuffer",
+        "category": "URIError",
+        "format": "An ArrayBuffer is detached and could not be cloned."
+      },
+      {
+        "id": "DataCloneErrorNonDetachableArrayBuffer",
+        "category": "URIError",
+        "format": "ArrayBuffer is not detachable and could not be cloned."
+      },
+      {
+        "id": "DataCloneErrorSharedArrayBufferTransferred",
+        "category": "URIError",
+        "format": "A SharedArrayBuffer could not be cloned. SharedArrayBuffer must not be transferred."
+      },
+      {
+        "id": "DataCloneDeserializationError",
+        "category": "URIError",
+        "format": "Unable to deserialize cloned data."
+      },
+      {
+        "id": "DataCloneDeserializationVersionError",
+        "category": "URIError",
+        "format": "Unable to deserialize cloned data due to invalid or unsupported version."
+      },
+      {
+        "id": "TraceEventCategoryError",
+        "category": "URIError",
+        "format": "Trace event category must be a string."
+      },
+      {
+        "id": "TraceEventNameError",
+        "category": "URIError",
+        "format": "Trace event name must be a string."
+      },
+      {
+        "id": "TraceEventNameLengthError",
+        "category": "URIError",
+        "format": "Trace event name must not be an empty string."
+      },
+      {
+        "id": "TraceEventPhaseError",
+        "category": "URIError",
+        "format": "Trace event phase must be a number."
+      },
+      {
+        "id": "TraceEventIDError",
+        "category": "URIError",
+        "format": "Trace event id must be a number."
+      },
+      {
+        "id": "InvalidWeakRefsUnregisterToken",
+        "category": "URIError",
+        "format": "Invalid unregisterToken ('%')"
+      },
+      {
+        "id": "WeakRefsCleanupMustBeCallable",
+        "category": "URIError",
+        "format": "FinalizationRegistry: cleanup must be callable"
+      },
+      {
+        "id": "InvalidWeakRefsRegisterTarget",
+        "category": "URIError",
+        "format": "FinalizationRegistry.prototype.register: invalid target"
+      },
+      {
+        "id": "WeakRefsRegisterTargetAndHoldingsMustNotBeSame",
+        "category": "URIError",
+        "format": "FinalizationRegistry.prototype.register: target and holdings must not be same"
+      },
+      {
+        "id": "InvalidWeakRefsWeakRefConstructorTarget",
+        "category": "URIError",
+        "format": "WeakRef: invalid target"
+      },
+      {
+        "id": "OptionalChainingNoNew",
+        "category": "URIError",
+        "format": "Invalid optional chain from new expression"
+      },
+      {
+        "id": "OptionalChainingNoSuper",
+        "category": "URIError",
+        "format": "Invalid optional chain from super property"
+      },
+      {
+        "id": "OptionalChainingNoTemplate",
+        "category": "URIError",
+        "format": "Invalid tagged template on optional chain"
+      }
+    ],
+    "AggregateError": [
+      {
+        "id": "AllPromisesRejected",
+        "category": "AggregateError",
+        "format": "All promises were rejected"
+      },
+      {
+        "id": "CannotDeepFreezeObject",
+        "category": "AggregateError",
+        "format": "Cannot DeepFreeze object of type %"
+      },
+      {
+        "id": "CannotDeepFreezeValue",
+        "category": "AggregateError",
+        "format": "Cannot DeepFreeze non-const value %"
+      }
+    ],
+    "SuppressedError": [
+      {
+        "id": "SuppressedErrorDuringDisposal",
+        "category": "SuppressedError",
+        "format": "An error was suppressed during disposal"
+      },
+      {
+        "id": "ExpectAnObjectWithUsing",
+        "category": "SuppressedError",
+        "format": "An object is expected with `using` declarations"
+      }
+    ]
+  }
+}

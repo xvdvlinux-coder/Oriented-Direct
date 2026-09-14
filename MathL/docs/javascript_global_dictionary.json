@@ -1,0 +1,4362 @@
+{
+  "source": "Official ECMAScript Standard Specification (lib.es5.d.ts)",
+  "interfaceCount": 90,
+  "interfaces": {
+    "Symbol": {
+      "extends": [],
+      "properties": {},
+      "methods": {
+        "toString": {
+          "params": [],
+          "returns": "string"
+        },
+        "valueOf": {
+          "params": [],
+          "returns": "symbol"
+        }
+      }
+    },
+    "PropertyDescriptor": {
+      "extends": [],
+      "properties": {
+        "configurable": {
+          "type": "boolean",
+          "readonly": false,
+          "optional": true
+        },
+        "enumerable": {
+          "type": "boolean",
+          "readonly": false,
+          "optional": true
+        },
+        "value": {
+          "type": "any",
+          "readonly": false,
+          "optional": true
+        },
+        "writable": {
+          "type": "boolean",
+          "readonly": false,
+          "optional": true
+        }
+      },
+      "methods": {}
+    },
+    "PropertyDescriptorMap": {
+      "extends": [],
+      "properties": {},
+      "methods": {}
+    },
+    "Object": {
+      "extends": [],
+      "properties": {
+        "constructor": {
+          "type": "Function",
+          "readonly": false,
+          "optional": false
+        }
+      },
+      "methods": {
+        "toString": {
+          "params": [],
+          "returns": "string"
+        },
+        "toLocaleString": {
+          "params": [],
+          "returns": "string"
+        },
+        "valueOf": {
+          "params": [],
+          "returns": "Object"
+        },
+        "hasOwnProperty": {
+          "params": [
+            "v: PropertyKey"
+          ],
+          "returns": "boolean"
+        },
+        "isPrototypeOf": {
+          "params": [
+            "v: Object"
+          ],
+          "returns": "boolean"
+        },
+        "propertyIsEnumerable": {
+          "params": [
+            "v: PropertyKey"
+          ],
+          "returns": "boolean"
+        }
+      }
+    },
+    "ObjectConstructor": {
+      "extends": [],
+      "properties": {
+        "prototype": {
+          "type": "Object",
+          "readonly": true,
+          "optional": false
+        }
+      },
+      "methods": {
+        "getPrototypeOf": {
+          "params": [
+            "o: any"
+          ],
+          "returns": "any"
+        },
+        "getOwnPropertyDescriptor": {
+          "params": [
+            "o: any",
+            "p: PropertyKey"
+          ],
+          "returns": "PropertyDescriptor | undefined"
+        },
+        "getOwnPropertyNames": {
+          "params": [
+            "o: any"
+          ],
+          "returns": "string[]"
+        },
+        "create": {
+          "params": [
+            "o: object | null",
+            "properties: PropertyDescriptorMap & ThisType<any>"
+          ],
+          "returns": "any"
+        },
+        "defineProperty": {
+          "params": [
+            "o: T",
+            "p: PropertyKey",
+            "attributes: PropertyDescriptor & ThisType<any>"
+          ],
+          "returns": "T"
+        },
+        "defineProperties": {
+          "params": [
+            "o: T",
+            "properties: PropertyDescriptorMap & ThisType<any>"
+          ],
+          "returns": "T"
+        },
+        "seal": {
+          "params": [
+            "o: T"
+          ],
+          "returns": "T"
+        },
+        "freeze": {
+          "params": [
+            "f: T"
+          ],
+          "returns": "T"
+        }
+      }
+    },
+    "Function": {
+      "extends": [],
+      "properties": {
+        "prototype": {
+          "type": "any",
+          "readonly": false,
+          "optional": false
+        },
+        "length": {
+          "type": "number",
+          "readonly": true,
+          "optional": false
+        },
+        "arguments": {
+          "type": "any",
+          "readonly": false,
+          "optional": false
+        },
+        "caller": {
+          "type": "Function",
+          "readonly": false,
+          "optional": false
+        }
+      },
+      "methods": {
+        "apply": {
+          "params": [
+            "this: Function",
+            "thisArg: any",
+            "argArray?: any"
+          ],
+          "returns": "any"
+        },
+        "call": {
+          "params": [
+            "this: Function",
+            "thisArg: any",
+            "...argArray: any[]"
+          ],
+          "returns": "any"
+        },
+        "bind": {
+          "params": [
+            "this: Function",
+            "thisArg: any",
+            "...argArray: any[]"
+          ],
+          "returns": "any"
+        },
+        "toString": {
+          "params": [],
+          "returns": "string"
+        }
+      }
+    },
+    "FunctionConstructor": {
+      "extends": [],
+      "properties": {
+        "prototype": {
+          "type": "Function",
+          "readonly": true,
+          "optional": false
+        }
+      },
+      "methods": {}
+    },
+    "CallableFunction": {
+      "extends": [
+        "Function"
+      ],
+      "properties": {},
+      "methods": {
+        "apply": {
+          "params": [
+            "this: (this: T",
+            "...args: A) => R",
+            "thisArg: T",
+            "args: A"
+          ],
+          "returns": "R"
+        },
+        "call": {
+          "params": [
+            "this: (this: T",
+            "...args: A) => R",
+            "thisArg: T",
+            "...args: A"
+          ],
+          "returns": "R"
+        },
+        "bind": {
+          "params": [
+            "this: (this: T",
+            "...args: [...A",
+            "...B]) => R",
+            "thisArg: T",
+            "...args: A"
+          ],
+          "returns": "(...args: B) => R"
+        }
+      }
+    },
+    "NewableFunction": {
+      "extends": [
+        "Function"
+      ],
+      "properties": {},
+      "methods": {
+        "apply": {
+          "params": [
+            "this: new (...args: A) => T",
+            "thisArg: T",
+            "args: A"
+          ],
+          "returns": "void"
+        },
+        "call": {
+          "params": [
+            "this: new (...args: A) => T",
+            "thisArg: T",
+            "...args: A"
+          ],
+          "returns": "void"
+        },
+        "bind": {
+          "params": [
+            "this: new (...args: [...A",
+            "...B]) => R",
+            "thisArg: any",
+            "...args: A"
+          ],
+          "returns": "new (...args: B) => R"
+        }
+      }
+    },
+    "IArguments": {
+      "extends": [],
+      "properties": {
+        "length": {
+          "type": "number",
+          "readonly": false,
+          "optional": false
+        },
+        "callee": {
+          "type": "Function",
+          "readonly": false,
+          "optional": false
+        }
+      },
+      "methods": {}
+    },
+    "String": {
+      "extends": [],
+      "properties": {},
+      "methods": {
+        "toString": {
+          "params": [],
+          "returns": "string"
+        },
+        "charAt": {
+          "params": [
+            "pos: number"
+          ],
+          "returns": "string"
+        },
+        "charCodeAt": {
+          "params": [
+            "index: number"
+          ],
+          "returns": "number"
+        },
+        "concat": {
+          "params": [
+            "...strings: string[]"
+          ],
+          "returns": "string"
+        },
+        "indexOf": {
+          "params": [
+            "searchString: string",
+            "position?: number"
+          ],
+          "returns": "number"
+        },
+        "lastIndexOf": {
+          "params": [
+            "searchString: string",
+            "position?: number"
+          ],
+          "returns": "number"
+        },
+        "localeCompare": {
+          "params": [
+            "that: string",
+            "locales?: string | string[]",
+            "options?: Intl.CollatorOptions"
+          ],
+          "returns": "number"
+        },
+        "match": {
+          "params": [
+            "regexp: string | RegExp"
+          ],
+          "returns": "RegExpMatchArray | null"
+        }
+      }
+    },
+    "StringConstructor": {
+      "extends": [],
+      "properties": {
+        "prototype": {
+          "type": "String",
+          "readonly": true,
+          "optional": false
+        }
+      },
+      "methods": {
+        "fromCharCode": {
+          "params": [
+            "...codes: number[]"
+          ],
+          "returns": "string"
+        }
+      }
+    },
+    "Boolean": {
+      "extends": [],
+      "properties": {},
+      "methods": {
+        "valueOf": {
+          "params": [],
+          "returns": "boolean"
+        }
+      }
+    },
+    "BooleanConstructor": {
+      "extends": [],
+      "properties": {
+        "prototype": {
+          "type": "Boolean",
+          "readonly": true,
+          "optional": false
+        }
+      },
+      "methods": {}
+    },
+    "Number": {
+      "extends": [],
+      "properties": {},
+      "methods": {
+        "toString": {
+          "params": [
+            "radix?: number"
+          ],
+          "returns": "string"
+        },
+        "toFixed": {
+          "params": [
+            "fractionDigits?: number"
+          ],
+          "returns": "string"
+        },
+        "toExponential": {
+          "params": [
+            "fractionDigits?: number"
+          ],
+          "returns": "string"
+        },
+        "toPrecision": {
+          "params": [
+            "precision?: number"
+          ],
+          "returns": "string"
+        },
+        "valueOf": {
+          "params": [],
+          "returns": "number"
+        },
+        "toLocaleString": {
+          "params": [
+            "locales?: string | string[]",
+            "options?: Intl.NumberFormatOptions"
+          ],
+          "returns": "string"
+        }
+      }
+    },
+    "NumberConstructor": {
+      "extends": [],
+      "properties": {
+        "prototype": {
+          "type": "Number",
+          "readonly": true,
+          "optional": false
+        },
+        "MAX_VALUE": {
+          "type": "number",
+          "readonly": true,
+          "optional": false
+        },
+        "MIN_VALUE": {
+          "type": "number",
+          "readonly": true,
+          "optional": false
+        },
+        "NaN": {
+          "type": "number",
+          "readonly": true,
+          "optional": false
+        },
+        "NEGATIVE_INFINITY": {
+          "type": "number",
+          "readonly": true,
+          "optional": false
+        },
+        "POSITIVE_INFINITY": {
+          "type": "number",
+          "readonly": true,
+          "optional": false
+        }
+      },
+      "methods": {}
+    },
+    "TemplateStringsArray": {
+      "extends": [
+        "ReadonlyArray"
+      ],
+      "properties": {
+        "raw": {
+          "type": "readonly string[]",
+          "readonly": true,
+          "optional": false
+        }
+      },
+      "methods": {}
+    },
+    "ImportMeta": {
+      "extends": [],
+      "properties": {},
+      "methods": {}
+    },
+    "ImportCallOptions": {
+      "extends": [],
+      "properties": {
+        "with": {
+          "type": "ImportAttributes",
+          "readonly": false,
+          "optional": true
+        }
+      },
+      "methods": {}
+    },
+    "ImportAssertions": {
+      "extends": [],
+      "properties": {},
+      "methods": {}
+    },
+    "ImportAttributes": {
+      "extends": [],
+      "properties": {},
+      "methods": {}
+    },
+    "Math": {
+      "extends": [],
+      "properties": {
+        "E": {
+          "type": "number",
+          "readonly": true,
+          "optional": false
+        },
+        "LN10": {
+          "type": "number",
+          "readonly": true,
+          "optional": false
+        },
+        "LN2": {
+          "type": "number",
+          "readonly": true,
+          "optional": false
+        },
+        "LOG2E": {
+          "type": "number",
+          "readonly": true,
+          "optional": false
+        },
+        "LOG10E": {
+          "type": "number",
+          "readonly": true,
+          "optional": false
+        },
+        "PI": {
+          "type": "number",
+          "readonly": true,
+          "optional": false
+        },
+        "SQRT1_2": {
+          "type": "number",
+          "readonly": true,
+          "optional": false
+        },
+        "SQRT2": {
+          "type": "number",
+          "readonly": true,
+          "optional": false
+        }
+      },
+      "methods": {
+        "abs": {
+          "params": [
+            "x: number"
+          ],
+          "returns": "number"
+        },
+        "acos": {
+          "params": [
+            "x: number"
+          ],
+          "returns": "number"
+        },
+        "asin": {
+          "params": [
+            "x: number"
+          ],
+          "returns": "number"
+        },
+        "atan": {
+          "params": [
+            "x: number"
+          ],
+          "returns": "number"
+        },
+        "atan2": {
+          "params": [
+            "y: number",
+            "x: number"
+          ],
+          "returns": "number"
+        },
+        "ceil": {
+          "params": [
+            "x: number"
+          ],
+          "returns": "number"
+        },
+        "cos": {
+          "params": [
+            "x: number"
+          ],
+          "returns": "number"
+        },
+        "exp": {
+          "params": [
+            "x: number"
+          ],
+          "returns": "number"
+        },
+        "floor": {
+          "params": [
+            "x: number"
+          ],
+          "returns": "number"
+        },
+        "log": {
+          "params": [
+            "x: number"
+          ],
+          "returns": "number"
+        },
+        "max": {
+          "params": [
+            "...values: number[]"
+          ],
+          "returns": "number"
+        },
+        "min": {
+          "params": [
+            "...values: number[]"
+          ],
+          "returns": "number"
+        },
+        "pow": {
+          "params": [
+            "x: number",
+            "y: number"
+          ],
+          "returns": "number"
+        },
+        "random": {
+          "params": [],
+          "returns": "number"
+        },
+        "round": {
+          "params": [
+            "x: number"
+          ],
+          "returns": "number"
+        },
+        "sin": {
+          "params": [
+            "x: number"
+          ],
+          "returns": "number"
+        },
+        "sqrt": {
+          "params": [
+            "x: number"
+          ],
+          "returns": "number"
+        },
+        "tan": {
+          "params": [
+            "x: number"
+          ],
+          "returns": "number"
+        }
+      }
+    },
+    "Date": {
+      "extends": [],
+      "properties": {},
+      "methods": {
+        "toString": {
+          "params": [],
+          "returns": "string"
+        },
+        "toDateString": {
+          "params": [],
+          "returns": "string"
+        },
+        "toTimeString": {
+          "params": [],
+          "returns": "string"
+        },
+        "toLocaleString": {
+          "params": [
+            "locales?: string | string[]",
+            "options?: Intl.DateTimeFormatOptions"
+          ],
+          "returns": "string"
+        },
+        "toLocaleDateString": {
+          "params": [
+            "locales?: string | string[]",
+            "options?: Intl.DateTimeFormatOptions"
+          ],
+          "returns": "string"
+        },
+        "toLocaleTimeString": {
+          "params": [
+            "locales?: string | string[]",
+            "options?: Intl.DateTimeFormatOptions"
+          ],
+          "returns": "string"
+        },
+        "valueOf": {
+          "params": [],
+          "returns": "number"
+        },
+        "getTime": {
+          "params": [],
+          "returns": "number"
+        },
+        "getFullYear": {
+          "params": [],
+          "returns": "number"
+        },
+        "getUTCFullYear": {
+          "params": [],
+          "returns": "number"
+        },
+        "getMonth": {
+          "params": [],
+          "returns": "number"
+        },
+        "getUTCMonth": {
+          "params": [],
+          "returns": "number"
+        },
+        "getDate": {
+          "params": [],
+          "returns": "number"
+        },
+        "getUTCDate": {
+          "params": [],
+          "returns": "number"
+        },
+        "getDay": {
+          "params": [],
+          "returns": "number"
+        },
+        "getUTCDay": {
+          "params": [],
+          "returns": "number"
+        },
+        "getHours": {
+          "params": [],
+          "returns": "number"
+        },
+        "getUTCHours": {
+          "params": [],
+          "returns": "number"
+        },
+        "getMinutes": {
+          "params": [],
+          "returns": "number"
+        },
+        "getUTCMinutes": {
+          "params": [],
+          "returns": "number"
+        },
+        "getSeconds": {
+          "params": [],
+          "returns": "number"
+        },
+        "getUTCSeconds": {
+          "params": [],
+          "returns": "number"
+        },
+        "getMilliseconds": {
+          "params": [],
+          "returns": "number"
+        },
+        "getUTCMilliseconds": {
+          "params": [],
+          "returns": "number"
+        },
+        "getTimezoneOffset": {
+          "params": [],
+          "returns": "number"
+        },
+        "setTime": {
+          "params": [
+            "time: number"
+          ],
+          "returns": "number"
+        },
+        "setMilliseconds": {
+          "params": [
+            "ms: number"
+          ],
+          "returns": "number"
+        },
+        "setUTCMilliseconds": {
+          "params": [
+            "ms: number"
+          ],
+          "returns": "number"
+        },
+        "setSeconds": {
+          "params": [
+            "sec: number",
+            "ms?: number"
+          ],
+          "returns": "number"
+        },
+        "setUTCSeconds": {
+          "params": [
+            "sec: number",
+            "ms?: number"
+          ],
+          "returns": "number"
+        },
+        "setMinutes": {
+          "params": [
+            "min: number",
+            "sec?: number",
+            "ms?: number"
+          ],
+          "returns": "number"
+        },
+        "setUTCMinutes": {
+          "params": [
+            "min: number",
+            "sec?: number",
+            "ms?: number"
+          ],
+          "returns": "number"
+        },
+        "setHours": {
+          "params": [
+            "hours: number",
+            "min?: number",
+            "sec?: number",
+            "ms?: number"
+          ],
+          "returns": "number"
+        },
+        "setUTCHours": {
+          "params": [
+            "hours: number",
+            "min?: number",
+            "sec?: number",
+            "ms?: number"
+          ],
+          "returns": "number"
+        },
+        "setDate": {
+          "params": [
+            "date: number"
+          ],
+          "returns": "number"
+        },
+        "setUTCDate": {
+          "params": [
+            "date: number"
+          ],
+          "returns": "number"
+        },
+        "setMonth": {
+          "params": [
+            "month: number",
+            "date?: number"
+          ],
+          "returns": "number"
+        },
+        "setUTCMonth": {
+          "params": [
+            "month: number",
+            "date?: number"
+          ],
+          "returns": "number"
+        },
+        "setFullYear": {
+          "params": [
+            "year: number",
+            "month?: number",
+            "date?: number"
+          ],
+          "returns": "number"
+        },
+        "setUTCFullYear": {
+          "params": [
+            "year: number",
+            "month?: number",
+            "date?: number"
+          ],
+          "returns": "number"
+        },
+        "toUTCString": {
+          "params": [],
+          "returns": "string"
+        },
+        "toISOString": {
+          "params": [],
+          "returns": "string"
+        },
+        "toJSON": {
+          "params": [
+            "key?: any"
+          ],
+          "returns": "string"
+        }
+      }
+    },
+    "DateConstructor": {
+      "extends": [],
+      "properties": {
+        "prototype": {
+          "type": "Date",
+          "readonly": true,
+          "optional": false
+        }
+      },
+      "methods": {
+        "parse": {
+          "params": [
+            "s: string"
+          ],
+          "returns": "number"
+        },
+        "UTC": {
+          "params": [
+            "year: number",
+            "monthIndex: number",
+            "date?: number",
+            "hours?: number",
+            "minutes?: number",
+            "seconds?: number",
+            "ms?: number"
+          ],
+          "returns": "number"
+        },
+        "now": {
+          "params": [],
+          "returns": "number"
+        }
+      }
+    },
+    "RegExpMatchArray": {
+      "extends": [
+        "Array"
+      ],
+      "properties": {
+        "0": {
+          "type": "string",
+          "readonly": false,
+          "optional": false
+        },
+        "index": {
+          "type": "number",
+          "readonly": false,
+          "optional": true
+        },
+        "input": {
+          "type": "string",
+          "readonly": false,
+          "optional": true
+        }
+      },
+      "methods": {}
+    },
+    "RegExpExecArray": {
+      "extends": [
+        "Array"
+      ],
+      "properties": {
+        "0": {
+          "type": "string",
+          "readonly": false,
+          "optional": false
+        },
+        "index": {
+          "type": "number",
+          "readonly": false,
+          "optional": false
+        },
+        "input": {
+          "type": "string",
+          "readonly": false,
+          "optional": false
+        }
+      },
+      "methods": {}
+    },
+    "RegExp": {
+      "extends": [],
+      "properties": {
+        "source": {
+          "type": "string",
+          "readonly": true,
+          "optional": false
+        },
+        "global": {
+          "type": "boolean",
+          "readonly": true,
+          "optional": false
+        },
+        "ignoreCase": {
+          "type": "boolean",
+          "readonly": true,
+          "optional": false
+        },
+        "multiline": {
+          "type": "boolean",
+          "readonly": true,
+          "optional": false
+        },
+        "lastIndex": {
+          "type": "number",
+          "readonly": false,
+          "optional": false
+        }
+      },
+      "methods": {
+        "exec": {
+          "params": [
+            "string: string"
+          ],
+          "returns": "RegExpExecArray | null"
+        },
+        "test": {
+          "params": [
+            "string: string"
+          ],
+          "returns": "boolean"
+        },
+        "compile": {
+          "params": [
+            "pattern: string",
+            "flags?: string"
+          ],
+          "returns": "this"
+        }
+      }
+    },
+    "RegExpConstructor": {
+      "extends": [],
+      "properties": {},
+      "methods": {}
+    },
+    "Error": {
+      "extends": [],
+      "properties": {
+        "name": {
+          "type": "string",
+          "readonly": false,
+          "optional": false
+        },
+        "message": {
+          "type": "string",
+          "readonly": false,
+          "optional": false
+        },
+        "stack": {
+          "type": "string",
+          "readonly": false,
+          "optional": true
+        }
+      },
+      "methods": {}
+    },
+    "ErrorConstructor": {
+      "extends": [],
+      "properties": {
+        "prototype": {
+          "type": "Error",
+          "readonly": true,
+          "optional": false
+        }
+      },
+      "methods": {}
+    },
+    "EvalError": {
+      "extends": [
+        "Error"
+      ],
+      "properties": {},
+      "methods": {}
+    },
+    "EvalErrorConstructor": {
+      "extends": [
+        "ErrorConstructor"
+      ],
+      "properties": {
+        "prototype": {
+          "type": "EvalError",
+          "readonly": true,
+          "optional": false
+        }
+      },
+      "methods": {}
+    },
+    "RangeError": {
+      "extends": [
+        "Error"
+      ],
+      "properties": {},
+      "methods": {}
+    },
+    "RangeErrorConstructor": {
+      "extends": [
+        "ErrorConstructor"
+      ],
+      "properties": {
+        "prototype": {
+          "type": "RangeError",
+          "readonly": true,
+          "optional": false
+        }
+      },
+      "methods": {}
+    },
+    "ReferenceError": {
+      "extends": [
+        "Error"
+      ],
+      "properties": {},
+      "methods": {}
+    },
+    "ReferenceErrorConstructor": {
+      "extends": [
+        "ErrorConstructor"
+      ],
+      "properties": {
+        "prototype": {
+          "type": "ReferenceError",
+          "readonly": true,
+          "optional": false
+        }
+      },
+      "methods": {}
+    },
+    "SyntaxError": {
+      "extends": [
+        "Error"
+      ],
+      "properties": {},
+      "methods": {}
+    },
+    "SyntaxErrorConstructor": {
+      "extends": [
+        "ErrorConstructor"
+      ],
+      "properties": {
+        "prototype": {
+          "type": "SyntaxError",
+          "readonly": true,
+          "optional": false
+        }
+      },
+      "methods": {}
+    },
+    "TypeError": {
+      "extends": [
+        "Error"
+      ],
+      "properties": {},
+      "methods": {}
+    },
+    "TypeErrorConstructor": {
+      "extends": [
+        "ErrorConstructor"
+      ],
+      "properties": {
+        "prototype": {
+          "type": "TypeError",
+          "readonly": true,
+          "optional": false
+        }
+      },
+      "methods": {}
+    },
+    "URIError": {
+      "extends": [
+        "Error"
+      ],
+      "properties": {},
+      "methods": {}
+    },
+    "URIErrorConstructor": {
+      "extends": [
+        "ErrorConstructor"
+      ],
+      "properties": {
+        "prototype": {
+          "type": "URIError",
+          "readonly": true,
+          "optional": false
+        }
+      },
+      "methods": {}
+    },
+    "JSON": {
+      "extends": [],
+      "properties": {},
+      "methods": {}
+    },
+    "ReadonlyArray": {
+      "extends": [],
+      "properties": {
+        "length": {
+          "type": "number",
+          "readonly": true,
+          "optional": false
+        }
+      },
+      "methods": {
+        "toString": {
+          "params": [],
+          "returns": "string"
+        },
+        "toLocaleString": {
+          "params": [],
+          "returns": "string"
+        },
+        "concat": {
+          "params": [
+            "...items: (T | ConcatArray<T>)[]"
+          ],
+          "returns": "T[]"
+        },
+        "join": {
+          "params": [
+            "separator?: string"
+          ],
+          "returns": "string"
+        },
+        "slice": {
+          "params": [
+            "start?: number",
+            "end?: number"
+          ],
+          "returns": "T[]"
+        },
+        "indexOf": {
+          "params": [
+            "searchElement: T",
+            "fromIndex?: number"
+          ],
+          "returns": "number"
+        },
+        "lastIndexOf": {
+          "params": [
+            "searchElement: T",
+            "fromIndex?: number"
+          ],
+          "returns": "number"
+        },
+        "every": {
+          "params": [
+            "predicate: (value: T",
+            "index: number",
+            "array: readonly T[]) => unknown",
+            "thisArg?: any"
+          ],
+          "returns": "boolean"
+        },
+        "some": {
+          "params": [
+            "predicate: (value: T",
+            "index: number",
+            "array: readonly T[]) => unknown",
+            "thisArg?: any"
+          ],
+          "returns": "boolean"
+        },
+        "forEach": {
+          "params": [
+            "callbackfn: (value: T",
+            "index: number",
+            "array: readonly T[]) => void",
+            "thisArg?: any"
+          ],
+          "returns": "void"
+        },
+        "map": {
+          "params": [
+            "callbackfn: (value: T",
+            "index: number",
+            "array: readonly T[]) => U",
+            "thisArg?: any"
+          ],
+          "returns": "U[]"
+        },
+        "filter": {
+          "params": [
+            "predicate: (value: T",
+            "index: number",
+            "array: readonly T[]) => unknown",
+            "thisArg?: any"
+          ],
+          "returns": "T[]"
+        },
+        "reduce": {
+          "params": [
+            "callbackfn: (previousValue: U",
+            "currentValue: T",
+            "currentIndex: number",
+            "array: readonly T[]) => U",
+            "initialValue: U"
+          ],
+          "returns": "U"
+        },
+        "reduceRight": {
+          "params": [
+            "callbackfn: (previousValue: U",
+            "currentValue: T",
+            "currentIndex: number",
+            "array: readonly T[]) => U",
+            "initialValue: U"
+          ],
+          "returns": "U"
+        }
+      }
+    },
+    "ConcatArray": {
+      "extends": [],
+      "properties": {
+        "length": {
+          "type": "number",
+          "readonly": true,
+          "optional": false
+        }
+      },
+      "methods": {
+        "join": {
+          "params": [
+            "separator?: string"
+          ],
+          "returns": "string"
+        },
+        "slice": {
+          "params": [
+            "start?: number",
+            "end?: number"
+          ],
+          "returns": "T[]"
+        }
+      }
+    },
+    "Array": {
+      "extends": [],
+      "properties": {
+        "length": {
+          "type": "number",
+          "readonly": false,
+          "optional": false
+        }
+      },
+      "methods": {
+        "toString": {
+          "params": [],
+          "returns": "string"
+        },
+        "toLocaleString": {
+          "params": [],
+          "returns": "string"
+        },
+        "pop": {
+          "params": [],
+          "returns": "T | undefined"
+        },
+        "push": {
+          "params": [
+            "...items: T[]"
+          ],
+          "returns": "number"
+        },
+        "concat": {
+          "params": [
+            "...items: (T | ConcatArray<T>)[]"
+          ],
+          "returns": "T[]"
+        },
+        "join": {
+          "params": [
+            "separator?: string"
+          ],
+          "returns": "string"
+        },
+        "reverse": {
+          "params": [],
+          "returns": "T[]"
+        },
+        "shift": {
+          "params": [],
+          "returns": "T | undefined"
+        },
+        "slice": {
+          "params": [
+            "start?: number",
+            "end?: number"
+          ],
+          "returns": "T[]"
+        },
+        "sort": {
+          "params": [
+            "compareFn?: (a: T",
+            "b: T) => number"
+          ],
+          "returns": "this"
+        },
+        "splice": {
+          "params": [
+            "start: number",
+            "deleteCount: number",
+            "...items: T[]"
+          ],
+          "returns": "T[]"
+        },
+        "unshift": {
+          "params": [
+            "...items: T[]"
+          ],
+          "returns": "number"
+        },
+        "indexOf": {
+          "params": [
+            "searchElement: T",
+            "fromIndex?: number"
+          ],
+          "returns": "number"
+        },
+        "lastIndexOf": {
+          "params": [
+            "searchElement: T",
+            "fromIndex?: number"
+          ],
+          "returns": "number"
+        },
+        "every": {
+          "params": [
+            "predicate: (value: T",
+            "index: number",
+            "array: T[]) => unknown",
+            "thisArg?: any"
+          ],
+          "returns": "boolean"
+        },
+        "some": {
+          "params": [
+            "predicate: (value: T",
+            "index: number",
+            "array: T[]) => unknown",
+            "thisArg?: any"
+          ],
+          "returns": "boolean"
+        },
+        "forEach": {
+          "params": [
+            "callbackfn: (value: T",
+            "index: number",
+            "array: T[]) => void",
+            "thisArg?: any"
+          ],
+          "returns": "void"
+        },
+        "map": {
+          "params": [
+            "callbackfn: (value: T",
+            "index: number",
+            "array: T[]) => U",
+            "thisArg?: any"
+          ],
+          "returns": "U[]"
+        },
+        "filter": {
+          "params": [
+            "predicate: (value: T",
+            "index: number",
+            "array: T[]) => unknown",
+            "thisArg?: any"
+          ],
+          "returns": "T[]"
+        },
+        "reduce": {
+          "params": [
+            "callbackfn: (previousValue: U",
+            "currentValue: T",
+            "currentIndex: number",
+            "array: T[]) => U",
+            "initialValue: U"
+          ],
+          "returns": "U"
+        },
+        "reduceRight": {
+          "params": [
+            "callbackfn: (previousValue: U",
+            "currentValue: T",
+            "currentIndex: number",
+            "array: T[]) => U",
+            "initialValue: U"
+          ],
+          "returns": "U"
+        }
+      }
+    },
+    "ArrayConstructor": {
+      "extends": [],
+      "properties": {
+        "prototype": {
+          "type": "any[]",
+          "readonly": true,
+          "optional": false
+        }
+      },
+      "methods": {
+        "isArray": {
+          "params": [
+            "arg: any"
+          ],
+          "returns": "arg is any[]"
+        }
+      }
+    },
+    "TypedPropertyDescriptor": {
+      "extends": [],
+      "properties": {
+        "enumerable": {
+          "type": "boolean",
+          "readonly": false,
+          "optional": true
+        },
+        "configurable": {
+          "type": "boolean",
+          "readonly": false,
+          "optional": true
+        },
+        "writable": {
+          "type": "boolean",
+          "readonly": false,
+          "optional": true
+        },
+        "value": {
+          "type": "T",
+          "readonly": false,
+          "optional": true
+        },
+        "get": {
+          "type": "() => T",
+          "readonly": false,
+          "optional": true
+        },
+        "set": {
+          "type": "(value: T) => void",
+          "readonly": false,
+          "optional": true
+        }
+      },
+      "methods": {}
+    },
+    "PromiseLike": {
+      "extends": [],
+      "properties": {},
+      "methods": {
+        "then": {
+          "params": [
+            "onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null",
+            "onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null"
+          ],
+          "returns": "PromiseLike<TResult1 | TResult2>"
+        }
+      }
+    },
+    "Promise": {
+      "extends": [],
+      "properties": {},
+      "methods": {
+        "then": {
+          "params": [
+            "onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null",
+            "onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null"
+          ],
+          "returns": "Promise<TResult1 | TResult2>"
+        },
+        "catch": {
+          "params": [
+            "onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null"
+          ],
+          "returns": "Promise<T | TResult>"
+        }
+      }
+    },
+    "ArrayLike": {
+      "extends": [],
+      "properties": {
+        "length": {
+          "type": "number",
+          "readonly": true,
+          "optional": false
+        }
+      },
+      "methods": {}
+    },
+    "WeakKeyTypes": {
+      "extends": [],
+      "properties": {
+        "object": {
+          "type": "object",
+          "readonly": false,
+          "optional": false
+        }
+      },
+      "methods": {}
+    },
+    "ArrayBuffer": {
+      "extends": [],
+      "properties": {
+        "byteLength": {
+          "type": "number",
+          "readonly": true,
+          "optional": false
+        }
+      },
+      "methods": {
+        "slice": {
+          "params": [
+            "begin?: number",
+            "end?: number"
+          ],
+          "returns": "ArrayBuffer"
+        }
+      }
+    },
+    "ArrayBufferTypes": {
+      "extends": [],
+      "properties": {
+        "ArrayBuffer": {
+          "type": "ArrayBuffer",
+          "readonly": false,
+          "optional": false
+        }
+      },
+      "methods": {}
+    },
+    "ArrayBufferConstructor": {
+      "extends": [],
+      "properties": {
+        "prototype": {
+          "type": "ArrayBuffer",
+          "readonly": true,
+          "optional": false
+        }
+      },
+      "methods": {
+        "isView": {
+          "params": [
+            "arg: any"
+          ],
+          "returns": "arg is ArrayBufferView"
+        }
+      }
+    },
+    "ArrayBufferView": {
+      "extends": [],
+      "properties": {
+        "buffer": {
+          "type": "TArrayBuffer",
+          "readonly": true,
+          "optional": false
+        },
+        "byteLength": {
+          "type": "number",
+          "readonly": true,
+          "optional": false
+        },
+        "byteOffset": {
+          "type": "number",
+          "readonly": true,
+          "optional": false
+        }
+      },
+      "methods": {}
+    },
+    "DataView": {
+      "extends": [],
+      "properties": {
+        "buffer": {
+          "type": "TArrayBuffer",
+          "readonly": true,
+          "optional": false
+        },
+        "byteLength": {
+          "type": "number",
+          "readonly": true,
+          "optional": false
+        },
+        "byteOffset": {
+          "type": "number",
+          "readonly": true,
+          "optional": false
+        }
+      },
+      "methods": {
+        "getFloat32": {
+          "params": [
+            "byteOffset: number",
+            "littleEndian?: boolean"
+          ],
+          "returns": "number"
+        },
+        "getFloat64": {
+          "params": [
+            "byteOffset: number",
+            "littleEndian?: boolean"
+          ],
+          "returns": "number"
+        },
+        "getInt8": {
+          "params": [
+            "byteOffset: number"
+          ],
+          "returns": "number"
+        },
+        "getInt16": {
+          "params": [
+            "byteOffset: number",
+            "littleEndian?: boolean"
+          ],
+          "returns": "number"
+        },
+        "getInt32": {
+          "params": [
+            "byteOffset: number",
+            "littleEndian?: boolean"
+          ],
+          "returns": "number"
+        },
+        "getUint8": {
+          "params": [
+            "byteOffset: number"
+          ],
+          "returns": "number"
+        },
+        "getUint16": {
+          "params": [
+            "byteOffset: number",
+            "littleEndian?: boolean"
+          ],
+          "returns": "number"
+        },
+        "getUint32": {
+          "params": [
+            "byteOffset: number",
+            "littleEndian?: boolean"
+          ],
+          "returns": "number"
+        },
+        "setFloat32": {
+          "params": [
+            "byteOffset: number",
+            "value: number",
+            "littleEndian?: boolean"
+          ],
+          "returns": "void"
+        },
+        "setFloat64": {
+          "params": [
+            "byteOffset: number",
+            "value: number",
+            "littleEndian?: boolean"
+          ],
+          "returns": "void"
+        },
+        "setInt8": {
+          "params": [
+            "byteOffset: number",
+            "value: number"
+          ],
+          "returns": "void"
+        },
+        "setInt16": {
+          "params": [
+            "byteOffset: number",
+            "value: number",
+            "littleEndian?: boolean"
+          ],
+          "returns": "void"
+        },
+        "setInt32": {
+          "params": [
+            "byteOffset: number",
+            "value: number",
+            "littleEndian?: boolean"
+          ],
+          "returns": "void"
+        },
+        "setUint8": {
+          "params": [
+            "byteOffset: number",
+            "value: number"
+          ],
+          "returns": "void"
+        },
+        "setUint16": {
+          "params": [
+            "byteOffset: number",
+            "value: number",
+            "littleEndian?: boolean"
+          ],
+          "returns": "void"
+        },
+        "setUint32": {
+          "params": [
+            "byteOffset: number",
+            "value: number",
+            "littleEndian?: boolean"
+          ],
+          "returns": "void"
+        }
+      }
+    },
+    "DataViewConstructor": {
+      "extends": [],
+      "properties": {
+        "prototype": {
+          "type": "DataView<ArrayBufferLike>",
+          "readonly": true,
+          "optional": false
+        }
+      },
+      "methods": {}
+    },
+    "Int8Array": {
+      "extends": [],
+      "properties": {
+        "BYTES_PER_ELEMENT": {
+          "type": "number",
+          "readonly": true,
+          "optional": false
+        },
+        "buffer": {
+          "type": "TArrayBuffer",
+          "readonly": true,
+          "optional": false
+        },
+        "byteLength": {
+          "type": "number",
+          "readonly": true,
+          "optional": false
+        },
+        "byteOffset": {
+          "type": "number",
+          "readonly": true,
+          "optional": false
+        },
+        "length": {
+          "type": "number",
+          "readonly": true,
+          "optional": false
+        }
+      },
+      "methods": {
+        "copyWithin": {
+          "params": [
+            "target: number",
+            "start: number",
+            "end?: number"
+          ],
+          "returns": "this"
+        },
+        "every": {
+          "params": [
+            "predicate: (value: number",
+            "index: number",
+            "array: this) => unknown",
+            "thisArg?: any"
+          ],
+          "returns": "boolean"
+        },
+        "fill": {
+          "params": [
+            "value: number",
+            "start?: number",
+            "end?: number"
+          ],
+          "returns": "this"
+        },
+        "filter": {
+          "params": [
+            "predicate: (value: number",
+            "index: number",
+            "array: this) => any",
+            "thisArg?: any"
+          ],
+          "returns": "Int8Array<ArrayBuffer>"
+        },
+        "find": {
+          "params": [
+            "predicate: (value: number",
+            "index: number",
+            "obj: this) => boolean",
+            "thisArg?: any"
+          ],
+          "returns": "number | undefined"
+        },
+        "findIndex": {
+          "params": [
+            "predicate: (value: number",
+            "index: number",
+            "obj: this) => boolean",
+            "thisArg?: any"
+          ],
+          "returns": "number"
+        },
+        "forEach": {
+          "params": [
+            "callbackfn: (value: number",
+            "index: number",
+            "array: this) => void",
+            "thisArg?: any"
+          ],
+          "returns": "void"
+        },
+        "indexOf": {
+          "params": [
+            "searchElement: number",
+            "fromIndex?: number"
+          ],
+          "returns": "number"
+        },
+        "join": {
+          "params": [
+            "separator?: string"
+          ],
+          "returns": "string"
+        },
+        "lastIndexOf": {
+          "params": [
+            "searchElement: number",
+            "fromIndex?: number"
+          ],
+          "returns": "number"
+        },
+        "map": {
+          "params": [
+            "callbackfn: (value: number",
+            "index: number",
+            "array: this) => number",
+            "thisArg?: any"
+          ],
+          "returns": "Int8Array<ArrayBuffer>"
+        },
+        "reduce": {
+          "params": [
+            "callbackfn: (previousValue: U",
+            "currentValue: number",
+            "currentIndex: number",
+            "array: this) => U",
+            "initialValue: U"
+          ],
+          "returns": "U"
+        },
+        "reduceRight": {
+          "params": [
+            "callbackfn: (previousValue: U",
+            "currentValue: number",
+            "currentIndex: number",
+            "array: this) => U",
+            "initialValue: U"
+          ],
+          "returns": "U"
+        },
+        "reverse": {
+          "params": [],
+          "returns": "this"
+        },
+        "set": {
+          "params": [
+            "array: ArrayLike<number>",
+            "offset?: number"
+          ],
+          "returns": "void"
+        },
+        "slice": {
+          "params": [
+            "start?: number",
+            "end?: number"
+          ],
+          "returns": "Int8Array<ArrayBuffer>"
+        },
+        "some": {
+          "params": [
+            "predicate: (value: number",
+            "index: number",
+            "array: this) => unknown",
+            "thisArg?: any"
+          ],
+          "returns": "boolean"
+        },
+        "sort": {
+          "params": [
+            "compareFn?: (a: number",
+            "b: number) => number"
+          ],
+          "returns": "this"
+        },
+        "subarray": {
+          "params": [
+            "begin?: number",
+            "end?: number"
+          ],
+          "returns": "Int8Array<TArrayBuffer>"
+        },
+        "toLocaleString": {
+          "params": [],
+          "returns": "string"
+        },
+        "toString": {
+          "params": [],
+          "returns": "string"
+        },
+        "valueOf": {
+          "params": [],
+          "returns": "this"
+        }
+      }
+    },
+    "Int8ArrayConstructor": {
+      "extends": [],
+      "properties": {
+        "prototype": {
+          "type": "Int8Array<ArrayBufferLike>",
+          "readonly": true,
+          "optional": false
+        },
+        "BYTES_PER_ELEMENT": {
+          "type": "number",
+          "readonly": true,
+          "optional": false
+        }
+      },
+      "methods": {
+        "of": {
+          "params": [
+            "...items: number[]"
+          ],
+          "returns": "Int8Array<ArrayBuffer>"
+        },
+        "from": {
+          "params": [
+            "arrayLike: ArrayLike<T>",
+            "mapfn: (v: T",
+            "k: number) => number",
+            "thisArg?: any"
+          ],
+          "returns": "Int8Array<ArrayBuffer>"
+        }
+      }
+    },
+    "Uint8Array": {
+      "extends": [],
+      "properties": {
+        "BYTES_PER_ELEMENT": {
+          "type": "number",
+          "readonly": true,
+          "optional": false
+        },
+        "buffer": {
+          "type": "TArrayBuffer",
+          "readonly": true,
+          "optional": false
+        },
+        "byteLength": {
+          "type": "number",
+          "readonly": true,
+          "optional": false
+        },
+        "byteOffset": {
+          "type": "number",
+          "readonly": true,
+          "optional": false
+        },
+        "length": {
+          "type": "number",
+          "readonly": true,
+          "optional": false
+        }
+      },
+      "methods": {
+        "copyWithin": {
+          "params": [
+            "target: number",
+            "start: number",
+            "end?: number"
+          ],
+          "returns": "this"
+        },
+        "every": {
+          "params": [
+            "predicate: (value: number",
+            "index: number",
+            "array: this) => unknown",
+            "thisArg?: any"
+          ],
+          "returns": "boolean"
+        },
+        "fill": {
+          "params": [
+            "value: number",
+            "start?: number",
+            "end?: number"
+          ],
+          "returns": "this"
+        },
+        "filter": {
+          "params": [
+            "predicate: (value: number",
+            "index: number",
+            "array: this) => any",
+            "thisArg?: any"
+          ],
+          "returns": "Uint8Array<ArrayBuffer>"
+        },
+        "find": {
+          "params": [
+            "predicate: (value: number",
+            "index: number",
+            "obj: this) => boolean",
+            "thisArg?: any"
+          ],
+          "returns": "number | undefined"
+        },
+        "findIndex": {
+          "params": [
+            "predicate: (value: number",
+            "index: number",
+            "obj: this) => boolean",
+            "thisArg?: any"
+          ],
+          "returns": "number"
+        },
+        "forEach": {
+          "params": [
+            "callbackfn: (value: number",
+            "index: number",
+            "array: this) => void",
+            "thisArg?: any"
+          ],
+          "returns": "void"
+        },
+        "indexOf": {
+          "params": [
+            "searchElement: number",
+            "fromIndex?: number"
+          ],
+          "returns": "number"
+        },
+        "join": {
+          "params": [
+            "separator?: string"
+          ],
+          "returns": "string"
+        },
+        "lastIndexOf": {
+          "params": [
+            "searchElement: number",
+            "fromIndex?: number"
+          ],
+          "returns": "number"
+        },
+        "map": {
+          "params": [
+            "callbackfn: (value: number",
+            "index: number",
+            "array: this) => number",
+            "thisArg?: any"
+          ],
+          "returns": "Uint8Array<ArrayBuffer>"
+        },
+        "reduce": {
+          "params": [
+            "callbackfn: (previousValue: U",
+            "currentValue: number",
+            "currentIndex: number",
+            "array: this) => U",
+            "initialValue: U"
+          ],
+          "returns": "U"
+        },
+        "reduceRight": {
+          "params": [
+            "callbackfn: (previousValue: U",
+            "currentValue: number",
+            "currentIndex: number",
+            "array: this) => U",
+            "initialValue: U"
+          ],
+          "returns": "U"
+        },
+        "reverse": {
+          "params": [],
+          "returns": "this"
+        },
+        "set": {
+          "params": [
+            "array: ArrayLike<number>",
+            "offset?: number"
+          ],
+          "returns": "void"
+        },
+        "slice": {
+          "params": [
+            "start?: number",
+            "end?: number"
+          ],
+          "returns": "Uint8Array<ArrayBuffer>"
+        },
+        "some": {
+          "params": [
+            "predicate: (value: number",
+            "index: number",
+            "array: this) => unknown",
+            "thisArg?: any"
+          ],
+          "returns": "boolean"
+        },
+        "sort": {
+          "params": [
+            "compareFn?: (a: number",
+            "b: number) => number"
+          ],
+          "returns": "this"
+        },
+        "subarray": {
+          "params": [
+            "begin?: number",
+            "end?: number"
+          ],
+          "returns": "Uint8Array<TArrayBuffer>"
+        },
+        "toLocaleString": {
+          "params": [],
+          "returns": "string"
+        },
+        "toString": {
+          "params": [],
+          "returns": "string"
+        },
+        "valueOf": {
+          "params": [],
+          "returns": "this"
+        }
+      }
+    },
+    "Uint8ArrayConstructor": {
+      "extends": [],
+      "properties": {
+        "prototype": {
+          "type": "Uint8Array<ArrayBufferLike>",
+          "readonly": true,
+          "optional": false
+        },
+        "BYTES_PER_ELEMENT": {
+          "type": "number",
+          "readonly": true,
+          "optional": false
+        }
+      },
+      "methods": {
+        "of": {
+          "params": [
+            "...items: number[]"
+          ],
+          "returns": "Uint8Array<ArrayBuffer>"
+        },
+        "from": {
+          "params": [
+            "arrayLike: ArrayLike<T>",
+            "mapfn: (v: T",
+            "k: number) => number",
+            "thisArg?: any"
+          ],
+          "returns": "Uint8Array<ArrayBuffer>"
+        }
+      }
+    },
+    "Uint8ClampedArray": {
+      "extends": [],
+      "properties": {
+        "BYTES_PER_ELEMENT": {
+          "type": "number",
+          "readonly": true,
+          "optional": false
+        },
+        "buffer": {
+          "type": "TArrayBuffer",
+          "readonly": true,
+          "optional": false
+        },
+        "byteLength": {
+          "type": "number",
+          "readonly": true,
+          "optional": false
+        },
+        "byteOffset": {
+          "type": "number",
+          "readonly": true,
+          "optional": false
+        },
+        "length": {
+          "type": "number",
+          "readonly": true,
+          "optional": false
+        }
+      },
+      "methods": {
+        "copyWithin": {
+          "params": [
+            "target: number",
+            "start: number",
+            "end?: number"
+          ],
+          "returns": "this"
+        },
+        "every": {
+          "params": [
+            "predicate: (value: number",
+            "index: number",
+            "array: this) => unknown",
+            "thisArg?: any"
+          ],
+          "returns": "boolean"
+        },
+        "fill": {
+          "params": [
+            "value: number",
+            "start?: number",
+            "end?: number"
+          ],
+          "returns": "this"
+        },
+        "filter": {
+          "params": [
+            "predicate: (value: number",
+            "index: number",
+            "array: this) => any",
+            "thisArg?: any"
+          ],
+          "returns": "Uint8ClampedArray<ArrayBuffer>"
+        },
+        "find": {
+          "params": [
+            "predicate: (value: number",
+            "index: number",
+            "obj: this) => boolean",
+            "thisArg?: any"
+          ],
+          "returns": "number | undefined"
+        },
+        "findIndex": {
+          "params": [
+            "predicate: (value: number",
+            "index: number",
+            "obj: this) => boolean",
+            "thisArg?: any"
+          ],
+          "returns": "number"
+        },
+        "forEach": {
+          "params": [
+            "callbackfn: (value: number",
+            "index: number",
+            "array: this) => void",
+            "thisArg?: any"
+          ],
+          "returns": "void"
+        },
+        "indexOf": {
+          "params": [
+            "searchElement: number",
+            "fromIndex?: number"
+          ],
+          "returns": "number"
+        },
+        "join": {
+          "params": [
+            "separator?: string"
+          ],
+          "returns": "string"
+        },
+        "lastIndexOf": {
+          "params": [
+            "searchElement: number",
+            "fromIndex?: number"
+          ],
+          "returns": "number"
+        },
+        "map": {
+          "params": [
+            "callbackfn: (value: number",
+            "index: number",
+            "array: this) => number",
+            "thisArg?: any"
+          ],
+          "returns": "Uint8ClampedArray<ArrayBuffer>"
+        },
+        "reduce": {
+          "params": [
+            "callbackfn: (previousValue: U",
+            "currentValue: number",
+            "currentIndex: number",
+            "array: this) => U",
+            "initialValue: U"
+          ],
+          "returns": "U"
+        },
+        "reduceRight": {
+          "params": [
+            "callbackfn: (previousValue: U",
+            "currentValue: number",
+            "currentIndex: number",
+            "array: this) => U",
+            "initialValue: U"
+          ],
+          "returns": "U"
+        },
+        "reverse": {
+          "params": [],
+          "returns": "this"
+        },
+        "set": {
+          "params": [
+            "array: ArrayLike<number>",
+            "offset?: number"
+          ],
+          "returns": "void"
+        },
+        "slice": {
+          "params": [
+            "start?: number",
+            "end?: number"
+          ],
+          "returns": "Uint8ClampedArray<ArrayBuffer>"
+        },
+        "some": {
+          "params": [
+            "predicate: (value: number",
+            "index: number",
+            "array: this) => unknown",
+            "thisArg?: any"
+          ],
+          "returns": "boolean"
+        },
+        "sort": {
+          "params": [
+            "compareFn?: (a: number",
+            "b: number) => number"
+          ],
+          "returns": "this"
+        },
+        "subarray": {
+          "params": [
+            "begin?: number",
+            "end?: number"
+          ],
+          "returns": "Uint8ClampedArray<TArrayBuffer>"
+        },
+        "toLocaleString": {
+          "params": [],
+          "returns": "string"
+        },
+        "toString": {
+          "params": [],
+          "returns": "string"
+        },
+        "valueOf": {
+          "params": [],
+          "returns": "this"
+        }
+      }
+    },
+    "Uint8ClampedArrayConstructor": {
+      "extends": [],
+      "properties": {
+        "prototype": {
+          "type": "Uint8ClampedArray<ArrayBufferLike>",
+          "readonly": true,
+          "optional": false
+        },
+        "BYTES_PER_ELEMENT": {
+          "type": "number",
+          "readonly": true,
+          "optional": false
+        }
+      },
+      "methods": {
+        "of": {
+          "params": [
+            "...items: number[]"
+          ],
+          "returns": "Uint8ClampedArray<ArrayBuffer>"
+        },
+        "from": {
+          "params": [
+            "arrayLike: ArrayLike<T>",
+            "mapfn: (v: T",
+            "k: number) => number",
+            "thisArg?: any"
+          ],
+          "returns": "Uint8ClampedArray<ArrayBuffer>"
+        }
+      }
+    },
+    "Int16Array": {
+      "extends": [],
+      "properties": {
+        "BYTES_PER_ELEMENT": {
+          "type": "number",
+          "readonly": true,
+          "optional": false
+        },
+        "buffer": {
+          "type": "TArrayBuffer",
+          "readonly": true,
+          "optional": false
+        },
+        "byteLength": {
+          "type": "number",
+          "readonly": true,
+          "optional": false
+        },
+        "byteOffset": {
+          "type": "number",
+          "readonly": true,
+          "optional": false
+        },
+        "length": {
+          "type": "number",
+          "readonly": true,
+          "optional": false
+        }
+      },
+      "methods": {
+        "copyWithin": {
+          "params": [
+            "target: number",
+            "start: number",
+            "end?: number"
+          ],
+          "returns": "this"
+        },
+        "every": {
+          "params": [
+            "predicate: (value: number",
+            "index: number",
+            "array: this) => unknown",
+            "thisArg?: any"
+          ],
+          "returns": "boolean"
+        },
+        "fill": {
+          "params": [
+            "value: number",
+            "start?: number",
+            "end?: number"
+          ],
+          "returns": "this"
+        },
+        "filter": {
+          "params": [
+            "predicate: (value: number",
+            "index: number",
+            "array: this) => any",
+            "thisArg?: any"
+          ],
+          "returns": "Int16Array<ArrayBuffer>"
+        },
+        "find": {
+          "params": [
+            "predicate: (value: number",
+            "index: number",
+            "obj: this) => boolean",
+            "thisArg?: any"
+          ],
+          "returns": "number | undefined"
+        },
+        "findIndex": {
+          "params": [
+            "predicate: (value: number",
+            "index: number",
+            "obj: this) => boolean",
+            "thisArg?: any"
+          ],
+          "returns": "number"
+        },
+        "forEach": {
+          "params": [
+            "callbackfn: (value: number",
+            "index: number",
+            "array: this) => void",
+            "thisArg?: any"
+          ],
+          "returns": "void"
+        },
+        "indexOf": {
+          "params": [
+            "searchElement: number",
+            "fromIndex?: number"
+          ],
+          "returns": "number"
+        },
+        "join": {
+          "params": [
+            "separator?: string"
+          ],
+          "returns": "string"
+        },
+        "lastIndexOf": {
+          "params": [
+            "searchElement: number",
+            "fromIndex?: number"
+          ],
+          "returns": "number"
+        },
+        "map": {
+          "params": [
+            "callbackfn: (value: number",
+            "index: number",
+            "array: this) => number",
+            "thisArg?: any"
+          ],
+          "returns": "Int16Array<ArrayBuffer>"
+        },
+        "reduce": {
+          "params": [
+            "callbackfn: (previousValue: U",
+            "currentValue: number",
+            "currentIndex: number",
+            "array: this) => U",
+            "initialValue: U"
+          ],
+          "returns": "U"
+        },
+        "reduceRight": {
+          "params": [
+            "callbackfn: (previousValue: U",
+            "currentValue: number",
+            "currentIndex: number",
+            "array: this) => U",
+            "initialValue: U"
+          ],
+          "returns": "U"
+        },
+        "reverse": {
+          "params": [],
+          "returns": "this"
+        },
+        "set": {
+          "params": [
+            "array: ArrayLike<number>",
+            "offset?: number"
+          ],
+          "returns": "void"
+        },
+        "slice": {
+          "params": [
+            "start?: number",
+            "end?: number"
+          ],
+          "returns": "Int16Array<ArrayBuffer>"
+        },
+        "some": {
+          "params": [
+            "predicate: (value: number",
+            "index: number",
+            "array: this) => unknown",
+            "thisArg?: any"
+          ],
+          "returns": "boolean"
+        },
+        "sort": {
+          "params": [
+            "compareFn?: (a: number",
+            "b: number) => number"
+          ],
+          "returns": "this"
+        },
+        "subarray": {
+          "params": [
+            "begin?: number",
+            "end?: number"
+          ],
+          "returns": "Int16Array<TArrayBuffer>"
+        },
+        "toLocaleString": {
+          "params": [],
+          "returns": "string"
+        },
+        "toString": {
+          "params": [],
+          "returns": "string"
+        },
+        "valueOf": {
+          "params": [],
+          "returns": "this"
+        }
+      }
+    },
+    "Int16ArrayConstructor": {
+      "extends": [],
+      "properties": {
+        "prototype": {
+          "type": "Int16Array<ArrayBufferLike>",
+          "readonly": true,
+          "optional": false
+        },
+        "BYTES_PER_ELEMENT": {
+          "type": "number",
+          "readonly": true,
+          "optional": false
+        }
+      },
+      "methods": {
+        "of": {
+          "params": [
+            "...items: number[]"
+          ],
+          "returns": "Int16Array<ArrayBuffer>"
+        },
+        "from": {
+          "params": [
+            "arrayLike: ArrayLike<T>",
+            "mapfn: (v: T",
+            "k: number) => number",
+            "thisArg?: any"
+          ],
+          "returns": "Int16Array<ArrayBuffer>"
+        }
+      }
+    },
+    "Uint16Array": {
+      "extends": [],
+      "properties": {
+        "BYTES_PER_ELEMENT": {
+          "type": "number",
+          "readonly": true,
+          "optional": false
+        },
+        "buffer": {
+          "type": "TArrayBuffer",
+          "readonly": true,
+          "optional": false
+        },
+        "byteLength": {
+          "type": "number",
+          "readonly": true,
+          "optional": false
+        },
+        "byteOffset": {
+          "type": "number",
+          "readonly": true,
+          "optional": false
+        },
+        "length": {
+          "type": "number",
+          "readonly": true,
+          "optional": false
+        }
+      },
+      "methods": {
+        "copyWithin": {
+          "params": [
+            "target: number",
+            "start: number",
+            "end?: number"
+          ],
+          "returns": "this"
+        },
+        "every": {
+          "params": [
+            "predicate: (value: number",
+            "index: number",
+            "array: this) => unknown",
+            "thisArg?: any"
+          ],
+          "returns": "boolean"
+        },
+        "fill": {
+          "params": [
+            "value: number",
+            "start?: number",
+            "end?: number"
+          ],
+          "returns": "this"
+        },
+        "filter": {
+          "params": [
+            "predicate: (value: number",
+            "index: number",
+            "array: this) => any",
+            "thisArg?: any"
+          ],
+          "returns": "Uint16Array<ArrayBuffer>"
+        },
+        "find": {
+          "params": [
+            "predicate: (value: number",
+            "index: number",
+            "obj: this) => boolean",
+            "thisArg?: any"
+          ],
+          "returns": "number | undefined"
+        },
+        "findIndex": {
+          "params": [
+            "predicate: (value: number",
+            "index: number",
+            "obj: this) => boolean",
+            "thisArg?: any"
+          ],
+          "returns": "number"
+        },
+        "forEach": {
+          "params": [
+            "callbackfn: (value: number",
+            "index: number",
+            "array: this) => void",
+            "thisArg?: any"
+          ],
+          "returns": "void"
+        },
+        "indexOf": {
+          "params": [
+            "searchElement: number",
+            "fromIndex?: number"
+          ],
+          "returns": "number"
+        },
+        "join": {
+          "params": [
+            "separator?: string"
+          ],
+          "returns": "string"
+        },
+        "lastIndexOf": {
+          "params": [
+            "searchElement: number",
+            "fromIndex?: number"
+          ],
+          "returns": "number"
+        },
+        "map": {
+          "params": [
+            "callbackfn: (value: number",
+            "index: number",
+            "array: this) => number",
+            "thisArg?: any"
+          ],
+          "returns": "Uint16Array<ArrayBuffer>"
+        },
+        "reduce": {
+          "params": [
+            "callbackfn: (previousValue: U",
+            "currentValue: number",
+            "currentIndex: number",
+            "array: this) => U",
+            "initialValue: U"
+          ],
+          "returns": "U"
+        },
+        "reduceRight": {
+          "params": [
+            "callbackfn: (previousValue: U",
+            "currentValue: number",
+            "currentIndex: number",
+            "array: this) => U",
+            "initialValue: U"
+          ],
+          "returns": "U"
+        },
+        "reverse": {
+          "params": [],
+          "returns": "this"
+        },
+        "set": {
+          "params": [
+            "array: ArrayLike<number>",
+            "offset?: number"
+          ],
+          "returns": "void"
+        },
+        "slice": {
+          "params": [
+            "start?: number",
+            "end?: number"
+          ],
+          "returns": "Uint16Array<ArrayBuffer>"
+        },
+        "some": {
+          "params": [
+            "predicate: (value: number",
+            "index: number",
+            "array: this) => unknown",
+            "thisArg?: any"
+          ],
+          "returns": "boolean"
+        },
+        "sort": {
+          "params": [
+            "compareFn?: (a: number",
+            "b: number) => number"
+          ],
+          "returns": "this"
+        },
+        "subarray": {
+          "params": [
+            "begin?: number",
+            "end?: number"
+          ],
+          "returns": "Uint16Array<TArrayBuffer>"
+        },
+        "toLocaleString": {
+          "params": [],
+          "returns": "string"
+        },
+        "toString": {
+          "params": [],
+          "returns": "string"
+        },
+        "valueOf": {
+          "params": [],
+          "returns": "this"
+        }
+      }
+    },
+    "Uint16ArrayConstructor": {
+      "extends": [],
+      "properties": {
+        "prototype": {
+          "type": "Uint16Array<ArrayBufferLike>",
+          "readonly": true,
+          "optional": false
+        },
+        "BYTES_PER_ELEMENT": {
+          "type": "number",
+          "readonly": true,
+          "optional": false
+        }
+      },
+      "methods": {
+        "of": {
+          "params": [
+            "...items: number[]"
+          ],
+          "returns": "Uint16Array<ArrayBuffer>"
+        },
+        "from": {
+          "params": [
+            "arrayLike: ArrayLike<T>",
+            "mapfn: (v: T",
+            "k: number) => number",
+            "thisArg?: any"
+          ],
+          "returns": "Uint16Array<ArrayBuffer>"
+        }
+      }
+    },
+    "Int32Array": {
+      "extends": [],
+      "properties": {
+        "BYTES_PER_ELEMENT": {
+          "type": "number",
+          "readonly": true,
+          "optional": false
+        },
+        "buffer": {
+          "type": "TArrayBuffer",
+          "readonly": true,
+          "optional": false
+        },
+        "byteLength": {
+          "type": "number",
+          "readonly": true,
+          "optional": false
+        },
+        "byteOffset": {
+          "type": "number",
+          "readonly": true,
+          "optional": false
+        },
+        "length": {
+          "type": "number",
+          "readonly": true,
+          "optional": false
+        }
+      },
+      "methods": {
+        "copyWithin": {
+          "params": [
+            "target: number",
+            "start: number",
+            "end?: number"
+          ],
+          "returns": "this"
+        },
+        "every": {
+          "params": [
+            "predicate: (value: number",
+            "index: number",
+            "array: this) => unknown",
+            "thisArg?: any"
+          ],
+          "returns": "boolean"
+        },
+        "fill": {
+          "params": [
+            "value: number",
+            "start?: number",
+            "end?: number"
+          ],
+          "returns": "this"
+        },
+        "filter": {
+          "params": [
+            "predicate: (value: number",
+            "index: number",
+            "array: this) => any",
+            "thisArg?: any"
+          ],
+          "returns": "Int32Array<ArrayBuffer>"
+        },
+        "find": {
+          "params": [
+            "predicate: (value: number",
+            "index: number",
+            "obj: this) => boolean",
+            "thisArg?: any"
+          ],
+          "returns": "number | undefined"
+        },
+        "findIndex": {
+          "params": [
+            "predicate: (value: number",
+            "index: number",
+            "obj: this) => boolean",
+            "thisArg?: any"
+          ],
+          "returns": "number"
+        },
+        "forEach": {
+          "params": [
+            "callbackfn: (value: number",
+            "index: number",
+            "array: this) => void",
+            "thisArg?: any"
+          ],
+          "returns": "void"
+        },
+        "indexOf": {
+          "params": [
+            "searchElement: number",
+            "fromIndex?: number"
+          ],
+          "returns": "number"
+        },
+        "join": {
+          "params": [
+            "separator?: string"
+          ],
+          "returns": "string"
+        },
+        "lastIndexOf": {
+          "params": [
+            "searchElement: number",
+            "fromIndex?: number"
+          ],
+          "returns": "number"
+        },
+        "map": {
+          "params": [
+            "callbackfn: (value: number",
+            "index: number",
+            "array: this) => number",
+            "thisArg?: any"
+          ],
+          "returns": "Int32Array<ArrayBuffer>"
+        },
+        "reduce": {
+          "params": [
+            "callbackfn: (previousValue: U",
+            "currentValue: number",
+            "currentIndex: number",
+            "array: this) => U",
+            "initialValue: U"
+          ],
+          "returns": "U"
+        },
+        "reduceRight": {
+          "params": [
+            "callbackfn: (previousValue: U",
+            "currentValue: number",
+            "currentIndex: number",
+            "array: this) => U",
+            "initialValue: U"
+          ],
+          "returns": "U"
+        },
+        "reverse": {
+          "params": [],
+          "returns": "this"
+        },
+        "set": {
+          "params": [
+            "array: ArrayLike<number>",
+            "offset?: number"
+          ],
+          "returns": "void"
+        },
+        "slice": {
+          "params": [
+            "start?: number",
+            "end?: number"
+          ],
+          "returns": "Int32Array<ArrayBuffer>"
+        },
+        "some": {
+          "params": [
+            "predicate: (value: number",
+            "index: number",
+            "array: this) => unknown",
+            "thisArg?: any"
+          ],
+          "returns": "boolean"
+        },
+        "sort": {
+          "params": [
+            "compareFn?: (a: number",
+            "b: number) => number"
+          ],
+          "returns": "this"
+        },
+        "subarray": {
+          "params": [
+            "begin?: number",
+            "end?: number"
+          ],
+          "returns": "Int32Array<TArrayBuffer>"
+        },
+        "toLocaleString": {
+          "params": [],
+          "returns": "string"
+        },
+        "toString": {
+          "params": [],
+          "returns": "string"
+        },
+        "valueOf": {
+          "params": [],
+          "returns": "this"
+        }
+      }
+    },
+    "Int32ArrayConstructor": {
+      "extends": [],
+      "properties": {
+        "prototype": {
+          "type": "Int32Array<ArrayBufferLike>",
+          "readonly": true,
+          "optional": false
+        },
+        "BYTES_PER_ELEMENT": {
+          "type": "number",
+          "readonly": true,
+          "optional": false
+        }
+      },
+      "methods": {
+        "of": {
+          "params": [
+            "...items: number[]"
+          ],
+          "returns": "Int32Array<ArrayBuffer>"
+        },
+        "from": {
+          "params": [
+            "arrayLike: ArrayLike<T>",
+            "mapfn: (v: T",
+            "k: number) => number",
+            "thisArg?: any"
+          ],
+          "returns": "Int32Array<ArrayBuffer>"
+        }
+      }
+    },
+    "Uint32Array": {
+      "extends": [],
+      "properties": {
+        "BYTES_PER_ELEMENT": {
+          "type": "number",
+          "readonly": true,
+          "optional": false
+        },
+        "buffer": {
+          "type": "TArrayBuffer",
+          "readonly": true,
+          "optional": false
+        },
+        "byteLength": {
+          "type": "number",
+          "readonly": true,
+          "optional": false
+        },
+        "byteOffset": {
+          "type": "number",
+          "readonly": true,
+          "optional": false
+        },
+        "length": {
+          "type": "number",
+          "readonly": true,
+          "optional": false
+        }
+      },
+      "methods": {
+        "copyWithin": {
+          "params": [
+            "target: number",
+            "start: number",
+            "end?: number"
+          ],
+          "returns": "this"
+        },
+        "every": {
+          "params": [
+            "predicate: (value: number",
+            "index: number",
+            "array: this) => unknown",
+            "thisArg?: any"
+          ],
+          "returns": "boolean"
+        },
+        "fill": {
+          "params": [
+            "value: number",
+            "start?: number",
+            "end?: number"
+          ],
+          "returns": "this"
+        },
+        "filter": {
+          "params": [
+            "predicate: (value: number",
+            "index: number",
+            "array: this) => any",
+            "thisArg?: any"
+          ],
+          "returns": "Uint32Array<ArrayBuffer>"
+        },
+        "find": {
+          "params": [
+            "predicate: (value: number",
+            "index: number",
+            "obj: this) => boolean",
+            "thisArg?: any"
+          ],
+          "returns": "number | undefined"
+        },
+        "findIndex": {
+          "params": [
+            "predicate: (value: number",
+            "index: number",
+            "obj: this) => boolean",
+            "thisArg?: any"
+          ],
+          "returns": "number"
+        },
+        "forEach": {
+          "params": [
+            "callbackfn: (value: number",
+            "index: number",
+            "array: this) => void",
+            "thisArg?: any"
+          ],
+          "returns": "void"
+        },
+        "indexOf": {
+          "params": [
+            "searchElement: number",
+            "fromIndex?: number"
+          ],
+          "returns": "number"
+        },
+        "join": {
+          "params": [
+            "separator?: string"
+          ],
+          "returns": "string"
+        },
+        "lastIndexOf": {
+          "params": [
+            "searchElement: number",
+            "fromIndex?: number"
+          ],
+          "returns": "number"
+        },
+        "map": {
+          "params": [
+            "callbackfn: (value: number",
+            "index: number",
+            "array: this) => number",
+            "thisArg?: any"
+          ],
+          "returns": "Uint32Array<ArrayBuffer>"
+        },
+        "reduce": {
+          "params": [
+            "callbackfn: (previousValue: U",
+            "currentValue: number",
+            "currentIndex: number",
+            "array: this) => U",
+            "initialValue: U"
+          ],
+          "returns": "U"
+        },
+        "reduceRight": {
+          "params": [
+            "callbackfn: (previousValue: U",
+            "currentValue: number",
+            "currentIndex: number",
+            "array: this) => U",
+            "initialValue: U"
+          ],
+          "returns": "U"
+        },
+        "reverse": {
+          "params": [],
+          "returns": "this"
+        },
+        "set": {
+          "params": [
+            "array: ArrayLike<number>",
+            "offset?: number"
+          ],
+          "returns": "void"
+        },
+        "slice": {
+          "params": [
+            "start?: number",
+            "end?: number"
+          ],
+          "returns": "Uint32Array<ArrayBuffer>"
+        },
+        "some": {
+          "params": [
+            "predicate: (value: number",
+            "index: number",
+            "array: this) => unknown",
+            "thisArg?: any"
+          ],
+          "returns": "boolean"
+        },
+        "sort": {
+          "params": [
+            "compareFn?: (a: number",
+            "b: number) => number"
+          ],
+          "returns": "this"
+        },
+        "subarray": {
+          "params": [
+            "begin?: number",
+            "end?: number"
+          ],
+          "returns": "Uint32Array<TArrayBuffer>"
+        },
+        "toLocaleString": {
+          "params": [],
+          "returns": "string"
+        },
+        "toString": {
+          "params": [],
+          "returns": "string"
+        },
+        "valueOf": {
+          "params": [],
+          "returns": "this"
+        }
+      }
+    },
+    "Uint32ArrayConstructor": {
+      "extends": [],
+      "properties": {
+        "prototype": {
+          "type": "Uint32Array<ArrayBufferLike>",
+          "readonly": true,
+          "optional": false
+        },
+        "BYTES_PER_ELEMENT": {
+          "type": "number",
+          "readonly": true,
+          "optional": false
+        }
+      },
+      "methods": {
+        "of": {
+          "params": [
+            "...items: number[]"
+          ],
+          "returns": "Uint32Array<ArrayBuffer>"
+        },
+        "from": {
+          "params": [
+            "arrayLike: ArrayLike<T>",
+            "mapfn: (v: T",
+            "k: number) => number",
+            "thisArg?: any"
+          ],
+          "returns": "Uint32Array<ArrayBuffer>"
+        }
+      }
+    },
+    "Float32Array": {
+      "extends": [],
+      "properties": {
+        "BYTES_PER_ELEMENT": {
+          "type": "number",
+          "readonly": true,
+          "optional": false
+        },
+        "buffer": {
+          "type": "TArrayBuffer",
+          "readonly": true,
+          "optional": false
+        },
+        "byteLength": {
+          "type": "number",
+          "readonly": true,
+          "optional": false
+        },
+        "byteOffset": {
+          "type": "number",
+          "readonly": true,
+          "optional": false
+        },
+        "length": {
+          "type": "number",
+          "readonly": true,
+          "optional": false
+        }
+      },
+      "methods": {
+        "copyWithin": {
+          "params": [
+            "target: number",
+            "start: number",
+            "end?: number"
+          ],
+          "returns": "this"
+        },
+        "every": {
+          "params": [
+            "predicate: (value: number",
+            "index: number",
+            "array: this) => unknown",
+            "thisArg?: any"
+          ],
+          "returns": "boolean"
+        },
+        "fill": {
+          "params": [
+            "value: number",
+            "start?: number",
+            "end?: number"
+          ],
+          "returns": "this"
+        },
+        "filter": {
+          "params": [
+            "predicate: (value: number",
+            "index: number",
+            "array: this) => any",
+            "thisArg?: any"
+          ],
+          "returns": "Float32Array<ArrayBuffer>"
+        },
+        "find": {
+          "params": [
+            "predicate: (value: number",
+            "index: number",
+            "obj: this) => boolean",
+            "thisArg?: any"
+          ],
+          "returns": "number | undefined"
+        },
+        "findIndex": {
+          "params": [
+            "predicate: (value: number",
+            "index: number",
+            "obj: this) => boolean",
+            "thisArg?: any"
+          ],
+          "returns": "number"
+        },
+        "forEach": {
+          "params": [
+            "callbackfn: (value: number",
+            "index: number",
+            "array: this) => void",
+            "thisArg?: any"
+          ],
+          "returns": "void"
+        },
+        "indexOf": {
+          "params": [
+            "searchElement: number",
+            "fromIndex?: number"
+          ],
+          "returns": "number"
+        },
+        "join": {
+          "params": [
+            "separator?: string"
+          ],
+          "returns": "string"
+        },
+        "lastIndexOf": {
+          "params": [
+            "searchElement: number",
+            "fromIndex?: number"
+          ],
+          "returns": "number"
+        },
+        "map": {
+          "params": [
+            "callbackfn: (value: number",
+            "index: number",
+            "array: this) => number",
+            "thisArg?: any"
+          ],
+          "returns": "Float32Array<ArrayBuffer>"
+        },
+        "reduce": {
+          "params": [
+            "callbackfn: (previousValue: U",
+            "currentValue: number",
+            "currentIndex: number",
+            "array: this) => U",
+            "initialValue: U"
+          ],
+          "returns": "U"
+        },
+        "reduceRight": {
+          "params": [
+            "callbackfn: (previousValue: U",
+            "currentValue: number",
+            "currentIndex: number",
+            "array: this) => U",
+            "initialValue: U"
+          ],
+          "returns": "U"
+        },
+        "reverse": {
+          "params": [],
+          "returns": "this"
+        },
+        "set": {
+          "params": [
+            "array: ArrayLike<number>",
+            "offset?: number"
+          ],
+          "returns": "void"
+        },
+        "slice": {
+          "params": [
+            "start?: number",
+            "end?: number"
+          ],
+          "returns": "Float32Array<ArrayBuffer>"
+        },
+        "some": {
+          "params": [
+            "predicate: (value: number",
+            "index: number",
+            "array: this) => unknown",
+            "thisArg?: any"
+          ],
+          "returns": "boolean"
+        },
+        "sort": {
+          "params": [
+            "compareFn?: (a: number",
+            "b: number) => number"
+          ],
+          "returns": "this"
+        },
+        "subarray": {
+          "params": [
+            "begin?: number",
+            "end?: number"
+          ],
+          "returns": "Float32Array<TArrayBuffer>"
+        },
+        "toLocaleString": {
+          "params": [],
+          "returns": "string"
+        },
+        "toString": {
+          "params": [],
+          "returns": "string"
+        },
+        "valueOf": {
+          "params": [],
+          "returns": "this"
+        }
+      }
+    },
+    "Float32ArrayConstructor": {
+      "extends": [],
+      "properties": {
+        "prototype": {
+          "type": "Float32Array<ArrayBufferLike>",
+          "readonly": true,
+          "optional": false
+        },
+        "BYTES_PER_ELEMENT": {
+          "type": "number",
+          "readonly": true,
+          "optional": false
+        }
+      },
+      "methods": {
+        "of": {
+          "params": [
+            "...items: number[]"
+          ],
+          "returns": "Float32Array<ArrayBuffer>"
+        },
+        "from": {
+          "params": [
+            "arrayLike: ArrayLike<T>",
+            "mapfn: (v: T",
+            "k: number) => number",
+            "thisArg?: any"
+          ],
+          "returns": "Float32Array<ArrayBuffer>"
+        }
+      }
+    },
+    "Float64Array": {
+      "extends": [],
+      "properties": {
+        "BYTES_PER_ELEMENT": {
+          "type": "number",
+          "readonly": true,
+          "optional": false
+        },
+        "buffer": {
+          "type": "TArrayBuffer",
+          "readonly": true,
+          "optional": false
+        },
+        "byteLength": {
+          "type": "number",
+          "readonly": true,
+          "optional": false
+        },
+        "byteOffset": {
+          "type": "number",
+          "readonly": true,
+          "optional": false
+        },
+        "length": {
+          "type": "number",
+          "readonly": true,
+          "optional": false
+        }
+      },
+      "methods": {
+        "copyWithin": {
+          "params": [
+            "target: number",
+            "start: number",
+            "end?: number"
+          ],
+          "returns": "this"
+        },
+        "every": {
+          "params": [
+            "predicate: (value: number",
+            "index: number",
+            "array: this) => unknown",
+            "thisArg?: any"
+          ],
+          "returns": "boolean"
+        },
+        "fill": {
+          "params": [
+            "value: number",
+            "start?: number",
+            "end?: number"
+          ],
+          "returns": "this"
+        },
+        "filter": {
+          "params": [
+            "predicate: (value: number",
+            "index: number",
+            "array: this) => any",
+            "thisArg?: any"
+          ],
+          "returns": "Float64Array<ArrayBuffer>"
+        },
+        "find": {
+          "params": [
+            "predicate: (value: number",
+            "index: number",
+            "obj: this) => boolean",
+            "thisArg?: any"
+          ],
+          "returns": "number | undefined"
+        },
+        "findIndex": {
+          "params": [
+            "predicate: (value: number",
+            "index: number",
+            "obj: this) => boolean",
+            "thisArg?: any"
+          ],
+          "returns": "number"
+        },
+        "forEach": {
+          "params": [
+            "callbackfn: (value: number",
+            "index: number",
+            "array: this) => void",
+            "thisArg?: any"
+          ],
+          "returns": "void"
+        },
+        "indexOf": {
+          "params": [
+            "searchElement: number",
+            "fromIndex?: number"
+          ],
+          "returns": "number"
+        },
+        "join": {
+          "params": [
+            "separator?: string"
+          ],
+          "returns": "string"
+        },
+        "lastIndexOf": {
+          "params": [
+            "searchElement: number",
+            "fromIndex?: number"
+          ],
+          "returns": "number"
+        },
+        "map": {
+          "params": [
+            "callbackfn: (value: number",
+            "index: number",
+            "array: this) => number",
+            "thisArg?: any"
+          ],
+          "returns": "Float64Array<ArrayBuffer>"
+        },
+        "reduce": {
+          "params": [
+            "callbackfn: (previousValue: U",
+            "currentValue: number",
+            "currentIndex: number",
+            "array: this) => U",
+            "initialValue: U"
+          ],
+          "returns": "U"
+        },
+        "reduceRight": {
+          "params": [
+            "callbackfn: (previousValue: U",
+            "currentValue: number",
+            "currentIndex: number",
+            "array: this) => U",
+            "initialValue: U"
+          ],
+          "returns": "U"
+        },
+        "reverse": {
+          "params": [],
+          "returns": "this"
+        },
+        "set": {
+          "params": [
+            "array: ArrayLike<number>",
+            "offset?: number"
+          ],
+          "returns": "void"
+        },
+        "slice": {
+          "params": [
+            "start?: number",
+            "end?: number"
+          ],
+          "returns": "Float64Array<ArrayBuffer>"
+        },
+        "some": {
+          "params": [
+            "predicate: (value: number",
+            "index: number",
+            "array: this) => unknown",
+            "thisArg?: any"
+          ],
+          "returns": "boolean"
+        },
+        "sort": {
+          "params": [
+            "compareFn?: (a: number",
+            "b: number) => number"
+          ],
+          "returns": "this"
+        },
+        "subarray": {
+          "params": [
+            "begin?: number",
+            "end?: number"
+          ],
+          "returns": "Float64Array<TArrayBuffer>"
+        },
+        "toLocaleString": {
+          "params": [],
+          "returns": "string"
+        },
+        "toString": {
+          "params": [],
+          "returns": "string"
+        },
+        "valueOf": {
+          "params": [],
+          "returns": "this"
+        }
+      }
+    },
+    "Float64ArrayConstructor": {
+      "extends": [],
+      "properties": {
+        "prototype": {
+          "type": "Float64Array<ArrayBufferLike>",
+          "readonly": true,
+          "optional": false
+        },
+        "BYTES_PER_ELEMENT": {
+          "type": "number",
+          "readonly": true,
+          "optional": false
+        }
+      },
+      "methods": {
+        "of": {
+          "params": [
+            "...items: number[]"
+          ],
+          "returns": "Float64Array<ArrayBuffer>"
+        },
+        "from": {
+          "params": [
+            "arrayLike: ArrayLike<T>",
+            "mapfn: (v: T",
+            "k: number) => number",
+            "thisArg?: any"
+          ],
+          "returns": "Float64Array<ArrayBuffer>"
+        }
+      }
+    },
+    "CollatorOptions": {
+      "extends": [],
+      "properties": {
+        "usage": {
+          "type": "\"sort\" | \"search\" | undefined",
+          "readonly": false,
+          "optional": true
+        },
+        "localeMatcher": {
+          "type": "\"lookup\" | \"best fit\" | undefined",
+          "readonly": false,
+          "optional": true
+        },
+        "numeric": {
+          "type": "boolean | undefined",
+          "readonly": false,
+          "optional": true
+        },
+        "caseFirst": {
+          "type": "\"upper\" | \"lower\" | \"false\" | undefined",
+          "readonly": false,
+          "optional": true
+        },
+        "sensitivity": {
+          "type": "\"base\" | \"accent\" | \"case\" | \"variant\" | undefined",
+          "readonly": false,
+          "optional": true
+        },
+        "collation": {
+          "type": "\"big5han\" | \"compat\" | \"default\" | \"dict\" | \"direct\" | \"ducet\" | \"emoji\" | \"eor\" | \"gb2312\" | \"phonebk\" | \"phonetic\" | \"pinyin\" | \"reformed\" | \"searchjl\" | \"stroke\" | \"trad\" | \"unihan\" | \"zhuyin\" | undefined",
+          "readonly": false,
+          "optional": true
+        },
+        "ignorePunctuation": {
+          "type": "boolean | undefined",
+          "readonly": false,
+          "optional": true
+        }
+      },
+      "methods": {}
+    },
+    "ResolvedCollatorOptions": {
+      "extends": [],
+      "properties": {
+        "locale": {
+          "type": "string",
+          "readonly": false,
+          "optional": false
+        },
+        "usage": {
+          "type": "string",
+          "readonly": false,
+          "optional": false
+        },
+        "sensitivity": {
+          "type": "string",
+          "readonly": false,
+          "optional": false
+        },
+        "ignorePunctuation": {
+          "type": "boolean",
+          "readonly": false,
+          "optional": false
+        },
+        "collation": {
+          "type": "string",
+          "readonly": false,
+          "optional": false
+        },
+        "caseFirst": {
+          "type": "string",
+          "readonly": false,
+          "optional": false
+        },
+        "numeric": {
+          "type": "boolean",
+          "readonly": false,
+          "optional": false
+        }
+      },
+      "methods": {}
+    },
+    "Collator": {
+      "extends": [],
+      "properties": {},
+      "methods": {
+        "compare": {
+          "params": [
+            "x: string",
+            "y: string"
+          ],
+          "returns": "number"
+        },
+        "resolvedOptions": {
+          "params": [],
+          "returns": "ResolvedCollatorOptions"
+        }
+      }
+    },
+    "CollatorConstructor": {
+      "extends": [],
+      "properties": {},
+      "methods": {
+        "supportedLocalesOf": {
+          "params": [
+            "locales: string | string[]",
+            "options?: CollatorOptions"
+          ],
+          "returns": "string[]"
+        }
+      }
+    },
+    "NumberFormatOptionsStyleRegistry": {
+      "extends": [],
+      "properties": {
+        "decimal": {
+          "type": "never",
+          "readonly": false,
+          "optional": false
+        },
+        "percent": {
+          "type": "never",
+          "readonly": false,
+          "optional": false
+        },
+        "currency": {
+          "type": "never",
+          "readonly": false,
+          "optional": false
+        }
+      },
+      "methods": {}
+    },
+    "NumberFormatOptionsCurrencyDisplayRegistry": {
+      "extends": [],
+      "properties": {
+        "code": {
+          "type": "never",
+          "readonly": false,
+          "optional": false
+        },
+        "symbol": {
+          "type": "never",
+          "readonly": false,
+          "optional": false
+        },
+        "name": {
+          "type": "never",
+          "readonly": false,
+          "optional": false
+        }
+      },
+      "methods": {}
+    },
+    "NumberFormatOptions": {
+      "extends": [],
+      "properties": {
+        "localeMatcher": {
+          "type": "\"lookup\" | \"best fit\" | undefined",
+          "readonly": false,
+          "optional": true
+        },
+        "style": {
+          "type": "NumberFormatOptionsStyle | undefined",
+          "readonly": false,
+          "optional": true
+        },
+        "currency": {
+          "type": "string | undefined",
+          "readonly": false,
+          "optional": true
+        },
+        "currencyDisplay": {
+          "type": "NumberFormatOptionsCurrencyDisplay | undefined",
+          "readonly": false,
+          "optional": true
+        },
+        "useGrouping": {
+          "type": "NumberFormatOptionsUseGrouping | undefined",
+          "readonly": false,
+          "optional": true
+        },
+        "minimumIntegerDigits": {
+          "type": "number | undefined",
+          "readonly": false,
+          "optional": true
+        },
+        "minimumFractionDigits": {
+          "type": "number | undefined",
+          "readonly": false,
+          "optional": true
+        },
+        "maximumFractionDigits": {
+          "type": "number | undefined",
+          "readonly": false,
+          "optional": true
+        },
+        "minimumSignificantDigits": {
+          "type": "number | undefined",
+          "readonly": false,
+          "optional": true
+        },
+        "maximumSignificantDigits": {
+          "type": "number | undefined",
+          "readonly": false,
+          "optional": true
+        }
+      },
+      "methods": {}
+    },
+    "ResolvedNumberFormatOptions": {
+      "extends": [],
+      "properties": {
+        "locale": {
+          "type": "string",
+          "readonly": false,
+          "optional": false
+        },
+        "numberingSystem": {
+          "type": "string",
+          "readonly": false,
+          "optional": false
+        },
+        "style": {
+          "type": "NumberFormatOptionsStyle",
+          "readonly": false,
+          "optional": false
+        },
+        "currency": {
+          "type": "string",
+          "readonly": false,
+          "optional": true
+        },
+        "currencyDisplay": {
+          "type": "NumberFormatOptionsCurrencyDisplay",
+          "readonly": false,
+          "optional": true
+        },
+        "minimumIntegerDigits": {
+          "type": "number",
+          "readonly": false,
+          "optional": false
+        },
+        "minimumFractionDigits": {
+          "type": "number",
+          "readonly": false,
+          "optional": true
+        },
+        "maximumFractionDigits": {
+          "type": "number",
+          "readonly": false,
+          "optional": true
+        },
+        "minimumSignificantDigits": {
+          "type": "number",
+          "readonly": false,
+          "optional": true
+        },
+        "maximumSignificantDigits": {
+          "type": "number",
+          "readonly": false,
+          "optional": true
+        },
+        "useGrouping": {
+          "type": "ResolvedNumberFormatOptionsUseGrouping",
+          "readonly": false,
+          "optional": false
+        }
+      },
+      "methods": {}
+    },
+    "NumberFormat": {
+      "extends": [],
+      "properties": {},
+      "methods": {
+        "format": {
+          "params": [
+            "value: number"
+          ],
+          "returns": "string"
+        },
+        "resolvedOptions": {
+          "params": [],
+          "returns": "ResolvedNumberFormatOptions"
+        }
+      }
+    },
+    "NumberFormatConstructor": {
+      "extends": [],
+      "properties": {
+        "prototype": {
+          "type": "NumberFormat",
+          "readonly": true,
+          "optional": false
+        }
+      },
+      "methods": {
+        "supportedLocalesOf": {
+          "params": [
+            "locales: string | string[]",
+            "options?: NumberFormatOptions"
+          ],
+          "returns": "string[]"
+        }
+      }
+    },
+    "DateTimeFormatOptions": {
+      "extends": [],
+      "properties": {
+        "localeMatcher": {
+          "type": "\"best fit\" | \"lookup\" | undefined",
+          "readonly": false,
+          "optional": true
+        },
+        "weekday": {
+          "type": "\"long\" | \"short\" | \"narrow\" | undefined",
+          "readonly": false,
+          "optional": true
+        },
+        "era": {
+          "type": "\"long\" | \"short\" | \"narrow\" | undefined",
+          "readonly": false,
+          "optional": true
+        },
+        "year": {
+          "type": "\"numeric\" | \"2-digit\" | undefined",
+          "readonly": false,
+          "optional": true
+        },
+        "month": {
+          "type": "\"numeric\" | \"2-digit\" | \"long\" | \"short\" | \"narrow\" | undefined",
+          "readonly": false,
+          "optional": true
+        },
+        "day": {
+          "type": "\"numeric\" | \"2-digit\" | undefined",
+          "readonly": false,
+          "optional": true
+        },
+        "hour": {
+          "type": "\"numeric\" | \"2-digit\" | undefined",
+          "readonly": false,
+          "optional": true
+        },
+        "minute": {
+          "type": "\"numeric\" | \"2-digit\" | undefined",
+          "readonly": false,
+          "optional": true
+        },
+        "second": {
+          "type": "\"numeric\" | \"2-digit\" | undefined",
+          "readonly": false,
+          "optional": true
+        },
+        "timeZoneName": {
+          "type": "\"short\" | \"long\" | \"shortOffset\" | \"longOffset\" | \"shortGeneric\" | \"longGeneric\" | undefined",
+          "readonly": false,
+          "optional": true
+        },
+        "formatMatcher": {
+          "type": "\"best fit\" | \"basic\" | undefined",
+          "readonly": false,
+          "optional": true
+        },
+        "hour12": {
+          "type": "boolean | undefined",
+          "readonly": false,
+          "optional": true
+        },
+        "timeZone": {
+          "type": "string | undefined",
+          "readonly": false,
+          "optional": true
+        }
+      },
+      "methods": {}
+    },
+    "ResolvedDateTimeFormatOptions": {
+      "extends": [],
+      "properties": {
+        "locale": {
+          "type": "string",
+          "readonly": false,
+          "optional": false
+        },
+        "calendar": {
+          "type": "string",
+          "readonly": false,
+          "optional": false
+        },
+        "numberingSystem": {
+          "type": "string",
+          "readonly": false,
+          "optional": false
+        },
+        "timeZone": {
+          "type": "string",
+          "readonly": false,
+          "optional": false
+        },
+        "hour12": {
+          "type": "boolean",
+          "readonly": false,
+          "optional": true
+        },
+        "weekday": {
+          "type": "string",
+          "readonly": false,
+          "optional": true
+        },
+        "era": {
+          "type": "string",
+          "readonly": false,
+          "optional": true
+        },
+        "year": {
+          "type": "string",
+          "readonly": false,
+          "optional": true
+        },
+        "month": {
+          "type": "string",
+          "readonly": false,
+          "optional": true
+        },
+        "day": {
+          "type": "string",
+          "readonly": false,
+          "optional": true
+        },
+        "hour": {
+          "type": "string",
+          "readonly": false,
+          "optional": true
+        },
+        "minute": {
+          "type": "string",
+          "readonly": false,
+          "optional": true
+        },
+        "second": {
+          "type": "string",
+          "readonly": false,
+          "optional": true
+        },
+        "timeZoneName": {
+          "type": "string",
+          "readonly": false,
+          "optional": true
+        }
+      },
+      "methods": {}
+    },
+    "DateTimeFormat": {
+      "extends": [],
+      "properties": {},
+      "methods": {
+        "format": {
+          "params": [
+            "date?: Date | number"
+          ],
+          "returns": "string"
+        },
+        "resolvedOptions": {
+          "params": [],
+          "returns": "ResolvedDateTimeFormatOptions"
+        }
+      }
+    },
+    "DateTimeFormatConstructor": {
+      "extends": [],
+      "properties": {
+        "prototype": {
+          "type": "DateTimeFormat",
+          "readonly": true,
+          "optional": false
+        }
+      },
+      "methods": {
+        "supportedLocalesOf": {
+          "params": [
+            "locales: string | string[]",
+            "options?: DateTimeFormatOptions"
+          ],
+          "returns": "string[]"
+        }
+      }
+    }
+  }
+}
