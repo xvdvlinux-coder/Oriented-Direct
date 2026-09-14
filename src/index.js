@@ -1,5 +1,7 @@
 /**
  * Oriented-Direct (.osp) Compiler, Bundler, SourceMap & Dev Server API
+ * Version: 2.0.0 (ClandleLoop)
+ * Strictly zero emojis.
  */
 
 import { Lexer } from './lexer/lexer.js';
@@ -13,8 +15,38 @@ import { loadProjectConfig, detectDefaultEntry } from './config/configReader.js'
 import { DevServer, startDevServer, getLocalNetworkIp } from './server/devServer.js';
 import { SourceMapGenerator, decodeMappings } from './sourcemap/sourceMapGenerator.js';
 import { encodeVlq, decodeVlq } from './sourcemap/vlq.js';
+import {
+  SafetyAnalyzer,
+  DiagnosticFormatter,
+  CompilerDiagnosticFormatter,
+  DiagnosticLevel,
+  SourceSpan,
+  NullState,
+  NullLattice,
+  TypeShape,
+  AbstractEnvironment,
+  SAFETY_ERROR_CATALOG,
+  getCatalogEntry
+} from './safety/index.js';
 
-export const VERSION = '1.4.0';
+export const VERSION = '2.0.0';
+
+/**
+ * Structured error representing compile-time safety invariant violations
+ */
+export class SafetyError extends Error {
+  constructor(diagnostics = [], formattedMessage = '') {
+    const primaryMsg = diagnostics[0]?.message || 'Compile-time safety violation';
+    super(primaryMsg);
+    this.name = 'SafetyError';
+    this.diagnostics = diagnostics;
+    this.formattedMessage = formattedMessage;
+    if (diagnostics[0]) {
+      this.line = diagnostics[0].line || 1;
+      this.column = diagnostics[0].col || diagnostics[0].column || 1;
+    }
+  }
+}
 
 /**
  * Tokenize Oriented-Direct source code
@@ -63,9 +95,27 @@ export function transpile(source, options = {}) {
   const filename = options.filename || '<anonymous>';
   try {
     const ast = parse(source, filename);
+
+    // Gated Safety Guardian Pass (v2.0.0 ClandleLoop)
+    if (options.safety !== false && options.gatedSafety !== false) {
+      const analyzer = new SafetyAnalyzer({
+        ...options,
+        filename,
+        sourceContent: source
+      });
+      const analysis = analyzer.analyze(ast);
+      if (!analysis.isValid) {
+        const formatted = DiagnosticFormatter.formatAll(analysis.diagnostics, source, filename);
+        throw new SafetyError(analysis.diagnostics, formatted);
+      }
+    }
+
     const codegen = new CodeGenerator(ast, { ...options, sourceContent: source });
     return codegen.generate();
   } catch (err) {
+    if (err instanceof SafetyError || err?.name === 'SafetyError') {
+      throw err;
+    }
     if (!err.formattedMessage && (err.rawMessage || err.line)) {
       err.formattedMessage = DiagnosticReporter.formatError(err, source, filename);
     }
@@ -83,9 +133,27 @@ export function transpileWithMap(source, options = {}) {
   const filename = options.filename || '<anonymous>';
   try {
     const ast = parse(source, filename);
+
+    // Gated Safety Guardian Pass (v2.0.0 ClandleLoop)
+    if (options.safety !== false && options.gatedSafety !== false) {
+      const analyzer = new SafetyAnalyzer({
+        ...options,
+        filename,
+        sourceContent: source
+      });
+      const analysis = analyzer.analyze(ast);
+      if (!analysis.isValid) {
+        const formatted = DiagnosticFormatter.formatAll(analysis.diagnostics, source, filename);
+        throw new SafetyError(analysis.diagnostics, formatted);
+      }
+    }
+
     const codegen = new CodeGenerator(ast, { ...options, sourceMap: true, sourceContent: source });
     return codegen.generateWithMap();
   } catch (err) {
+    if (err instanceof SafetyError || err?.name === 'SafetyError') {
+      throw err;
+    }
     if (!err.formattedMessage && (err.rawMessage || err.line)) {
       err.formattedMessage = DiagnosticReporter.formatError(err, source, filename);
     }
@@ -131,7 +199,18 @@ export {
   SourceMapGenerator,
   decodeMappings,
   encodeVlq,
-  decodeVlq
+  decodeVlq,
+  SafetyAnalyzer,
+  DiagnosticFormatter,
+  CompilerDiagnosticFormatter,
+  DiagnosticLevel,
+  SourceSpan,
+  NullState,
+  NullLattice,
+  TypeShape,
+  AbstractEnvironment,
+  SAFETY_ERROR_CATALOG,
+  getCatalogEntry
 };
 
 export default {
@@ -156,5 +235,17 @@ export default {
   SourceMapGenerator,
   decodeMappings,
   encodeVlq,
-  decodeVlq
+  decodeVlq,
+  SafetyAnalyzer,
+  DiagnosticFormatter,
+  CompilerDiagnosticFormatter,
+  DiagnosticLevel,
+  SourceSpan,
+  SafetyError,
+  NullState,
+  NullLattice,
+  TypeShape,
+  AbstractEnvironment,
+  SAFETY_ERROR_CATALOG,
+  getCatalogEntry
 };

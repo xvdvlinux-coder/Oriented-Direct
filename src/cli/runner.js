@@ -1,5 +1,6 @@
 /**
- * Oriented-Direct (.osp) CLI Runner v1.4.0
+ * Oriented-Direct (.osp) CLI Runner v2.0.0 (ClandleLoop)
+ * Strictly zero emojis.
  */
 
 import fs from 'node:fs';
@@ -16,7 +17,8 @@ import {
   detectDefaultEntry,
   AssetPipeline,
   DependencyResolver,
-  startDevServer
+  startDevServer,
+  SafetyError
 } from '../index.js';
 
 export function printHelp() {
@@ -49,6 +51,8 @@ OPTIONS:
   --format <esm|iife>     Module format for output bundle (default: esm)
   -t, --target <target>   Compilation target: 'browser' (default) or 'node'
   --no-runtime            Do not include runtime helpers in output code
+  --no-safety             Disable compile-time gated safety invariants
+  --strict-nulls          Enforce strict compile-time nullability checks (default: true)
   --stdout                Output generated JavaScript directly to stdout
 
 PROJECT CONFIGURATION (package.json):
@@ -149,6 +153,9 @@ function parseCliOptions(args, cwd = process.cwd()) {
     sourcemap: projectConfig.sourcemap ?? false,
     includeRuntime: projectConfig.includeRuntime ?? true,
     assets: projectConfig.assets,
+    safety: projectConfig.safety ?? true,
+    gatedSafety: projectConfig.gatedSafety ?? true,
+    strictNulls: projectConfig.strictNulls ?? true,
     stdout: false
   };
 
@@ -186,6 +193,16 @@ function parseCliOptions(args, cwd = process.cwd()) {
       options.target = args[++i];
     } else if (arg === '--no-runtime') {
       options.includeRuntime = false;
+    } else if (arg === '--no-safety' || arg === '--no-gated-safety') {
+      options.safety = false;
+      options.gatedSafety = false;
+    } else if (arg === '--safety' || arg === '--gated-safety') {
+      options.safety = true;
+      options.gatedSafety = true;
+    } else if (arg === '--strict-nulls') {
+      options.strictNulls = true;
+    } else if (arg === '--no-strict-nulls') {
+      options.strictNulls = false;
     } else if (arg === '--stdout') {
       options.stdout = true;
     } else if (arg.startsWith('-')) {
@@ -207,11 +224,20 @@ function parseCliOptions(args, cwd = process.cwd()) {
 }
 
 export async function handleDev(args) {
-  const options = parseCliOptions(args);
-  if (options.sourcemap === false) {
-    options.sourcemap = 'inline';
+  try {
+    const options = parseCliOptions(args);
+    if (options.sourcemap === false) {
+      options.sourcemap = 'inline';
+    }
+    await startDevServer(options);
+  } catch (err) {
+    if (err instanceof SafetyError || err?.name === 'SafetyError') {
+      console.error(err.formattedMessage || err.message);
+      process.exit(1);
+    }
+    console.error(err.formattedMessage || err.message || err);
+    process.exit(1);
   }
-  await startDevServer(options);
 }
 
 export async function handleBuild(args, passedOptions = null) {
@@ -242,7 +268,10 @@ export async function handleBuild(args, passedOptions = null) {
           includeRuntime: options.includeRuntime,
           cwd: process.cwd(),
           sourceMap: options.sourcemap,
-          outFile: bundleName
+          outFile: bundleName,
+          safety: options.safety,
+          gatedSafety: options.gatedSafety,
+          strictNulls: options.strictNulls
         });
         jsCode = result.code;
         sourceMap = result.map;
@@ -256,7 +285,10 @@ export async function handleBuild(args, passedOptions = null) {
           format: options.format,
           minify: options.minify,
           includeRuntime: options.includeRuntime,
-          cwd: process.cwd()
+          cwd: process.cwd(),
+          safety: options.safety,
+          gatedSafety: options.gatedSafety,
+          strictNulls: options.strictNulls
         });
       }
     } else {
@@ -267,7 +299,10 @@ export async function handleBuild(args, passedOptions = null) {
           target: options.target,
           includeRuntime: options.includeRuntime,
           sourceMap: options.sourcemap,
-          outFile: options.outputFile ? path.basename(options.outputFile) : path.basename(inputPath).replace(/\.osp$/, '.js')
+          outFile: options.outputFile ? path.basename(options.outputFile) : path.basename(inputPath).replace(/\.osp$/, '.js'),
+          safety: options.safety,
+          gatedSafety: options.gatedSafety,
+          strictNulls: options.strictNulls
         });
         jsCode = result.code;
         sourceMap = result.map;
@@ -281,7 +316,10 @@ export async function handleBuild(args, passedOptions = null) {
         jsCode = transpile(source, {
           filename: path.basename(inputPath),
           target: options.target,
-          includeRuntime: options.includeRuntime
+          includeRuntime: options.includeRuntime,
+          safety: options.safety,
+          gatedSafety: options.gatedSafety,
+          strictNulls: options.strictNulls
         });
       }
     }
@@ -337,6 +375,10 @@ export async function handleBuild(args, passedOptions = null) {
       console.log(`\x1b[1;32m[Oriented-Direct Build]\x1b[0m '${options.inputFile}' -> '${path.relative(process.cwd(), outputPath)}'`);
     }
   } catch (err) {
+    if (err instanceof SafetyError || err?.name === 'SafetyError') {
+      console.error(err.formattedMessage || err.message);
+      process.exit(1);
+    }
     console.error(err.formattedMessage || err.message || err);
     process.exit(1);
   }
@@ -368,14 +410,20 @@ export async function handleRun(args) {
       jsCode = bundle(inputPath, {
         format: 'esm',
         includeRuntime: options.includeRuntime,
-        cwd: process.cwd()
+        cwd: process.cwd(),
+        safety: options.safety,
+        gatedSafety: options.gatedSafety,
+        strictNulls: options.strictNulls
       });
     } else {
       const source = fs.readFileSync(inputPath, 'utf-8');
       jsCode = transpile(source, {
         filename: path.basename(inputPath),
         target: 'node',
-        includeRuntime: options.includeRuntime
+        includeRuntime: options.includeRuntime,
+        safety: options.safety,
+        gatedSafety: options.gatedSafety,
+        strictNulls: options.strictNulls
       });
     }
 
@@ -401,6 +449,10 @@ export async function handleRun(args) {
       }
     }
   } catch (err) {
+    if (err instanceof SafetyError || err?.name === 'SafetyError') {
+      console.error(err.formattedMessage || err.message);
+      process.exit(1);
+    }
     console.error(err.formattedMessage || err.message || err);
     process.exit(1);
   }
@@ -426,9 +478,19 @@ export async function handleWatch(args) {
 
   const buildOnce = () => {
     try {
-      handleBuild(args, options).catch(() => {});
+      handleBuild(args, options).catch((err) => {
+        if (err instanceof SafetyError || err?.name === 'SafetyError') {
+          console.error(err.formattedMessage || err.message);
+        } else {
+          console.error(err.formattedMessage || err.message || err);
+        }
+      });
     } catch (err) {
-      console.error(err.formattedMessage || err.message || err);
+      if (err instanceof SafetyError || err?.name === 'SafetyError') {
+        console.error(err.formattedMessage || err.message);
+      } else {
+        console.error(err.formattedMessage || err.message || err);
+      }
     }
   };
 

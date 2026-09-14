@@ -1,0 +1,152 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "name": "Oriented-Direct (OD) Complete Semantic & Syntax Dictionary",
+  "version": "1.4.0",
+  "language": "Oriented-Direct (.osp)",
+  "keywords": {
+    "val": {
+      "kind": "Declaration",
+      "semantics": "Immutable constant binding (Single-assignment invariant)",
+      "targetEquiv": "const",
+      "safetyConstraint": "Reassignment forbidden: |Assignments(v)| === 1"
+    },
+    "mut": {
+      "kind": "Declaration",
+      "semantics": "Mutable variable binding (Explicit mutability)",
+      "targetEquiv": "let",
+      "safetyConstraint": "Requires explicit declaration; mutation tracking enabled"
+    },
+    "fn": {
+      "kind": "FunctionDeclaration",
+      "semantics": "Function definition with static arity tracking",
+      "targetEquiv": "function",
+      "safetyConstraint": "Call sites must match declared arity |params|"
+    },
+    "unless": {
+      "kind": "ControlFlow",
+      "semantics": "Inverted conditional guard (if (!condition))",
+      "targetEquiv": "if (!(...))",
+      "safetyConstraint": "Promotes nullable condition to NonNull when branch terminates with return/throw"
+    },
+    "match": {
+      "kind": "PatternMatching",
+      "semantics": "Functional pattern matching expression",
+      "targetEquiv": "switch/ternary cascade",
+      "safetyConstraint": "Must be exhaustive over input domain or declare default branch"
+    },
+    "struct": {
+      "kind": "DataStructure",
+      "semantics": "Sealed record model",
+      "targetEquiv": "class with Object.seal(this)",
+      "safetyConstraint": "Properties fixed at declaration; unlisted property assignment rejected"
+    },
+    "loop": {
+      "kind": "Iteration",
+      "semantics": "Continuous infinite loop",
+      "targetEquiv": "while (true)",
+      "safetyConstraint": "Must contain break or return to terminate"
+    },
+    "for": {
+      "kind": "Iteration",
+      "variants": [
+        "for (mut i = 0; i < N; i += S) { ... }",
+        "for (val i in Start..End step Step) { ... }",
+        "for (val item in Array) { ... }",
+        "for (val key of Object) { ... }"
+      ],
+      "safetyConstraint": "Index/iterator bindings must follow val/mut immutability rules"
+    }
+  },
+  "operators": {
+    "is": { "semantics": "Strict identity equality (===)", "target": "===" },
+    "is not": { "semantics": "Strict identity inequality (!==)", "target": "!==" },
+    "and": { "semantics": "Logical conjunction (&&)", "target": "&&" },
+    "or": { "semantics": "Logical disjunction (||)", "target": "||" },
+    "not": { "semantics": "Logical negation (!)", "target": "!" },
+    "|>": { "semantics": "Pipeline forward application operator", "target": "nested function call" },
+    "??": { "semantics": "Nullish coalescing operator", "target": "??" },
+    "?.": { "semantics": "Optional chaining operator", "target": "?." },
+    "..": { "semantics": "Range generation operator", "target": "iterable range" }
+  },
+  "directives": {
+    "@doc": { "returns": "Document", "nullability": "NonNull", "description": "Safe access to global document" },
+    "@win": { "returns": "Window", "nullability": "NonNull", "description": "Safe access to global window" },
+    "@find": {
+      "params": ["String", "HTMLElement?"],
+      "returns": "HTMLElement|Null",
+      "nullability": "Nullable",
+      "description": "DOM querySelector. Requires flow guard before property dereference"
+    },
+    "@all": {
+      "params": ["String", "HTMLElement?"],
+      "returns": "Array<HTMLElement>",
+      "nullability": "NonNull",
+      "description": "DOM querySelectorAll converted to Array"
+    },
+    "@id": {
+      "params": ["String"],
+      "returns": "HTMLElement|Null",
+      "nullability": "Nullable",
+      "description": "DOM getElementById. Requires flow guard before property dereference"
+    },
+    "@create": {
+      "params": ["String", "Object?", "...Any"],
+      "returns": "HTMLElement",
+      "nullability": "NonNull",
+      "description": "Declarative DOM element creation helper"
+    },
+    "@on": {
+      "params": ["EventTarget|Null", "String", "Function", "Object|Boolean?"],
+      "returns": "EventTarget|Null",
+      "nullability": "SafeNullNoOp",
+      "description": "Attaches event listener safely (no-op on null)"
+    },
+    "@off": {
+      "params": ["EventTarget|Null", "String", "Function", "Object|Boolean?"],
+      "returns": "EventTarget|Null",
+      "nullability": "SafeNullNoOp",
+      "description": "Removes event listener safely"
+    },
+    "@emit": {
+      "params": ["EventTarget|Null", "String", "Object?"],
+      "returns": "EventTarget|Null",
+      "nullability": "SafeNullNoOp",
+      "description": "Dispatches CustomEvent safely"
+    },
+    "@text": {
+      "params": ["HTMLElement|Null", "String?"],
+      "returns": "String|Undefined",
+      "nullability": "SafeNullGetterSetter",
+      "description": "Gets or sets textContent safely"
+    },
+    "@html": {
+      "params": ["HTMLElement|Null", "String?"],
+      "returns": "String|Undefined",
+      "nullability": "SafeNullGetterSetter",
+      "description": "Gets or sets innerHTML safely"
+    },
+    "@val": {
+      "params": ["HTMLElement|Null", "String?"],
+      "returns": "String|Undefined",
+      "nullability": "SafeNullGetterSetter",
+      "description": "Gets or sets form input value safely"
+    },
+    "@attr": {
+      "params": ["HTMLElement|Null", "String", "String?"],
+      "returns": "String|Undefined",
+      "nullability": "SafeNullGetterSetter",
+      "description": "Gets or sets element attribute safely"
+    },
+    "@css": {
+      "params": ["HTMLElement|Null", "Object"],
+      "returns": "HTMLElement|Null",
+      "nullability": "SafeNullNoOp",
+      "description": "Applies style object safely via Object.assign"
+    },
+    "@log": { "params": ["...Any"], "returns": "void", "description": "Emits diagnostic to console.log" },
+    "@info": { "params": ["...Any"], "returns": "void", "description": "Emits diagnostic to console.info" },
+    "@warn": { "params": ["...Any"], "returns": "void", "description": "Emits diagnostic to console.warn" },
+    "@error": { "params": ["...Any"], "returns": "void", "description": "Emits diagnostic to console.error" },
+    "@print": { "params": ["...Any"], "returns": "void", "description": "Emits diagnostic to console.log" }
+  }
+}

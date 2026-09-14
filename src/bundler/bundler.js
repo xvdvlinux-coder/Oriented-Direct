@@ -10,6 +10,8 @@ import { CodeGenerator } from '../transpiler/codegen.js';
 import { RUNTIME_HELPERS_CODE } from '../transpiler/runtime.js';
 import { ASTNodeType } from '../parser/ast.js';
 import { SourceMapGenerator } from '../sourcemap/sourceMapGenerator.js';
+import { SafetyAnalyzer, DiagnosticFormatter } from '../safety/index.js';
+import { SafetyError } from '../index.js';
 
 export class Bundler {
   constructor(options = {}) {
@@ -60,6 +62,23 @@ export class Bundler {
     const bundleMap = this.options.sourceMap
       ? new SourceMapGenerator({ file: path.basename(this.options.outFile) })
       : null;
+
+    // Gated Safety Guardian Pass on all resolved modules (v2.0.0 ClandleLoop)
+    if (this.options.safety !== false && this.options.gatedSafety !== false) {
+      for (const mod of modules) {
+        const relativePath = path.relative(this.options.cwd, mod.filePath).replace(/\\/g, '/');
+        const analyzer = new SafetyAnalyzer({
+          ...this.options,
+          filename: relativePath,
+          sourceContent: mod.source
+        });
+        const analysis = analyzer.analyze(mod.ast);
+        if (!analysis.isValid) {
+          const formatted = DiagnosticFormatter.formatAll(analysis.diagnostics, mod.source, relativePath);
+          throw new SafetyError(analysis.diagnostics, formatted);
+        }
+      }
+    }
 
     // 1. Compile each module and capture its SourceMap
     for (const mod of modules) {

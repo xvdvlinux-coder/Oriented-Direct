@@ -1,6 +1,6 @@
 {
   "name": "@xvdxlinux/oriented-direct",
-  "version": "1.4.0",
+  "version": "2.0.0",
   "description": "Oriented-Direct (.osp) - An unambiguous, ultra-direct programming language that transpiles to JavaScript with built-in bundler, dev server, and source maps",
   "type": "module",
   "main": "src/index.js",
@@ -25,7 +25,12 @@
     "CHANGELOG.md"
   ],
   "scripts": {
-    "test": "node test/compiler.test.js",
+    "test": "node test/compiler.test.js && node test/safety.test.js",
+    "test:safety": "node test/safety.test.js",
+    "test:mathl": "node MathL/scripts/run_all_trials.mjs",
+    "test:diff": "node test/differential_stress_test.mjs",
+    "test:cli": "node test/cli_flags_stress_test.mjs",
+    "test:all": "node test/compiler.test.js && node test/safety.test.js && node test/differential_stress_test.mjs && node test/cli_flags_stress_test.mjs",
     "start": "node bin/ospc.js dev"
   },
   "keywords": [
