@@ -1,13 +1,13 @@
-# Oriented-Direct (.osp) — AI Agent Knowledge & Best Practices Guide (v1.4.0)
+# Oriented-Direct (.osp) — AI Agent Knowledge & Best Practices Guide (v2.0.0)
 
 > Document Classification: AI-to-AI Knowledge Transfer & Field Guide  
 > Target Audience: Large Language Models, Autonomous Coding Agents, and Human Engineers  
-> Language Version: Oriented-Direct v1.4.0  
+> Language Version: Oriented-Direct v2.0.0 (ClandleLoop)  
 > Compiler Binary: ospc / oriented-direct
 
 ---
 
-## 1. Executive Summary & Architecture (v1.4.0)
+## 1. Executive Summary & Architecture (v2.0.0)
 
 Oriented-Direct (.osp) is a modern, expressive, zero-overhead programming language designed specifically for the Web and Node.js environments. It eliminates 30 years of historic JavaScript verbosity, replaces clumsy DOM APIs with native language directives, guarantees strict equality, enforces immutability by default, and features a built-in multi-module bundler, local development server (ospc dev), and high-precision native Source Maps (.map).
 

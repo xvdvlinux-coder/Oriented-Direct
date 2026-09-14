@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-  <a href="https://www.npmjs.com/package/@xvdxlinux/oriented-direct"><img src="https://img.shields.io/npm/v/@xvdxlinux/oriented-direct?style=flat-square&color=00f5ff" alt="npm version" /></a>
+  <a href="https://www.npmjs.com/package/@xvdxlinux/oriented-direct"><img src="https://img.shields.io/badge/npm-v2.0.0-00f5ff.svg?style=flat-square" alt="npm version" /></a>
   <a href="https://github.com/xvdvlinux-coder/Oriented-Direct/actions/workflows/ci.yml"><img src="https://github.com/xvdvlinux-coder/Oriented-Direct/actions/workflows/ci.yml/badge.svg" alt="CI" /></a>
   <a href="https://github.com/xvdvlinux-coder/Oriented-Direct/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square" alt="License: MIT" /></a>
   <a href="https://nodejs.org"><img src="https://img.shields.io/badge/node-%3E%3D18.0.0-brightgreen.svg?style=flat-square" alt="Node.js: >=18" /></a>
@@ -127,7 +127,7 @@ Define build & server settings inside your `package.json` under `"osp"`:
 ```json
 {
   "name": "my-app",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "osp": {
     "entry": "src/main.osp",
     "outDir": "public",
@@ -338,7 +338,7 @@ npx @xvdxlinux/oriented-direct dev
 ```json
 {
   "name": "mi-proyecto",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "osp": {
     "entry": "src/principal.osp",
     "outDir": "public",
